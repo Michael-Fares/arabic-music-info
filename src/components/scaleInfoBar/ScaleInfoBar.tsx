@@ -1,6 +1,9 @@
 import "./scaleInforBar.css";
-
+import { NOTE_VALUES, getNotesToPlay } from "../../constants";
 function ScaleInfoBar({ scale, root }) {
+	const notesInScale = scale.keys[root].notes;
+	const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);
+	console.log("ScaleInfoBar component > notesToPlay", notesToPlay)
 	return (
 		<div className="scale-info-bar">
 			<p>
@@ -10,11 +13,12 @@ function ScaleInfoBar({ scale, root }) {
 				Key: <span>{root}</span>
 			</p>
 			<div>
-				<span>Notes in this scale: </span>
+				<span>Notes: </span>
 				<ul className="notes-list">
-					{scale.keys[root].notes.map((note) => (
-						<li className={"note-pill"} key={note}>
-							{note}
+					{notesToPlay.map((note, index:number) => (
+						
+						<li data-note-name={note.name} data-octave={note.octave} className={"note-pill"} key={index}>
+							{note.name}
 						</li>
 					))}
 				</ul>

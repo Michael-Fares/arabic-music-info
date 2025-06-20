@@ -1,10 +1,10 @@
 import "./keyboard.css";
 import classNames from "classnames";
 
-import { NOTE_VALUES } from "../../constants";
-
+import { NOTE_VALUES, isHalfFlat } from "../../constants";
 
 function Keyboard({ audioManager, scale, root, instrument }) {
+	const notesInScale = scale.keys[root].notes;
 	const handleClick = (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
@@ -12,26 +12,27 @@ function Keyboard({ audioManager, scale, root, instrument }) {
 		const noteValue = Number(
 			(event.target as HTMLButtonElement).getAttribute("data-note-value")
 		);
-		const shouldPlayQuarterTone: boolean = (
-			event.target as HTMLButtonElement
-		).classList.contains("quarter");
-		audioManager.loadSample(instrument).then((sample: AudioBuffer) =>
-			shouldPlayQuarterTone
-				? audioManager.playSample(noteValue - 0.5, sample)
-				: audioManager.playSample(noteValue, sample)
-		);
+		audioManager
+			.loadSample(instrument)
+			.then((sample: AudioBuffer) =>
+				audioManager.playSample(noteValue, sample)
+			);
 	};
 	return (
 		<div className="keyboard-widget">
-
 			<div className="keyboard">
 				{NOTE_VALUES.map((note) => {
-					const { name, value } = note;
+					const { name, value, octave } = note;
 
 					return (
 						<button
-							data-note-name={name}
-							data-note-value={value}
+							data-note-name={
+								isHalfFlat(notesInScale, note) ? name + "-hf" : name
+							}
+							data-note-value={
+								isHalfFlat(notesInScale, note) ? value - 0.5 : value
+							}
+							data-octave={octave}
 							key={value}
 							className={classNames({
 								key: true,
@@ -39,8 +40,8 @@ function Keyboard({ audioManager, scale, root, instrument }) {
 								whiteKey: !name.includes("b"),
 								"no-offset": name.includes("C") || name.includes("F"),
 								"in-current-scale":
-									scale.keys[root].notes.includes(name.split("_")[0]) ||
-									scale.keys[root].notes.includes(name.split("_")[0] + "-hf"),
+									scale.keys[root].notes.includes(name) ||
+									scale.keys[root].notes.includes(name + "-hf"),
 								quarter: scale.keys[root].notes.includes(
 									name.split("_")[0] + "-hf"
 								),

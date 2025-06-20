@@ -46,5 +46,8 @@
         .quarter {
             border-bottom: 15px solid red;
         }
+        .key.highlight {
+            background-color: royalblue;
+        }
     }
 }

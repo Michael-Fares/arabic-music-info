@@ -2,6 +2,7 @@
     margin: 0.25rem;
     background-color: #eee;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 1rem;
@@ -15,6 +16,8 @@
         background-color: black;
         color: white;
         padding: 0.5rem;
-
+    }
+     .note-pill.highlight {
+        background-color: royalblue;
     }
 }

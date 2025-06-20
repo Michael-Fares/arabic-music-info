@@ -2,8 +2,8 @@ import "./App.css";
 
 // NEED TO THINK about how the hell exactly this is supposed to work with state
 import { SCALE_DATA, INSTUMENTS } from "./constants";
-import Keyboard from "./components/keyboard/Keyboard";
-import ScaleInfoBar from "./components/scaleInfoBar/ScaleInfoBar";
+
+import ScalePanel from "./components/scalePanel/ScalePanel";
 
 import { useState } from "react";
 
@@ -18,7 +18,8 @@ function App() {
 	const [instrument, setInstrument] = useState(INSTUMENTS.piano);
 	return (
 		<>
-			<h1>App</h1>
+			<h1>Arabic Music Ear Trainer</h1>
+			<p>Learn about microtonal Middle Eastern scales</p>
 			<span>Scale:</span>
 			<select
 				name="scales"
@@ -26,7 +27,9 @@ function App() {
 				value={scale.name}
 				onChange={(e) => {
 					const scaleName = e.target.value;
-					setScale(Object.values(SCALE_DATA).find(scale => scale.name === scaleName));
+					setScale(
+						Object.values(SCALE_DATA).find((scale) => scale.name === scaleName)
+					);
 				}}
 			>
 				<option value="Major">Major</option>
@@ -45,8 +48,12 @@ function App() {
 				<option value="C">C</option>
 				<option value="F">F</option>
 			</select>
-			<ScaleInfoBar scale={scale} root={root}/>
-			<Keyboard audioManager={audioManager} scale={scale} root={root} instrument={instrument} />
+			<ScalePanel
+				audioManager={audioManager}
+				scale={scale}
+				root={root}
+				instrument={instrument}
+			/>
 		</>
 	);
 }
