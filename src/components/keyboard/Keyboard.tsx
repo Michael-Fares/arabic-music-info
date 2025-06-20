@@ -2,9 +2,9 @@ import "./keyboard.css";
 import classNames from "classnames";
 
 import { NOTE_VALUES } from "../../constants";
-import { context, loadSample, playSample } from "../../services/audio";
 
-function Keyboard({ scale, root, instrument }) {
+
+function Keyboard({ audioManager, scale, root, instrument }) {
 	const handleClick = (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
@@ -15,28 +15,15 @@ function Keyboard({ scale, root, instrument }) {
 		const shouldPlayQuarterTone: boolean = (
 			event.target as HTMLButtonElement
 		).classList.contains("quarter");
-		loadSample(context, instrument).then((sample) =>
+		audioManager.loadSample(instrument).then((sample: AudioBuffer) =>
 			shouldPlayQuarterTone
-				? playSample(context, noteValue - 0.5, sample)
-				: playSample(context, noteValue, sample)
+				? audioManager.playSample(noteValue - 0.5, sample)
+				: audioManager.playSample(noteValue, sample)
 		);
 	};
 	return (
 		<div className="keyboard-widget">
-			<div className="info">
-				<p>
-					Scale:<span>{scale.name}</span>
-				</p>
-				<p>
-					Key:<span>{root}</span>
-				</p>
-				<div>
-					<span>NOTES: </span>
-					{scale.keys[root].notes.map((note) => (
-						<span key={note}>{note},</span>
-					))}
-				</div>
-			</div>
+
 			<div className="keyboard">
 				{NOTE_VALUES.map((note) => {
 					const { name, value } = note;

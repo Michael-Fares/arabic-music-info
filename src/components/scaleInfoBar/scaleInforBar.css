@@ -1,0 +1,20 @@
+.scale-info-bar {
+    margin: 0.25rem;
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    .notes-list {
+        list-style: none;
+        display: flex;
+        gap: 0.25rem;
+    }
+    .note-pill {
+        background-color: black;
+        color: white;
+        padding: 0.5rem;
+
+    }
+}

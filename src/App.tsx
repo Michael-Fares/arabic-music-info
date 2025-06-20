@@ -3,10 +3,14 @@ import "./App.css";
 // NEED TO THINK about how the hell exactly this is supposed to work with state
 import { SCALE_DATA, INSTUMENTS } from "./constants";
 import Keyboard from "./components/keyboard/Keyboard";
+import ScaleInfoBar from "./components/scaleInfoBar/ScaleInfoBar";
 
 import { useState } from "react";
 
+import { AudioManager } from "./audio";
+
 function App() {
+	const audioManager = new AudioManager();
 	// mock of state
 	const [scale, setScale] = useState(SCALE_DATA.major);
 	// root means "key" to not to collide with react key
@@ -41,7 +45,8 @@ function App() {
 				<option value="C">C</option>
 				<option value="F">F</option>
 			</select>
-			<Keyboard scale={scale} root={root} instrument={instrument} />
+			<ScaleInfoBar scale={scale} root={root}/>
+			<Keyboard audioManager={audioManager} scale={scale} root={root} instrument={instrument} />
 		</>
 	);
 }
