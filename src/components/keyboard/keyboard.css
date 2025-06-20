@@ -1,0 +1,50 @@
+.keyboard-widget {
+    padding: 1rem;
+
+    .keyboard {
+        height: fit-content;
+
+        white-space: nowrap;
+
+        .key {
+            display: inline-block;
+            vertical-align: top;
+            border: 1px solid black;
+            cursor: pointer;
+            position: relative;
+
+            &:not(.no-offset) {
+                margin-left: -1rem;
+            }
+
+            &:focus {
+                outline: 1px solid royalblue;
+            }
+
+            &:active {
+                background-color: royalblue;
+            }
+
+        }
+        .key.in-current-scale {
+            background-color: #eee;
+        }
+        .whiteKey {
+            height: 12rem;
+            width: 2.5rem;
+            z-index: 1;
+            background-color: white;
+        }
+
+        .blackKey {
+            height: 7rem;
+            width: 2rem;
+            z-index: 2;
+            background-color: black;
+        }
+
+        .quarter {
+            border-bottom: 15px solid red;
+        }
+    }
+}
