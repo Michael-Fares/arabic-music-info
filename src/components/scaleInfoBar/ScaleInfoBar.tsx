@@ -1,5 +1,6 @@
 import "./scaleInforBar.css";
-import { NOTE_VALUES, getNotesToPlay } from "../../constants";
+import { NOTE_VALUES } from "../../constants";
+import { getNotesToPlay } from "../../utils";
 function ScaleInfoBar({ scale, root }) {
 	const notesInScale = scale.keys[root].notes;
 	const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);

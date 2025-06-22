@@ -1,7 +1,8 @@
 import "./keyboard.css";
 import classNames from "classnames";
 
-import { NOTE_VALUES, isHalfFlat } from "../../constants";
+import { NOTE_VALUES } from "../../constants";
+import { isHalfFlat } from "../../utils";
 
 function Keyboard({ audioManager, scale, root, instrument }) {
 	const notesInScale = scale.keys[root].notes;

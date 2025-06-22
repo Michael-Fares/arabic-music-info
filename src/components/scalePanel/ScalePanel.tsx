@@ -1,6 +1,7 @@
 import ScaleInfoBar from "../scaleInfoBar/ScaleInfoBar";
 import Keyboard from "../keyboard/Keyboard";
-import { NOTE_VALUES, getNotesToPlay } from "../../constants";
+import { NOTE_VALUES } from "../../constants";
+import { getNotesToPlay } from "../../utils";
 
 function ScalePanel({ audioManager, scale, root, instrument }) {
 	const handleClickPlay = (
