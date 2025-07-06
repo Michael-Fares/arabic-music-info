@@ -13,11 +13,7 @@ function Keyboard({ audioManager, scale, root, instrument }) {
 		const noteValue = Number(
 			(event.target as HTMLButtonElement).getAttribute("data-note-value")
 		);
-		audioManager
-			.loadSample(instrument)
-			.then((sample: AudioBuffer) =>
-				audioManager.playSample(noteValue, sample)
-			);
+		audioManager.playSample(noteValue, audioManager.samples[instrument]);
 	};
 	return (
 		<div className="keyboard-widget">

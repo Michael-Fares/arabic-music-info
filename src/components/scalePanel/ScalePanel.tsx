@@ -20,9 +20,7 @@ function ScalePanel({ audioManager, scale, root, instrument }) {
 			const { name, value, octave } = note;
 
 			setTimeout(() => {
-				audioManager.loadSample(instrument).then((sample: AudioBuffer) => {
-					audioManager.playSample(value, sample);
-				});
+				audioManager.playSample(value, audioManager.samples[instrument]);
 				const notePillNameToHighlight = parent?.querySelector(
 					`.note-pill[data-note-name="${name}"][data-octave="${octave}"]`
 				);

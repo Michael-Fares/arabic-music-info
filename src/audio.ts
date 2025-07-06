@@ -1,7 +1,19 @@
 export class AudioManager {
 	context: AudioContext;
+	samples: {
+		piano: AudioBuffer;
+	};
 	constructor() {
 		this.context = new AudioContext();
+		const fileNames = ["piano"];
+		Promise.all(
+			fileNames.map((fileName) =>
+				this.loadSample(`${import.meta.env.BASE_URL}audio/${fileName}.mp3`)
+			)
+		).then((audioBuffers) => {
+			const [ piano ] = audioBuffers; // add more samples as needed, eg. oud, guitar, etc.
+			this.samples = { piano }; // add more samples as needed, eg. oud, guitar, etc.
+		});
 	}
 
 	playSample(noteValue: number, sample: AudioBuffer) {
@@ -17,8 +29,8 @@ export class AudioManager {
 		source.connect(this.context.destination);
 		source.start(0);
 	}
-	loadSample(instrumentSampleUrl: string): Promise<AudioBuffer> {
-		return fetch(instrumentSampleUrl)
+	loadSample(samplesampleUrl: string): Promise<AudioBuffer> {
+		return fetch(samplesampleUrl)
 			.then((response) => response.arrayBuffer())
 			.then((buffer) => this.context.decodeAudioData(buffer));
 	}

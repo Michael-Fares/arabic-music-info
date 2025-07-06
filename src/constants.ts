@@ -156,5 +156,5 @@ export const SCALE_DATA = {
 };
 
 export const INSTUMENTS = {
-	piano: `${import.meta.env.BASE_URL}audio/piano.mp3`,
+	piano: "piano",
 };
