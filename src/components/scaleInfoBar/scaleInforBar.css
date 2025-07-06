@@ -7,10 +7,30 @@
     align-items: center;
     gap: 1rem;
     padding: 1rem;
+
+    .play-button {
+        background-color: #4caf50;
+        color: white;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        &::before {
+            content: "\25B6"; /* Unicode for play icon */
+            margin-right: 0.5rem;
+        }
+    }
+    .notes-info {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem
+    }
     .notes-list {
         list-style: none;
         display: flex;
         gap: 0.25rem;
+        margin: 0;
+        padding: 0;
     }
     .note-pill {
         background-color: black;

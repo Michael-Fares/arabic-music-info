@@ -20,23 +20,9 @@ function App() {
 		<>
 			<h1>Arabic Music Ear Trainer</h1>
 			<p>Learn about microtonal Middle Eastern scales</p>
-			<span>Scale:</span>
-			<select
-				name="scales"
-				id="scales"
-				value={scale.name}
-				onChange={(e) => {
-					const scaleName = e.target.value;
-					setScale(
-						Object.values(SCALE_DATA).find((scale) => scale.name === scaleName)
-					);
-				}}
-			>
-				<option value="Major">Major</option>
-				<option value="Rast">Rast</option>
-			</select>
 
-			<span>Key:</span>
+
+			{/* <span>Key:</span>
 			<select
 				name="keys"
 				id="keys"
@@ -47,13 +33,32 @@ function App() {
 			>
 				<option value="C">C</option>
 				<option value="F">F</option>
-			</select>
-			<ScalePanel
-				audioManager={audioManager}
-				scale={scale}
-				root={root}
-				instrument={instrument}
-			/>
+			</select> */}
+
+
+			{/* POC of how to map over and render a scale panel
+			For each scale in SCALE_DATA, render a ScalePanel component
+			by SCALE NAME and then the scale panel will have a dorpdown to select the root note
+			e.g select the key
+			by default the root note will be C
+			but might be good to default it to something else based on the tonality of the scale
+			like Bayati is usually in D
+			so the root note will be D
+			Also, the instrument will be a dropdown to select the instrument
+			*/}
+
+			{Object.keys(SCALE_DATA).map((scaleName) => {
+				return (
+					<ScalePanel
+						key={scaleName}
+						audioManager={audioManager}
+						scale={SCALE_DATA[scaleName]}
+						root={root}
+						setRoot={setRoot}
+						instrument={instrument}
+					/>
+				);
+			})}
 		</>
 	);
 }
