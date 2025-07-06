@@ -1,17 +1,18 @@
 export class AudioManager {
 	context: AudioContext;
 	samples: {
-		piano: AudioBuffer;
+		piano: AudioBuffer | null;
 	};
 	constructor() {
 		this.context = new AudioContext();
+		this.samples = { piano: null }; // initialize with null, will be filled later
 		const fileNames = ["piano"];
 		Promise.all(
 			fileNames.map((fileName) =>
 				this.loadSample(`${import.meta.env.BASE_URL}audio/${fileName}.mp3`)
 			)
 		).then((audioBuffers) => {
-			const [ piano ] = audioBuffers; // add more samples as needed, eg. oud, guitar, etc.
+			const [piano] = audioBuffers; // add more samples as needed, eg. oud, guitar, etc.
 			this.samples = { piano }; // add more samples as needed, eg. oud, guitar, etc.
 		});
 	}
