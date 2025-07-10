@@ -1,6 +1,5 @@
 import { generateScale } from "./scaleGenerator";
 
-
 /**
  * Factors by which to multiply a sample of a C note (0)
  * in order to pitch shift it other needed notes in 2 ocatves
@@ -138,10 +137,10 @@ export const SCALE_DATA = {
 		name: "Major",
 		rootNotes: {
 			C: {
-				notes: generateScale("C major") // ["C", "D", "E", "F", "G", "A", "B", "C"],
+				notes: generateScale("C major"), // ["C", "D", "E", "F", "G", "A", "B", "C"],
 			},
 			F: {
-				notes: generateScale("F major") // ["F", "G", "A", "Bb", "C", "D", "E", "F"],
+				notes: generateScale("F major"), // ["F", "G", "A", "Bb", "C", "D", "E", "F"],
 			},
 		},
 	},
@@ -160,13 +159,43 @@ export const SCALE_DATA = {
 		name: "Minor",
 		rootNotes: {
 			D: {
-				notes: generateScale("D minor")
+				notes: generateScale("D minor"),
 			},
 			G: {
 				notes: generateScale("G minor"),
 			},
 		},
-	}
+	},
+	bayati: {
+		name: "Bayati",
+		rootNotes: {
+			D: {
+				notes: generateScale("D minor").map((note, index) =>
+					index + 1 === 2 ? note + "-hf" : note
+				),
+			},
+			G: {
+				notes: generateScale("G minor").map((note, index) =>
+					index + 1 === 2 ? note + "-hf" : note
+				),
+			},
+		},
+	},
+	bayati_husayni: {
+		name: "Bayati Husayni",
+		rootNotes: {
+			D: {
+				notes: generateScale("D dorian").map((note, index) =>
+					index + 1 === 2 || index + 1 === 6 ? note + "-hf" : note
+				),
+			},
+			G: {
+				notes: generateScale("G dorian").map((note, index) =>
+					index + 1 === 2 || index + 1 === 6 ? note + "-hf" : note
+				),
+			},
+		},
+	},
 };
 
 export const INSTUMENTS = {
@@ -174,14 +203,14 @@ export const INSTUMENTS = {
 };
 
 const scale = {
-		name: "Major",
-		rootNotes: {
-			C: {
-				notes: generateScale("C major") // ["C", "D", "E", "F", "G", "A", "B", "C"],
-			},
-			F: {
-				notes: generateScale("F major") // ["F", "G", "A", "Bb", "C", "D", "E", "F"],
-			},
+	name: "Major",
+	rootNotes: {
+		C: {
+			notes: generateScale("C major"), // ["C", "D", "E", "F", "G", "A", "B", "C"],
 		},
-	}
-console.log(Object.keys(scale.rootNotes)[0])
+		F: {
+			notes: generateScale("F major"), // ["F", "G", "A", "Bb", "C", "D", "E", "F"],
+		},
+	},
+};
+console.log(Object.keys(scale.rootNotes)[0]);

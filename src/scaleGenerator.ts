@@ -1,6 +1,6 @@
 import * as Scale from "@tonaljs/scale";
 
-console.log("scale.get c major", );
+console.log("All available scale names",Scale.names());
 
 export function generateScale(scaleKeyAndScaleName: string | null) {
     if (!scaleKeyAndScaleName) {

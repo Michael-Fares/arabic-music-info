@@ -53,7 +53,7 @@ function ScaleInfoBar({ audioManager, scale, rootNote, setRootNote, instrument }
 				Scale: <span>{scale.name}</span>
 			</p>
 			<div>
-				(this probably be it's own state in the scale panel component)
+
 			<span>Key:</span>
 			<select
 				name="keys"
