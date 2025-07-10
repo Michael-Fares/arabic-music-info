@@ -15,7 +15,7 @@ function ScaleInfoBar({ audioManager, scale, root, setRoot, instrument }) {
 				)
 				: null;
 
-		const notesInScale = scale.keys[root].notes;
+		const notesInScale = scale.rootNotes[root].notes;
 
 		const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);
 		console.log("notesToPlay", notesToPlay);

@@ -1,3 +1,6 @@
+import { generateScale } from "./scaleGenerator";
+
+
 /**
  * Factors by which to multiply a sample of a C note (0)
  * in order to pitch shift it other needed notes in 2 ocatves
@@ -135,10 +138,10 @@ export const SCALE_DATA = {
 		name: "Major",
 		rootNotes: {
 			C: {
-				notes: ["C", "D", "E", "F", "G", "A", "B", "C"],
+				notes: generateScale("C major") // ["C", "D", "E", "F", "G", "A", "B", "C"],
 			},
 			F: {
-				notes: ["F", "G", "A", "Bb", "C", "D", "E", "F"],
+				notes: generateScale("F major") // ["F", "G", "A", "Bb", "C", "D", "E", "F"],
 			},
 		},
 	},
@@ -158,3 +161,4 @@ export const SCALE_DATA = {
 export const INSTUMENTS = {
 	piano: "piano",
 };
+
