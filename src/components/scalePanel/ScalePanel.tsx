@@ -4,6 +4,7 @@ import Keyboard from "../keyboard/Keyboard";
 
 
 function ScalePanel({ audioManager, scale, root, setRoot, instrument }) {
+	console.log("ScalePanel component > scale", scale);
 	return (
 		<div className="scale-panel" id={`${scale.name.split(" ").join("-").toLowerCase()}`} data-scale-and-key={`${scale.name}-${root}`}>
 			<ScaleInfoBar

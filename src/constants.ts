@@ -133,7 +133,7 @@ export const NOTE_VALUES = [
 export const SCALE_DATA = {
 	major: {
 		name: "Major",
-		keys: {
+		rootNotes: {
 			C: {
 				notes: ["C", "D", "E", "F", "G", "A", "B", "C"],
 			},
@@ -144,7 +144,7 @@ export const SCALE_DATA = {
 	},
 	rast: {
 		name: "Rast",
-		keys: {
+		rootNotes: {
 			C: {
 				notes: ["C", "D", "E-hf", "F", "G", "A", "B-hf", "C"],
 			},

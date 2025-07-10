@@ -2,7 +2,7 @@ import "./scaleInforBar.css";
 import { NOTE_VALUES } from "../../constants";
 import { getNotesToPlay } from "../../utils";
 function ScaleInfoBar({ audioManager, scale, root, setRoot, instrument }) {
-	const notesInScale = scale.keys[root].notes;
+	const notesInScale = scale.rootNotes[root].notes;
 	const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);
 	const handleClickPlay = (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
