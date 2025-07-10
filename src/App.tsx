@@ -13,7 +13,7 @@ function App() {
 	const audioManager = new AudioManager();
 	// mock of state
 	// root means "key" to not to collide with react key
-	const [root, setRoot] = useState("C");
+
 	const [instrument, setInstrument] = useState(INSTUMENTS.piano);
 	return (
 		<>
@@ -21,18 +21,6 @@ function App() {
 			<p>Learn about microtonal Middle Eastern scales</p>
 
 
-			{/* <span>Key:</span>
-			<select
-				name="keys"
-				id="keys"
-				value={root}
-				onChange={(e) => {
-					setRoot(e.target.value);
-				}}
-			>
-				<option value="C">C</option>
-				<option value="F">F</option>
-			</select> */}
 
 
 			{/* POC of how to map over and render a scale panel
@@ -53,7 +41,6 @@ function App() {
 						audioManager={audioManager}
 						scale={SCALE_DATA[scaleName]}
 						root={Object.keys(SCALE_DATA[scaleName].rootNotes)[0]}
-						setRoot={setRoot}
 						instrument={instrument}
 					/>
 				);

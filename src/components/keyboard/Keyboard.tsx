@@ -4,8 +4,8 @@ import classNames from "classnames";
 import { NOTE_VALUES } from "../../constants";
 import { isHalfFlat } from "../../utils";
 
-function Keyboard({ audioManager, scale, root, instrument }) {
-	const notesInScale = scale.rootNotes[root].notes;
+function Keyboard({ audioManager, scale, rootNote, instrument }) {
+	const notesInScale = scale.rootNotes[rootNote].notes;
 	const handleClick = (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
@@ -37,9 +37,9 @@ function Keyboard({ audioManager, scale, root, instrument }) {
 								whiteKey: !name.includes("b"),
 								"no-offset": name.includes("C") || name.includes("F"),
 								"in-current-scale":
-									scale.rootNotes[root].notes.includes(name) ||
-									scale.rootNotes[root].notes.includes(name + "-hf"),
-									quarter: scale.rootNotes[root].notes.includes(
+									scale.rootNotes[rootNote].notes.includes(name) ||
+									scale.rootNotes[rootNote].notes.includes(name + "-hf"),
+									quarter: scale.rootNotes[rootNote].notes.includes(
 									name.split("_")[0] + "-hf"
 								),
 							})}

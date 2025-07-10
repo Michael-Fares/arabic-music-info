@@ -156,6 +156,17 @@ export const SCALE_DATA = {
 			},
 		},
 	},
+	minor: {
+		name: "Minor",
+		rootNotes: {
+			D: {
+				notes: generateScale("D minor")
+			},
+			G: {
+				notes: generateScale("G minor"),
+			},
+		},
+	}
 };
 
 export const INSTUMENTS = {

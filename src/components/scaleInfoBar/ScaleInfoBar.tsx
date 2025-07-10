@@ -1,8 +1,8 @@
 import "./scaleInforBar.css";
 import { NOTE_VALUES } from "../../constants";
 import { getNotesToPlay } from "../../utils";
-function ScaleInfoBar({ audioManager, scale, root, setRoot, instrument }) {
-	const notesInScale = scale.rootNotes[root].notes;
+function ScaleInfoBar({ audioManager, scale, rootNote, setRootNote, instrument }) {
+	const notesInScale = scale.rootNotes[rootNote].notes;
 	const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);
 	const handleClickPlay = (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -11,11 +11,11 @@ function ScaleInfoBar({ audioManager, scale, root, setRoot, instrument }) {
 		const parent =
 			event.target instanceof Element
 				? event.target.closest(
-						`.scale-panel[data-scale-and-key="${scale.name}-${root}"]`
+						`.scale-panel[data-scale-and-key="${scale.name}-${rootNote}"]`
 				)
 				: null;
 
-		const notesInScale = scale.rootNotes[root].notes;
+		const notesInScale = scale.rootNotes[rootNote].notes;
 
 		const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);
 		console.log("notesToPlay", notesToPlay);
@@ -58,13 +58,16 @@ function ScaleInfoBar({ audioManager, scale, root, setRoot, instrument }) {
 			<select
 				name="keys"
 				id="keys"
-				value={root}
+				value={rootNote}
 				onChange={(e) => {
-					setRoot(e.target.value);
+					setRootNote(e.target.value);
 				}}
 			>
-				<option value="C">C</option>
-				<option value="F">F</option>
+				{Object.keys(scale.rootNotes).map((key) => (
+					<option value={key} key={key}>
+						{key}
+					</option>
+				))}
 			</select>
 
 			</div>
