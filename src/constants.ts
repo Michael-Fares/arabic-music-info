@@ -162,3 +162,15 @@ export const INSTUMENTS = {
 	piano: "piano",
 };
 
+const scale = {
+		name: "Major",
+		rootNotes: {
+			C: {
+				notes: generateScale("C major") // ["C", "D", "E", "F", "G", "A", "B", "C"],
+			},
+			F: {
+				notes: generateScale("F major") // ["F", "G", "A", "Bb", "C", "D", "E", "F"],
+			},
+		},
+	}
+console.log(Object.keys(scale.rootNotes)[0])

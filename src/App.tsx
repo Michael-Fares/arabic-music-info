@@ -12,7 +12,6 @@ import { AudioManager } from "./audio";
 function App() {
 	const audioManager = new AudioManager();
 	// mock of state
-	const [scale, setScale] = useState(SCALE_DATA.major);
 	// root means "key" to not to collide with react key
 	const [root, setRoot] = useState("C");
 	const [instrument, setInstrument] = useState(INSTUMENTS.piano);
@@ -53,7 +52,7 @@ function App() {
 						key={scaleName}
 						audioManager={audioManager}
 						scale={SCALE_DATA[scaleName]}
-						root={root}
+						root={Object.keys(SCALE_DATA[scaleName].rootNotes)[0]}
 						setRoot={setRoot}
 						instrument={instrument}
 					/>
