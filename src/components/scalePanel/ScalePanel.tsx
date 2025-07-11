@@ -3,7 +3,7 @@ import '../scalePanel/scalePanel.css';
 import Keyboard from "../keyboard/Keyboard";
 import { useState } from "react";
 
-function ScalePanel({ audioManager, scale, root, setRoot, instrument }) {
+function ScalePanel({ audioManager, scale, instrument }) {
 	const [ rootNote, setRootNote ] = useState(Object.keys(scale.rootNotes)[0])
 	console.log("ScalePanel component > scale", scale);
 	return (
