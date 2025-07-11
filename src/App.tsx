@@ -27,11 +27,24 @@ function App() {
 				</select>
 			</div>
 			{Object.keys(SCALE_DATA).map((scaleName) => {
+				const scale = SCALE_DATA[scaleName as keyof typeof SCALE_DATA];
+				const rootNote = Object.keys(scale.rootNotes)[0]; // pick the first available root note
+				// Filter out nulls from notes arrays to satisfy type requirements
+				const filteredScale = {
+					...scale,
+					rootNotes: Object.fromEntries(
+						Object.entries(scale.rootNotes).map(([note, data]) => [
+							note,
+							{ notes: data.notes.filter((note): note is string => note !== null) },
+						])
+					),
+				};
 				return (
 					<ScalePanel
 						key={scaleName}
 						audioManager={audioManager}
-						scale={SCALE_DATA[scaleName]}
+						scale={filteredScale}
+						rootNote={rootNote}
 						instrument={instrument}
 					/>
 				);

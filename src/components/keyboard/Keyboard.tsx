@@ -4,7 +4,19 @@ import classNames from "classnames";
 import { NOTE_VALUES } from "../../constants";
 import { isHalfFlat } from "../../utils";
 
-function Keyboard({ audioManager, scale, rootNote, instrument }) {
+interface KeyboardProps {
+	audioManager: {
+		playSample: (noteValue: number, sample: any) => void;
+		samples: Record<string, any>;
+	};
+	scale: {
+		rootNotes: Record<string, { notes: string[] }>;
+	};
+	rootNote: string;
+	instrument: string;
+}
+
+function Keyboard({ audioManager, scale, rootNote, instrument }: KeyboardProps) {
 	const notesInScale = scale.rootNotes[rootNote].notes;
 	const handleClick = (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
