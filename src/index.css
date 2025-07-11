@@ -21,6 +21,12 @@ body {
   margin: 0;
   padding: 0;
 }
+select {
+  cursor: pointer;
+}
+button {
+  cursor: pointer;
+}
 
 
 /* @media (prefers-color-scheme: light) {

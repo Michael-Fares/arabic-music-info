@@ -1,7 +1,20 @@
 import "./scaleInforBar.css";
 import { NOTE_VALUES } from "../../constants";
 import { getNotesToPlay } from "../../utils";
-function ScaleInfoBar({ audioManager, scale, rootNote, setRootNote, instrument }) {
+interface ScaleInfoBarProps {
+	audioManager: {
+		playSample: (noteValue: number, sample: any) => void;
+		samples: Record<string, any>;
+	};
+	scale: {
+		name: string;
+		rootNotes: Record<string, { notes: string[] }>;
+	};
+	rootNote: string;
+	setRootNote: (note: string) => void;
+	instrument: string;
+}
+function ScaleInfoBar({ audioManager, scale, rootNote, setRootNote, instrument }: ScaleInfoBarProps) {
 	const notesInScale = scale.rootNotes[rootNote].notes;
 	const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);
 	const handleClickPlay = (
@@ -20,7 +33,7 @@ function ScaleInfoBar({ audioManager, scale, rootNote, setRootNote, instrument }
 		const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);
 		console.log("notesToPlay", notesToPlay);
 
-		notesToPlay.forEach((note, index) => {
+		notesToPlay.forEach((note, index:number) => {
 			const { name, value, octave } = note;
 
 			setTimeout(() => {
@@ -54,7 +67,7 @@ function ScaleInfoBar({ audioManager, scale, rootNote, setRootNote, instrument }
 			</p>
 			<div>
 
-			<span>Key:</span>
+			<label htmlFor="keys">Key: {` `}</label>
 			<select
 				name="keys"
 				id="keys"

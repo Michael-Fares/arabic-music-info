@@ -6,7 +6,6 @@ import { AudioManager } from "./audio";
 
 function App() {
 	const audioManager = new AudioManager();
-
 	const [instrument, setInstrument] = useState(INSTUMENTS.piano);
 	return (
 		<>
