@@ -53,3 +53,23 @@ export function getNotesToPlay(noteValues, notesInScale: Array<string>) {
 		.map((note) => (isHalfFlat(notesInScale, note) ? quarterize(note) : note));
 	return notesToPlay;
 }
+
+// fix the any type for notesToPlay later
+export function formatNotesForVexflowScore(notesToPlay: Array<any>) {
+	const vfnotes = notesToPlay.map((note) => {
+		const { name, octave } = note;
+		const vfnote = `${name[0]}/${octave}`;
+		let accidental = null;
+		if (name.includes("b")) {
+			accidental = "b";
+		}
+		if (name.includes("hf")) {
+			accidental = "bs";
+		}
+		return {
+			vfnote,
+			accidental,
+		};
+	});
+	return vfnotes;
+}

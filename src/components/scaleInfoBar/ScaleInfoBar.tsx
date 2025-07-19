@@ -17,6 +17,7 @@ interface ScaleInfoBarProps {
 function ScaleInfoBar({ audioManager, scale, rootNote, setRootNote, instrument }: ScaleInfoBarProps) {
 	const notesInScale = scale.rootNotes[rootNote].notes;
 	const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);
+	console.log("ScaleInfoBar component > notesToPlay", notesToPlay);
 	const handleClickPlay = (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
