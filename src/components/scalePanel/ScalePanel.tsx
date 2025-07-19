@@ -1,6 +1,7 @@
 import ScaleInfoBar from "../scaleInfoBar/ScaleInfoBar";
 import "../scalePanel/scalePanel.css";
 import Keyboard from "../keyboard/Keyboard";
+import Score from "../score/Score";
 import { useState } from "react";
 
 interface ScalePanelProps {
@@ -38,6 +39,7 @@ function ScalePanel({ audioManager, scale, instrument }: ScalePanelProps) {
 				rootNote={rootNote}
 				instrument={instrument}
 			/>
+			<Score scale={scale} rootNote={rootNote} />
 		</div>
 	);
 }
