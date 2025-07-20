@@ -1,5 +1,7 @@
-import { generateScale } from "./scaleGenerator";
+import { generateScale, Transformer } from "./scaleGenerator";
 
+export const transformer = new Transformer();
+console.log(transformer)
 /**
  * Factors by which to multiply a sample of a C note (0)
  * in order to pitch shift it other needed notes in 2 ocatves
@@ -170,9 +172,8 @@ export const SCALE_DATA = {
 		name: "Bayati",
 		rootNotes: {
 			D: {
-				notes: generateScale("D minor").map((note, index) =>
-					index + 1 === 2 ? note + "-hf" : note
-				),
+				notes: Transformer.minorToBayati(generateScale("D minor"))
+			
 			},
 			G: {
 				notes: generateScale("G minor").map((note, index) =>

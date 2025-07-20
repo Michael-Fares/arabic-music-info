@@ -1,3 +1,7 @@
 :root {
-     --highlight-color: royalblue;
+    /* note highlight color */
+    --highlight-color: royalblue;
+    --black-key-color: black;
+    --white-key-color: white;
+    --quarter-tone-key-color: red;
 }

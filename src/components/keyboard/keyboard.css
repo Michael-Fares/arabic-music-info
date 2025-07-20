@@ -19,11 +19,7 @@
             }
 
             &:focus {
-                outline: 1px solid royalblue;
-            }
-
-            &:active {
-                background-color: royalblue;
+                outline: 1px solid var(--highlight-color);
             }
 
         }
@@ -34,18 +30,18 @@
             height: 12rem;
             width: 2.5rem;
             z-index: 1;
-            background-color: white;
+            background-color: var(--white-key-color);
         }
 
         .blackKey {
             height: 7rem;
             width: 2rem;
             z-index: 2;
-            background-color: black;
+            background-color: var(--black-key-color);
         }
 
         .quarter {
-            border-bottom: 15px solid red;
+            border-bottom: 15px solid var(--quarter-tone-key-color);
         }
         .key.highlight {
             background-color: var(--highlight-color);
