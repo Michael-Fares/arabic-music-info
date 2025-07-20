@@ -103,6 +103,9 @@ function Score({ audioManager, scale, rootNote, instrument }: ScoreProps) {
 		// Cleanup function to remove the SVG elements when the component unmounts
 		return () => {
 			if (vexFlowContainerRef.current) {
+				vexFlowContainerRef.current.querySelectorAll(".vf-note").forEach((note) => {
+					note.removeEventListener("click", () => handleNoteClick(note as NoteSVGElement));
+				});
 				vexFlowContainerRef.current.innerHTML = "";
 			}
 		};
