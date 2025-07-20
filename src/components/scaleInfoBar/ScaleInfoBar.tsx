@@ -45,11 +45,16 @@ function ScaleInfoBar({ audioManager, scale, rootNote, setRootNote, instrument }
 				const keyboardKeyToHilight = parent?.querySelector(
 					`.key[data-note-name="${name}"][data-octave="${octave}"]`
 				);
+				const scoreNoteToHighlight = parent?.querySelector(
+					`.vf-note[data-note-name="${name}"][data-octave="${octave}"]`
+				);
 				notePillNameToHighlight?.classList.add("highlight");
 				keyboardKeyToHilight?.classList.add("highlight");
+				scoreNoteToHighlight?.classList.add("highlight");
 				setTimeout(() => {
 					notePillNameToHighlight?.classList.remove("highlight");
 					keyboardKeyToHilight?.classList.remove("highlight");
+					scoreNoteToHighlight?.classList.remove("highlight");
 				}, 500);
 			}, 500 * index);
 		});

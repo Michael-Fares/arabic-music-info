@@ -1,0 +1,7 @@
+@import url("../../variables.css");
+.score {
+    .vf-note.highlight * {
+        fill: var(--highlight-color) !important;
+        stroke: var(--highlight-color) !important;
+    }
+}

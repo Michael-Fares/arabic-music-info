@@ -57,7 +57,7 @@ export function getNotesToPlay(noteValues, notesInScale: Array<string>) {
 // fix the any type for notesToPlay later
 export function formatNotesForVexflowScore(notesToPlay: Array<any>) {
 	const vfnotes = notesToPlay.map((note) => {
-		const { name, octave } = note;
+		const { name, octave, value } = note;
 		const vfnote = `${name[0]}/${octave}`;
 		let accidental = null;
 		if (name.includes("b")) {
@@ -69,6 +69,9 @@ export function formatNotesForVexflowScore(notesToPlay: Array<any>) {
 		return {
 			vfnote,
 			accidental,
+			dataNoteName: name,
+			dataNoteValue: value,
+			dataOctave: octave,
 		};
 	});
 	return vfnotes;
