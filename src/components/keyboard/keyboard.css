@@ -32,6 +32,12 @@
                 background-color: var(--highlight-color);
             }
         }
+        .key.in-current-run {
+            background-color: yellow;
+             &:active {
+                background-color: var(--highlight-color);
+            }
+        }
         .whiteKey {
             height: 12rem;
             width: 2.5rem;

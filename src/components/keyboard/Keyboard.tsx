@@ -2,7 +2,7 @@ import "./keyboard.css";
 import classNames from "classnames";
 
 import { NOTE_VALUES } from "../../constants";
-import { isHalfFlat } from "../../utils";
+import { isHalfFlat, getNotesToPlay } from "../../utils";
 
 interface KeyboardProps {
 	audioManager: {
@@ -17,7 +17,12 @@ interface KeyboardProps {
 }
 
 function Keyboard({ audioManager, scale, rootNote, instrument }: KeyboardProps) {
+	// all notes in the scale anywhere on the keyboard
 	const notesInScale = scale.rootNotes[rootNote].notes;
+	console.log("Keyboard component > notesInScale", notesInScale);
+	const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);
+	// the 8 notes of the scale, in order, starting from the root note on the keyboard
+
 	const handleClick = (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
@@ -51,8 +56,13 @@ function Keyboard({ audioManager, scale, rootNote, instrument }: KeyboardProps) 
 								"in-current-scale":
 									scale.rootNotes[rootNote].notes.includes(name) ||
 									scale.rootNotes[rootNote].notes.includes(name + "-hf"),
-									quarter: scale.rootNotes[rootNote].notes.includes(
+								quarter: scale.rootNotes[rootNote].notes.includes(
 									name.split("_")[0] + "-hf"
+								),
+								"in-current-run": notesToPlay.some(
+									(note) =>
+										(note.name === name || note.name === name + "-hf") &&
+										note.octave === octave
 								),
 							})}
 							onClick={(event) => handleClick(event)}
