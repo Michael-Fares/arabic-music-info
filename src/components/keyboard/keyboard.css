@@ -3,10 +3,10 @@
     padding: 1rem;
 
     .keyboard {
-        height: fit-content;
-
-        white-space: nowrap;
-
+        /* height: fit-content; */
+        /* white-space: nowrap; */
+        display: flex;
+        justify-content: center;
         .key {
             display: inline-block;
             vertical-align: top;
@@ -39,14 +39,14 @@
             }
         }
         .whiteKey {
-            height: 12rem;
+            height: 8rem;
             width: 2.5rem;
             z-index: 1;
             background-color: var(--white-key-color);
         }
 
         .blackKey {
-            height: 7rem;
+            height: 4.5rem;
             width: 2rem;
             z-index: 2;
             background-color: var(--black-key-color);

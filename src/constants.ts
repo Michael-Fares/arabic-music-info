@@ -127,11 +127,6 @@ export const NOTE_VALUES = [
 		value: 23,
 		octave: 5,
 	},
-	{
-		name: "C",
-		value: 24,
-		octave: 6,
-	},
 ];
 
 export const SCALE_DATA = {
@@ -144,56 +139,70 @@ export const SCALE_DATA = {
 			F: {
 				notes: generateScale("F major"), // ["F", "G", "A", "Bb", "C", "D", "E", "F"],
 			},
+			G: {
+				notes:  generateScale("G major"), // ["G", "A", "B", "C", "D", "E", "F#", "G"],
+			},
 		},
 	},
 	rast: {
 		name: "Rast",
+		nearestWesternScale: "Major",
 		rootNotes: {
 			C: {
-				notes: ["C", "D", "E-hf", "F", "G", "A", "B-hf", "C"],
+				notes: Transformer.majorToRast(generateScale("C major")),
 			},
 			F: {
-				notes: ["F", "G", "A-hf", "Bb", "C", "D", "E-hf", "F"],
+				notes: Transformer.majorToRast(generateScale("F major")),
+			},
+			G: {
+				notes: Transformer.majorToRast(generateScale("G major")),
 			},
 		},
 	},
 	minor: {
 		name: "Minor",
 		rootNotes: {
+			C: {
+				notes: generateScale("C minor"),
+			},
 			D: {
 				notes: generateScale("D minor"),
 			},
 			G: {
 				notes: generateScale("G minor"),
 			},
+			A: {
+				notes: generateScale("A minor"),
+			},
 		},
 	},
 	bayati: {
 		name: "Bayati",
+		nearestWesternScale: "Minor",
 		rootNotes: {
 			D: {
 				notes: Transformer.minorToBayati(generateScale("D minor"))
-			
 			},
 			G: {
-				notes: generateScale("G minor").map((note, index) =>
-					index + 1 === 2 ? note + "-hf" : note
-				),
+				notes: Transformer.minorToBayati(generateScale("G minor"))
 			},
+			A: {
+				notes: Transformer.minorToBayati(generateScale("A minor"))
+			}
 		},
 	},
 	bayati_husayni: {
 		name: "Bayati Husayni",
+		nearestWesternScale: "Dorian",
 		rootNotes: {
 			D: {
-				notes: generateScale("D dorian").map((note, index) =>
-					index + 1 === 2 || index + 1 === 6 ? note + "-hf" : note
-				),
+				notes: Transformer.dorianToBayatiHusayni(generateScale("D dorian"))
 			},
 			G: {
-				notes: generateScale("G dorian").map((note, index) =>
-					index + 1 === 2 || index + 1 === 6 ? note + "-hf" : note
-				),
+				notes: Transformer.dorianToBayatiHusayni(generateScale("G dorian")),
+			},
+			A: {
+				notes: Transformer.dorianToBayatiHusayni(generateScale("A dorian")),
 			},
 		},
 	},
@@ -204,15 +213,5 @@ export const INSTUMENTS = {
 	violin: "violin",
 };
 
-const scale = {
-	name: "Major",
-	rootNotes: {
-		C: {
-			notes: generateScale("C major"), // ["C", "D", "E", "F", "G", "A", "B", "C"],
-		},
-		F: {
-			notes: generateScale("F major"), // ["F", "G", "A", "Bb", "C", "D", "E", "F"],
-		},
-	},
-};
-console.log(Object.keys(scale.rootNotes)[0]);
+
+

@@ -62,9 +62,12 @@ export function formatNotesForVexflowScore(notesToPlay: Array<any>) {
 		let accidental = null;
 		if (name.includes("b")) {
 			accidental = "b";
-		}
-		if (name.includes("hf")) {
+		} 
+		if (name.includes("hf") && !name.includes("b")) {
 			accidental = "bs";
+		} 
+		if (name.includes("hf") && name.includes("b")) {
+			accidental = "db";
 		}
 		return {
 			vfnote,

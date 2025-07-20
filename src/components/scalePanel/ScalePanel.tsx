@@ -33,13 +33,13 @@ function ScalePanel({ audioManager, scale, instrument }: ScalePanelProps) {
 				setRootNote={setRootNote}
 				instrument={instrument}
 			/>
-			<Keyboard
+			<Score
 				audioManager={audioManager}
 				scale={scale}
 				rootNote={rootNote}
 				instrument={instrument}
 			/>
-			<Score
+			<Keyboard
 				audioManager={audioManager}
 				scale={scale}
 				rootNote={rootNote}

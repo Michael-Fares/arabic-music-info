@@ -34,7 +34,7 @@ function App() {
 					rootNotes: Object.fromEntries(
 						Object.entries(scale.rootNotes).map(([note, data]) => [
 							note,
-							{ notes: data.notes.filter((note): note is string => note !== null) },
+							{ notes: data.notes?.filter((note): note is string => note !== null) },
 						])
 					),
 				};

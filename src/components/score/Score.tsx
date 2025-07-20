@@ -42,7 +42,7 @@ function Score({ audioManager, scale, rootNote, instrument }: ScoreProps) {
 			VexFlow.loadFonts("Bravura", "Academico").then(() => {
 				VexFlow.setFonts("Bravura", "Academico");
 				const factory = new VexFlow.Factory({
-					renderer: { elementId: container.id, width: 500, height: 200 },
+					renderer: { elementId: container.id, width: 500, height: 120 },
 				});
 				const system = factory.System({ width: 400 });
 				// Create the notes for the score
@@ -54,7 +54,8 @@ function Score({ audioManager, scale, rootNote, instrument }: ScoreProps) {
 								keys: [vfnote],
 								duration: "q",
 							})
-							.addModifier(factory.Accidental({ type: accidental }));
+							.addModifier(factory.Accidental({ type: accidental }))
+					
 					} else {
 						return factory.StaveNote({
 							keys: [vfnote],
