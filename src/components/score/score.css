@@ -1,7 +1,15 @@
 @import url("../../variables.css");
 .score {
-    .vf-note.highlight * {
-        fill: var(--highlight-color) !important;
-        stroke: var(--highlight-color) !important;
+    .vf-note {
+        cursor: pointer;
+        user-select: none;
+        &.highlight * {
+            fill: var(--highlight-color);
+            stroke: var(--highlight-color);
+        }
+        &:active * {
+            fill: var(--highlight-color);
+            stroke: var(--highlight-color);
+        }
     }
 }

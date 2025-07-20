@@ -39,7 +39,12 @@ function ScalePanel({ audioManager, scale, instrument }: ScalePanelProps) {
 				rootNote={rootNote}
 				instrument={instrument}
 			/>
-			<Score scale={scale} rootNote={rootNote} />
+			<Score
+				audioManager={audioManager}
+				scale={scale}
+				rootNote={rootNote}
+				instrument={instrument}
+			/>
 		</div>
 	);
 }

@@ -21,10 +21,16 @@
             &:focus {
                 outline: 1px solid var(--highlight-color);
             }
+            &:active {
+                background-color: var(--highlight-color);
+            }
 
         }
         .key.in-current-scale {
             background-color: #eee;
+             &:active {
+                background-color: var(--highlight-color);
+            }
         }
         .whiteKey {
             height: 12rem;

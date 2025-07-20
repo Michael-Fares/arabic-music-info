@@ -5,19 +5,37 @@ import VexFlow from "vexflow";
 import "./score.css";
 
 interface ScoreProps {
+	audioManager: {
+		playSample: (noteValue: number, sample: any) => void;
+		samples: Record<string, any>;
+	};
 	scale: {
-		name: string;
 		rootNotes: Record<string, { notes: string[] }>;
+		name: string;
 	};
 	rootNote: string;
+	instrument: string;
 }
 
-function Score({ scale, rootNote }: ScoreProps) {
+function Score({ audioManager, scale, rootNote, instrument }: ScoreProps) {
 	let rendered = false;
 	const notesInScale = scale.rootNotes[rootNote].notes;
 	const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);
 	const vexFlowContainerRef = useRef<HTMLDivElement>(null);
 	const vfnotes = formatNotesForVexflowScore(notesToPlay);
+	interface NoteSVGElement extends SVGElement {
+		getAttribute(name: string): string | null;
+		classList: DOMTokenList;
+	}
+
+	interface HandleNoteClick {
+		(svg: NoteSVGElement): void;
+	}
+
+	const handleNoteClick: HandleNoteClick = (svg) => {
+		const noteValue = Number(svg.getAttribute("data-note-value"));
+		audioManager.playSample(noteValue, audioManager.samples[instrument]);
+	};
 	useEffect(() => {
 		if (vexFlowContainerRef.current !== null && !rendered) {
 			const container = vexFlowContainerRef.current;
@@ -60,7 +78,6 @@ function Score({ scale, rootNote }: ScoreProps) {
 					console.log("note", note);
 					const svg = note.getSVGElement();
 					console.log(
-						"note.getSVGElement() > can do what you want with this, e.g add classes",
 						svg
 					);
 					// Add a class to the SVG element for styling
@@ -69,38 +86,17 @@ function Score({ scale, rootNote }: ScoreProps) {
 					svg?.setAttribute('data-octave', vfnotes[index].dataOctave);
 					svg?.classList.add("vf-note");
 
-					// if (svg) {
-					// 	// listen to whatever event you want here
-					// 	svg.addEventListener(
-					// 		"click",
-					// 		() => {
-					// 			toggleDescendantColors(svg);
-					// 		},
-					// 		false
-					// 	);
-					// }
+					if (svg) {
+						// listen to whatever event you want here
+						svg.addEventListener(
+							"click",
+							() => handleNoteClick(svg),
+							false
+						);
+					}
 				});
 				
 
-				// parentItem: SVGElement
-				// const toggleDescendantColors = (parentItem) => {
-				// 	const isSelected = parentItem.classList.contains("selected");
-				// 	// Choose the color based on whether it’s selected or not.
-				// 	const newColor = isSelected ? "black" : "red";
-
-				// 	// Toggle the colors on all child elements.
-				// 	parentItem.querySelectorAll("*").forEach((child) => {
-				// 		child.setAttribute("fill", newColor);
-				// 		child.setAttribute("stroke", newColor);
-				// 	});
-
-				// 	// Update the selection state on the parent element.
-				// 	if (isSelected) {
-				// 		parentItem.classList.remove("selected");
-				// 	} else {
-				// 		parentItem.classList.add("selected");
-				// 	}
-				// };
 			});
 			rendered = true; // Set rendered to true to prevent re-rendering
 		}
