@@ -67,7 +67,9 @@ export function formatNotesForVexflowScore(notesToPlay: Array<any>) {
 			accidental = "bs";
 		} 
 		if (name.includes("hf") && name.includes("b")) {
-			accidental = "db";
+			// If it's half flat and also has a flat, we use a specific accidental
+			// e.g "flat half flat" c
+			accidental = "flat-half-flat";
 		}
 		return {
 			vfnote,

@@ -48,20 +48,33 @@ function Score({ audioManager, scale, rootNote, instrument }: ScoreProps) {
 				// Create the notes for the score
 				const notes = vfnotes.map((note) => {
 					const { vfnote, accidental } = note;
-					if (accidental) {
+					if (accidental && accidental !== "flat-half-flat") {
 						return factory
 							.StaveNote({
 								keys: [vfnote],
 								duration: "q",
 							})
-							.addModifier(factory.Accidental({ type: accidental }))
-					
-					} else {
-						return factory.StaveNote({
-							keys: [vfnote],
-							duration: "q",
-						});
+							.addModifier(factory.Accidental({ type: accidental }));
 					}
+					/** hack: use 2 accidentals for a flat note made half flat
+					 * e.g flat accidental "b" followed by half flat accidental "bs"
+					 * because I don't like VexFlow 5's flat half flat symbol "db" / it's unclear
+					 */
+					if (accidental && accidental === "flat-half-flat") {
+						const FLAT = "b";
+						const HALF_FLAT = "bs";
+						return factory
+							.StaveNote({
+								keys: [vfnote],
+								duration: "q",
+							})
+							.addModifier(factory.Accidental({ type: FLAT }))
+							.addModifier(factory.Accidental({ type: HALF_FLAT }));
+					}
+					return factory.StaveNote({
+						keys: [vfnote],
+						duration: "q",
+					});
 				});
 
 				// IMPORTANT need to pass {time:'8/4'} just to get 8 notes to render
@@ -75,43 +88,54 @@ function Score({ audioManager, scale, rootNote, instrument }: ScoreProps) {
 					.addTimeSignature("4/4");
 				factory.draw();
 
+				// slightly offset flat half flat notes
+				const flatHalfFlatNotes = container.querySelectorAll(
+					".vf-notehead text:first-child:nth-last-child(3) ~ text:nth-child(3)"
+				);
+				flatHalfFlatNotes.forEach((note) => {
+					note.setAttribute("dx", "1%");
+				});
 				notes.forEach((note, index) => {
 					console.log("note", note);
 					const svg = note.getSVGElement();
-					console.log(
-						svg
-					);
+					console.log(svg);
 					// Add a class to the SVG element for styling
-					svg?.setAttribute('data-note-name', vfnotes[index].dataNoteName);
-					svg?.setAttribute('data-note-value', vfnotes[index].dataNoteValue);
-					svg?.setAttribute('data-octave', vfnotes[index].dataOctave);
+					svg?.setAttribute("data-note-name", vfnotes[index].dataNoteName);
+					svg?.setAttribute("data-note-value", vfnotes[index].dataNoteValue);
+					svg?.setAttribute("data-octave", vfnotes[index].dataOctave);
 					svg?.classList.add("vf-note");
 
 					if (svg) {
 						// listen to whatever event you want here
-						svg.addEventListener(
-							"click",
-							() => handleNoteClick(svg),
-							false
-						);
+						svg.addEventListener("click", () => handleNoteClick(svg), false);
 					}
 				});
-				
 
+				console.log();
 			});
 			rendered = true; // Set rendered to true to prevent re-rendering
 		}
 		// Cleanup function to remove the SVG elements when the component unmounts
 		return () => {
 			if (vexFlowContainerRef.current) {
-				vexFlowContainerRef.current.querySelectorAll(".vf-note").forEach((note) => {
-					note.removeEventListener("click", () => handleNoteClick(note as NoteSVGElement));
-				});
+				vexFlowContainerRef.current
+					.querySelectorAll(".vf-note")
+					.forEach((note) => {
+						note.removeEventListener("click", () =>
+							handleNoteClick(note as NoteSVGElement)
+						);
+					});
 				vexFlowContainerRef.current.innerHTML = "";
 			}
 		};
 	}, [scale, rootNote]);
 
-	return <div className="score" id={`${scale.name}-${rootNote}`} ref={vexFlowContainerRef} />;
+	return (
+		<div
+			className="score"
+			id={`${scale.name}-${rootNote}`}
+			ref={vexFlowContainerRef}
+		/>
+	);
 }
 export default Score;
