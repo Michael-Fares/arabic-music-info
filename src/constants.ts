@@ -211,6 +211,7 @@ export const SCALE_DATA = {
 export const INSTUMENTS = {
 	piano: "piano",
 	violin: "violin",
+	oud: "oud",
 };
 
 

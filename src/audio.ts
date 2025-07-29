@@ -3,19 +3,20 @@ export class AudioManager {
 	samples: {
 		piano: AudioBuffer | null;
 		violin: AudioBuffer | null;
+		oud: AudioBuffer | null;
 	};
 	constructor() {
 		this.context = new AudioContext();
-		this.samples = { piano: null, violin: null }; // initialize with null, will be filled later
-		const fileNames = ["piano", "violin"]; // add more sample file names as needed, eg. oud, guitar, etc.
+		this.samples = { piano: null, violin: null, oud: null }; // initialize with null, will be filled later
+		const fileNames = ["piano", "violin", "oud"]; // add more sample file names as needed, eg. oud, guitar, etc.
 		// load all samples in parallel
 		Promise.all(
 			fileNames.map((fileName) =>
 				this.loadSample(`${import.meta.env.BASE_URL}audio/${fileName}.mp3`)
 			)
 		).then((audioBuffers) => {
-			const [piano, violin] = audioBuffers; // add more samples as needed, eg. oud, guitar, etc.
-			this.samples = { piano, violin }; // add more samples as needed, eg. oud, guitar, etc.
+			const [piano, violin, oud] = audioBuffers; // add more samples as needed, eg. oud, guitar, etc.
+			this.samples = { piano, violin, oud }; // add more samples as needed, eg. oud, guitar, etc.
 		});
 	}
 
