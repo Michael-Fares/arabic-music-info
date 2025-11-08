@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { NOTE_VALUES } from "../../constants";
 import { getNotesToPlay, formatNotesForVexflowScore } from "../../utils";
-import VexFlow from "vexflow";
+import VexFlow, { Stem } from "vexflow";
 import "./score.css";
 
 interface ScoreProps {
@@ -13,13 +13,16 @@ interface ScoreProps {
 		rootNotes: Record<string, { notes: string[] }>;
 		name: string;
 	};
+	notes: string[];
+	direction?: "asc" | "desc";
 	rootNote: string;
 	instrument: string;
 }
 
-function Score({ audioManager, scale, rootNote, instrument }: ScoreProps) {
+function Score({ audioManager, notes, scale, rootNote, instrument, direction }: ScoreProps) {
+	// console.log("Score component > scale", scale);
 	let rendered = false;
-	const notesInScale = scale.rootNotes[rootNote].notes;
+	const notesInScale = notes;
 	console.log("Score component > notesInScale", notesInScale);
 	const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);
 	const vexFlowContainerRef = useRef<HTMLDivElement>(null);
@@ -47,6 +50,7 @@ function Score({ audioManager, scale, rootNote, instrument }: ScoreProps) {
 				});
 				const system = factory.System({ width: 400 });
 				console.log('vfnotes in Score component', vfnotes);
+				
 				// Create the notes for the score
 				const notes = vfnotes.map((note) => {
 					const { vfnote, accidental } = note;
@@ -55,6 +59,7 @@ function Score({ audioManager, scale, rootNote, instrument }: ScoreProps) {
 							.StaveNote({
 								keys: [vfnote],
 								duration: "q",
+							
 							})
 							.addModifier(factory.Accidental({ type: accidental }));
 					}
@@ -69,6 +74,7 @@ function Score({ audioManager, scale, rootNote, instrument }: ScoreProps) {
 							.StaveNote({
 								keys: [vfnote],
 								duration: "q",
+							
 							})
 							.addModifier(factory.Accidental({ type: FLAT }))
 							.addModifier(factory.Accidental({ type: HALF_FLAT }));
@@ -76,11 +82,12 @@ function Score({ audioManager, scale, rootNote, instrument }: ScoreProps) {
 					return factory.StaveNote({
 						keys: [vfnote],
 						duration: "q",
+					
 					});
 				});
 
 				// IMPORTANT need to pass {time:'8/4'} just to get 8 notes to render
-				const voice = factory.Voice({ time: "8/4" });
+				const voice = factory.Voice({ time: "8/4"});
 				voice.addTickables(notes);
 				system
 					.addStave({
@@ -135,7 +142,7 @@ function Score({ audioManager, scale, rootNote, instrument }: ScoreProps) {
 	return (
 		<div
 			className="score"
-			id={`${scale.name}-${rootNote}`}
+			id={`${scale.name}-${rootNote}-${direction}`}
 			ref={vexFlowContainerRef}
 		/>
 	);

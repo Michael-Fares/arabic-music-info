@@ -1,7 +1,9 @@
+import { descending } from "@tonaljs/note";
 import { generateScale, Transformer } from "./scaleGenerator";
+import { Note } from "vexflow";
 
 export const transformer = new Transformer();
-console.log(transformer);
+
 /**
  * Factors by which to multiply a sample of a C note (0)
  * in order to pitch shift it other needed notes in 2 ocatves
@@ -130,32 +132,35 @@ export const NOTE_VALUES = [
 ];
 
 export const SCALE_DATA = {
-	major: {
-		name: "Major",
-		rootNotes: {
-			C: {
-				notes: generateScale("C major"), // ["C", "D", "E", "F", "G", "A", "B", "C"],
-			},
-			F: {
-				notes: generateScale("F major"), // ["F", "G", "A", "Bb", "C", "D", "E", "F"],
-			},
-			G: {
-				notes: generateScale("G major"), // ["G", "A", "B", "C", "D", "E", "F#", "G"],
-			},
-		},
-	},
+	// major: {
+	// 	name: "Major",
+	// 	rootNotes: {
+	// 		C: {
+	// 			notes: generateScale("C major"), // ["C", "D", "E", "F", "G", "A", "B", "C"],
+	// 		},
+	// 		F: {
+	// 			notes: generateScale("F major"), // ["F", "G", "A", "Bb", "C", "D", "E", "F"],
+	// 		},
+	// 		G: {
+	// 			notes: generateScale("G major"), // ["G", "A", "B", "C", "D", "E", "F#", "G"],
+	// 		},
+	// 	},
+	// },
 	rast: {
 		name: "Rast",
 		nearestWesternScale: { asc: "major", desc: "mixolydian" },
 		rootNotes: {
 			C: {
 				notes: Transformer.majorToRast(generateScale("C major")),
+				descendingNotes: Transformer.mixolydianToRast(generateScale("C mixolydian"))?.reverse(),
 			},
 			F: {
 				notes: Transformer.majorToRast(generateScale("F major")),
+				descendingNotes: Transformer.mixolydianToRast(generateScale("F mixolydian"))?.reverse(),
 			},
 			G: {
 				notes: Transformer.majorToRast(generateScale("G major")),
+				descendingNotes: Transformer.mixolydianToRast(generateScale("G mixolydian"))?.reverse(),
 			},
 		},
 	},
@@ -181,31 +186,19 @@ export const SCALE_DATA = {
 		nearestWesternScale: "Minor",
 		rootNotes: {
 			D: {
-				notes: Transformer.minorToBayati(generateScale("D minor")),
+				notes: Transformer.dorianToBayati(generateScale("D dorian")),
+				descendingNotes: Transformer.minorToBayati(generateScale("D minor")),
 			},
 			G: {
-				notes: Transformer.minorToBayati(generateScale("G minor")),
+				notes: Transformer.dorianToBayati(generateScale("G dorian")),
+				descendingNotes: Transformer.minorToBayati(generateScale("G minor")),
 			},
 			A: {
-				notes: Transformer.minorToBayati(generateScale("A minor")),
+				notes: Transformer.dorianToBayati(generateScale("A dorian")),
+				descendingNotes: Transformer.minorToBayati(generateScale("A minor")),
 			},
 		},
-	},
-	bayati_husayni: {
-		name: "Bayati Husayni",
-		nearestWesternScale: "Dorian",
-		rootNotes: {
-			D: {
-				notes: Transformer.dorianToBayatiHusayni(generateScale("D dorian")),
-			},
-			G: {
-				notes: Transformer.dorianToBayatiHusayni(generateScale("G dorian")),
-			},
-			A: {
-				notes: Transformer.dorianToBayatiHusayni(generateScale("A dorian")),
-			},
-		},
-	},
+	}
 };
 
 export const INSTUMENTS = {

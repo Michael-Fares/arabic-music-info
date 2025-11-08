@@ -11,15 +11,17 @@ interface ScalePanelProps {
 	};
 	scale: {
 		name: string;
-		rootNotes: Record<string, { notes: string[] }>;
+		rootNotes: Record<string, { notes: string[], descendingNotes?: string[] }>;
 	};
 	rootNote: string;
 	instrument: string;
 }
 
 function ScalePanel({ audioManager, scale, instrument }: ScalePanelProps) {
+	console.log("ScalePanel component > scale", scale);
 	const [rootNote, setRootNote] = useState(Object.keys(scale.rootNotes)[0]);
 	console.log("ScalePanel component > scale", scale);
+	const { notes, descendingNotes} = scale.rootNotes[rootNote];
 	return (
 		<div
 			className="scale-panel"
@@ -36,9 +38,21 @@ function ScalePanel({ audioManager, scale, instrument }: ScalePanelProps) {
 			<Score
 				audioManager={audioManager}
 				scale={scale}
+				notes={notes}
+				direction="asc"
 				rootNote={rootNote}
 				instrument={instrument}
 			/>
+			{descendingNotes && (
+				<Score
+					audioManager={audioManager}
+					scale={scale}
+					notes={descendingNotes}	
+					direction="desc"
+					rootNote={rootNote}
+					instrument={instrument}
+				/>
+			)}
 			<Keyboard
 				audioManager={audioManager}
 				scale={scale}

@@ -32,12 +32,24 @@ function App() {
 				const filteredScale = {
 					...scale,
 					rootNotes: Object.fromEntries(
-						Object.entries(scale.rootNotes).map(([note, data]) => [
-							note,
-							{ notes: data.notes?.filter((note): note is string => note !== null) },
-						])
+						Object.entries(scale.rootNotes).map(([note, data]) => {
+							const notes = data.notes?.filter((n): n is string => n !== null);
+							const descendingNotes =
+								"descendingNotes" in data
+									? data.descendingNotes?.filter((n): n is string => n !== null)
+									: undefined;
+							return [
+								note,
+								{
+									...data,
+									notes,
+									...(descendingNotes ? { descendingNotes } : {}),
+								},
+							];
+						})
 					),
 				};
+				console.log("App component > filteredScale", filteredScale);
 				return (
 					<ScalePanel
 						key={scaleName}

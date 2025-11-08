@@ -1,7 +1,7 @@
 import * as Scale from "@tonaljs/scale";
 import * as Note from "@tonaljs/note";
 
-console.log("All available scale names", Scale.names());
+// console.log("All available scale names", Scale.names());
 
 export function generateScale(scaleKeyAndScaleName: string | null): string[] {
 	if (!scaleKeyAndScaleName) {
@@ -28,7 +28,7 @@ export class Transformer {
 	static quarterToneDegreesMajorToRast = [3, 7];
 	static quarterToneDegreesMixolydianToRast = [3];
 	static quarterToneDegreesMinorToBayati = [2];
-	static quarterToneDegreesDorainToBayatiHusayni = [2, 6];
+	static quarterToneDegreesDorianToBayati= [2, 6];
 	static transform(
 		degrees: number[],
 		scale: string[] | null
@@ -50,18 +50,14 @@ export class Transformer {
 	static minorToBayati(minorScale: string[] | null): string[] | undefined {
 		return this.transform(this.quarterToneDegreesMinorToBayati, minorScale);
 	}
-	static dorianToBayatiHusayni(
+	static dorianToBayati(
 		dorianScale: string[] | null
 	): string[] | undefined {
 		return this.transform(
-			this.quarterToneDegreesDorainToBayatiHusayni,
+			this.quarterToneDegreesDorianToBayati,
 			dorianScale
 		);
 	}
 }
 
-console.log("generateScale(G major)", generateScale("G major"));
-console.log(
-	"Transformer.majorToRast(generateScale(G major))",
-	Transformer.majorToRast(generateScale("G major"))
-);
+
