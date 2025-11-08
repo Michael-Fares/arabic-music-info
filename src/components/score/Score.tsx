@@ -26,7 +26,7 @@ function Score({ audioManager, notes, scale, rootNote, instrument, direction }: 
 	console.log("Score component > notesInScale", notesInScale);
 	const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);
 	const vexFlowContainerRef = useRef<HTMLDivElement>(null);
-	const vfnotes = formatNotesForVexflowScore(notesToPlay);
+	const vfnotes = direction === "desc" ? formatNotesForVexflowScore(notesToPlay).reverse() : formatNotesForVexflowScore(notesToPlay);
 	interface NoteSVGElement extends SVGElement {
 		getAttribute(name: string): string | null;
 		classList: DOMTokenList;

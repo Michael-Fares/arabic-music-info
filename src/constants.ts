@@ -1,6 +1,6 @@
-import { descending } from "@tonaljs/note";
+
 import { generateScale, Transformer } from "./scaleGenerator";
-import { Note } from "vexflow";
+
 
 export const transformer = new Transformer();
 
