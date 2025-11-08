@@ -20,6 +20,7 @@ interface ScoreProps {
 function Score({ audioManager, scale, rootNote, instrument }: ScoreProps) {
 	let rendered = false;
 	const notesInScale = scale.rootNotes[rootNote].notes;
+	console.log("Score component > notesInScale", notesInScale);
 	const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);
 	const vexFlowContainerRef = useRef<HTMLDivElement>(null);
 	const vfnotes = formatNotesForVexflowScore(notesToPlay);
@@ -45,6 +46,7 @@ function Score({ audioManager, scale, rootNote, instrument }: ScoreProps) {
 					renderer: { elementId: container.id, width: 500, height: 120 },
 				});
 				const system = factory.System({ width: 400 });
+				console.log('vfnotes in Score component', vfnotes);
 				// Create the notes for the score
 				const notes = vfnotes.map((note) => {
 					const { vfnote, accidental } = note;
@@ -96,9 +98,9 @@ function Score({ audioManager, scale, rootNote, instrument }: ScoreProps) {
 					note.setAttribute("dx", "1%");
 				});
 				notes.forEach((note, index) => {
-					console.log("note", note);
+					// console.log("note", note);
 					const svg = note.getSVGElement();
-					console.log(svg);
+					// console.log(svg);
 					// Add a class to the SVG element for styling
 					svg?.setAttribute("data-note-name", vfnotes[index].dataNoteName);
 					svg?.setAttribute("data-note-value", vfnotes[index].dataNoteValue);

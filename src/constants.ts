@@ -1,7 +1,7 @@
 import { generateScale, Transformer } from "./scaleGenerator";
 
 export const transformer = new Transformer();
-console.log(transformer)
+console.log(transformer);
 /**
  * Factors by which to multiply a sample of a C note (0)
  * in order to pitch shift it other needed notes in 2 ocatves
@@ -140,13 +140,13 @@ export const SCALE_DATA = {
 				notes: generateScale("F major"), // ["F", "G", "A", "Bb", "C", "D", "E", "F"],
 			},
 			G: {
-				notes:  generateScale("G major"), // ["G", "A", "B", "C", "D", "E", "F#", "G"],
+				notes: generateScale("G major"), // ["G", "A", "B", "C", "D", "E", "F#", "G"],
 			},
 		},
 	},
 	rast: {
 		name: "Rast",
-		nearestWesternScale: "Major",
+		nearestWesternScale: { asc: "major", desc: "mixolydian" },
 		rootNotes: {
 			C: {
 				notes: Transformer.majorToRast(generateScale("C major")),
@@ -181,14 +181,14 @@ export const SCALE_DATA = {
 		nearestWesternScale: "Minor",
 		rootNotes: {
 			D: {
-				notes: Transformer.minorToBayati(generateScale("D minor"))
+				notes: Transformer.minorToBayati(generateScale("D minor")),
 			},
 			G: {
-				notes: Transformer.minorToBayati(generateScale("G minor"))
+				notes: Transformer.minorToBayati(generateScale("G minor")),
 			},
 			A: {
-				notes: Transformer.minorToBayati(generateScale("A minor"))
-			}
+				notes: Transformer.minorToBayati(generateScale("A minor")),
+			},
 		},
 	},
 	bayati_husayni: {
@@ -196,7 +196,7 @@ export const SCALE_DATA = {
 		nearestWesternScale: "Dorian",
 		rootNotes: {
 			D: {
-				notes: Transformer.dorianToBayatiHusayni(generateScale("D dorian"))
+				notes: Transformer.dorianToBayatiHusayni(generateScale("D dorian")),
 			},
 			G: {
 				notes: Transformer.dorianToBayatiHusayni(generateScale("G dorian")),
@@ -213,6 +213,3 @@ export const INSTUMENTS = {
 	violin: "violin",
 	oud: "oud",
 };
-
-
-

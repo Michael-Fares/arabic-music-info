@@ -21,9 +21,12 @@ export function generateScale(scaleKeyAndScaleName: string | null): string[] {
 	return [];
 }
 
+
+
 // need to clean this up some
 export class Transformer {
 	static quarterToneDegreesMajorToRast = [3, 7];
+	static quarterToneDegreesMixolydianToRast = [3];
 	static quarterToneDegreesMinorToBayati = [2];
 	static quarterToneDegreesDorainToBayatiHusayni = [2, 6];
 	static transform(
@@ -40,6 +43,9 @@ export class Transformer {
 	}
 	static majorToRast(majorScale: string[] | null): string[] | undefined {
 		return this.transform(this.quarterToneDegreesMajorToRast, majorScale);
+	}
+	static mixolydianToRast(mixolydianScale: string[] | null): string[] | undefined {
+		return this.transform(this.quarterToneDegreesMixolydianToRast, mixolydianScale);
 	}
 	static minorToBayati(minorScale: string[] | null): string[] | undefined {
 		return this.transform(this.quarterToneDegreesMinorToBayati, minorScale);
