@@ -11,6 +11,7 @@ interface ScalePanelProps {
 	};
 	scale: {
 		name: string;
+		descendingScaleVariantDegree: number;
 		rootNotes: Record<string, { notes: string[], descendingNotes?: string[] }>;
 	};
 	rootNote: string;
@@ -18,6 +19,7 @@ interface ScalePanelProps {
 }
 
 function ScalePanel({ audioManager, scale, instrument }: ScalePanelProps) {
+	console.log(`-------------- ${scale.name}------------`);
 	console.log("ScalePanel component > scale", scale);
 	const [rootNote, setRootNote] = useState(Object.keys(scale.rootNotes)[0]);
 	console.log("ScalePanel component > scale", scale);

@@ -21,14 +21,12 @@ export function generateScale(scaleKeyAndScaleName: string | null): string[] {
 	return [];
 }
 
-
-
 // need to clean this up some
 export class Transformer {
 	static quarterToneDegreesMajorToRast = [3, 7];
 	static quarterToneDegreesMixolydianToRast = [3];
 	static quarterToneDegreesMinorToBayati = [2];
-	static quarterToneDegreesDorianToBayati= [2, 6];
+	static quarterToneDegreesDorianToBayati = [2, 6];
 	static transform(
 		degrees: number[],
 		scale: string[] | null
@@ -36,7 +34,7 @@ export class Transformer {
 		if (!scale) return undefined;
 		return scale.map((note, index) => {
 			if (degrees.includes(index + 1)) {
-				return note + "-hf"; // Add half-flat to the 2nd and 7th notes
+				return note + "-hf"; // Add half-flat to the note at the specified degree
 			}
 			return note;
 		});
@@ -50,14 +48,7 @@ export class Transformer {
 	static minorToBayati(minorScale: string[] | null): string[] | undefined {
 		return this.transform(this.quarterToneDegreesMinorToBayati, minorScale);
 	}
-	static dorianToBayati(
-		dorianScale: string[] | null
-	): string[] | undefined {
-		return this.transform(
-			this.quarterToneDegreesDorianToBayati,
-			dorianScale
-		);
+	static dorianToBayati(dorianScale: string[] | null): string[] | undefined {
+		return this.transform(this.quarterToneDegreesDorianToBayati, dorianScale);
 	}
 }
-
-

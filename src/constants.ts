@@ -1,4 +1,3 @@
-import { descending } from "@tonaljs/note";
 import { generateScale, Transformer } from "./scaleGenerator";
 
 export const transformer = new Transformer();
@@ -134,6 +133,7 @@ export const SCALE_DATA = {
 	rast: {
 		name: "Rast",
 		nearestWesternScale: { asc: "major", desc: "mixolydian" },
+		descendingScaleVariantDegree: 7,
 		rootNotes: {
 			C: {
 				notes: Transformer.majorToRast(generateScale("C major")),
@@ -158,6 +158,7 @@ export const SCALE_DATA = {
 	bayati: {
 		name: "Bayati",
 		nearestWesternScale: { asc: "dorian", desc: "minor" },
+		descendingScaleVariantDegree: 6,
 		rootNotes: {
 			D: {
 				notes: Transformer.dorianToBayati(generateScale("D dorian")),
@@ -175,6 +176,7 @@ export const SCALE_DATA = {
 	},
 	nahawand: {
 		name: "Nahawand",
+		descendingScaleVariantDegree: 7,
 		rootNotes: {
 			C: {
 				notes: generateScale("C harmonic minor"),

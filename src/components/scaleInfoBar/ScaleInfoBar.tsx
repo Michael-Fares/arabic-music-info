@@ -9,6 +9,7 @@ interface ScaleInfoBarProps {
 	};
 	scale: {
 		name: string;
+		descendingScaleVariantDegree: number;
 		rootNotes: Record<string, { notes: string[]; descendingNotes?: string[] }>;
 	};
 	rootNote: string;
@@ -22,6 +23,7 @@ function ScaleInfoBar({
 	setRootNote,
 	instrument,
 }: ScaleInfoBarProps) {
+	console.log("ScaleInfoBar component > scale", scale);
 	const notesInScale = scale.rootNotes[rootNote].notes;
 	const descendingNotesInScale =
 		scale.rootNotes[rootNote].descendingNotes || [];
@@ -145,7 +147,7 @@ function ScaleInfoBar({
 				<p>Notes: </p>
 				<ul className="notes-list">
 					{uniqueNotesForForDisplay.map((note, index: number) => {
-						const isDescendingVariantNote = uniqueNotesForForDisplay[index + 1]?.value - note.value === 0.5;
+						const isDescendingVariantNote = uniqueNotesForForDisplay.indexOf(note) + 1 === scale.descendingScaleVariantDegree
 						return (
 							<li
 								data-note-name={note.name}
