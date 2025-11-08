@@ -8,16 +8,34 @@ interface ScaleInfoBarProps {
 	};
 	scale: {
 		name: string;
-		rootNotes: Record<string, { notes: string[] }>;
+		rootNotes: Record<string, { notes: string[]; descendingNotes?: string[] }>;
 	};
 	rootNote: string;
 	setRootNote: (note: string) => void;
 	instrument: string;
 }
-function ScaleInfoBar({ audioManager, scale, rootNote, setRootNote, instrument }: ScaleInfoBarProps) {
+function ScaleInfoBar({
+	audioManager,
+	scale,
+	rootNote,
+	setRootNote,
+	instrument,
+}: ScaleInfoBarProps) {
 	const notesInScale = scale.rootNotes[rootNote].notes;
+	const descendingNotesInScale =
+		scale.rootNotes[rootNote].descendingNotes || [];
 	const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);
+	const descendingNotesToPlay = getNotesToPlay(
+		NOTE_VALUES,
+		descendingNotesInScale
+	).reverse();
 	console.log("ScaleInfoBar component > notesToPlay", notesToPlay);
+	console.log(
+		"ScaleInfoBar component > descendingNotesToPlay",
+		descendingNotesToPlay
+	);
+
+
 	const handleClickPlay = (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
@@ -26,7 +44,7 @@ function ScaleInfoBar({ audioManager, scale, rootNote, setRootNote, instrument }
 			event.target instanceof Element
 				? event.target.closest(
 						`.scale-panel[data-scale-and-key="${scale.name}-${rootNote}"]`
-				)
+				  )
 				: null;
 
 		const notesInScale = scale.rootNotes[rootNote].notes;
@@ -34,7 +52,7 @@ function ScaleInfoBar({ audioManager, scale, rootNote, setRootNote, instrument }
 		const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);
 		console.log("notesToPlay", notesToPlay);
 
-		notesToPlay.forEach((note, index:number) => {
+		notesToPlay.forEach((note, index: number) => {
 			const { name, value, octave } = note;
 
 			setTimeout(() => {
@@ -46,7 +64,7 @@ function ScaleInfoBar({ audioManager, scale, rootNote, setRootNote, instrument }
 					`.key[data-note-name="${name}"][data-octave="${octave}"]`
 				);
 				const scoreNoteToHighlight = parent?.querySelector(
-					`.vf-note[data-note-name="${name}"][data-octave="${octave}"]`
+					`div.score[data-direction="asc"] .vf-note[data-note-name="${name}"][data-octave="${octave}"]`
 				);
 				notePillNameToHighlight?.classList.add("highlight");
 				keyboardKeyToHilight?.classList.add("highlight");
@@ -58,6 +76,32 @@ function ScaleInfoBar({ audioManager, scale, rootNote, setRootNote, instrument }
 				}, 500);
 			}, 500 * index);
 		});
+		setTimeout(() => {
+			descendingNotesToPlay.forEach((note, index: number) => {
+				const { name, value, octave } = note;
+
+				setTimeout(() => {
+					audioManager.playSample(value, audioManager.samples[instrument]);
+					const notePillNameToHighlight = parent?.querySelector(
+						`.note-pill[data-note-name="${name}"][data-octave="${octave}"]`
+					);
+					const keyboardKeyToHilight = parent?.querySelector(
+						`.key[data-note-name="${name}"][data-octave="${octave}"]`
+					);
+					const scoreNoteToHighlight = parent?.querySelector(
+						`div.score[data-direction="desc"] .vf-note[data-note-name="${name}"][data-octave="${octave}"]`
+					);
+					notePillNameToHighlight?.classList.add("highlight");
+					keyboardKeyToHilight?.classList.add("highlight");
+					scoreNoteToHighlight?.classList.add("highlight");
+					setTimeout(() => {
+						notePillNameToHighlight?.classList.remove("highlight");
+						keyboardKeyToHilight?.classList.remove("highlight");
+						scoreNoteToHighlight?.classList.remove("highlight");
+					}, 500);
+				}, 500 * index);
+			});
+		}, notesToPlay.length * 500);
 	};
 	console.log("ScaleInfoBar component > notesToPlay", notesToPlay);
 	return (
@@ -72,23 +116,21 @@ function ScaleInfoBar({ audioManager, scale, rootNote, setRootNote, instrument }
 				Scale: <span>{scale.name}</span>
 			</p>
 			<div>
-
-			<label htmlFor="keys">Key: {` `}</label>
-			<select
-				name="keys"
-				id="keys"
-				value={rootNote}
-				onChange={(e) => {
-					setRootNote(e.target.value);
-				}}
-			>
-				{Object.keys(scale.rootNotes).map((key) => (
-					<option value={key} key={key}>
-						{key}
-					</option>
-				))}
-			</select>
-
+				<label htmlFor="keys">Key: {` `}</label>
+				<select
+					name="keys"
+					id="keys"
+					value={rootNote}
+					onChange={(e) => {
+						setRootNote(e.target.value);
+					}}
+				>
+					{Object.keys(scale.rootNotes).map((key) => (
+						<option value={key} key={key}>
+							{key}
+						</option>
+					))}
+				</select>
 			</div>
 			<div className="notes-info">
 				<span>Notes: </span>

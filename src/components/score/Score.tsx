@@ -109,9 +109,9 @@ function Score({ audioManager, notes, scale, rootNote, instrument, direction }: 
 					const svg = note.getSVGElement();
 					// console.log(svg);
 					// Add a class to the SVG element for styling
-					svg?.setAttribute("data-note-name", vfnotes[index].dataNoteName);
-					svg?.setAttribute("data-note-value", vfnotes[index].dataNoteValue);
-					svg?.setAttribute("data-octave", vfnotes[index].dataOctave);
+					svg?.setAttribute("data-note-name", `${vfnotes[index].dataNoteName}`);
+					svg?.setAttribute("data-note-value", `${vfnotes[index].dataNoteValue}`);
+					svg?.setAttribute("data-octave", `${vfnotes[index].dataOctave}`);
 					svg?.classList.add("vf-note");
 
 					if (svg) {
@@ -142,6 +142,7 @@ function Score({ audioManager, notes, scale, rootNote, instrument, direction }: 
 	return (
 		<div
 			className="score"
+			data-direction={direction}
 			id={`${scale.name}-${rootNote}-${direction}`}
 			ref={vexFlowContainerRef}
 		/>
