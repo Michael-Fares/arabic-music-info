@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { NOTE_VALUES } from "../../constants";
 import { getNotesToPlay, formatNotesForVexflowScore } from "../../utils";
-import VexFlow, { Stem } from "vexflow";
+import VexFlow from "vexflow";
 import "./score.css";
 
 interface ScoreProps {

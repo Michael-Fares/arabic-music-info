@@ -36,6 +36,9 @@
         background-color: black;
         color: white;
         padding: 0.5rem;
+        &.descending-variant {
+            background-color: #777;
+        }
     }
      .note-pill.highlight {
         background-color: royalblue;

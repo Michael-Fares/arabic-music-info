@@ -1,6 +1,7 @@
 import "./scaleInforBar.css";
 import { NOTE_VALUES } from "../../constants";
 import { getNotesToPlay } from "../../utils";
+import classNames from "classnames";
 interface ScaleInfoBarProps {
 	audioManager: {
 		playSample: (noteValue: number, sample: any) => void;
@@ -34,8 +35,16 @@ function ScaleInfoBar({
 		"ScaleInfoBar component > descendingNotesToPlay",
 		descendingNotesToPlay
 	);
+	const allNotesToPlay = [...notesToPlay, ...descendingNotesToPlay.toReversed()].map(
+		(note) => JSON.stringify(note)
+	);
 
+	const uniqueNotesForForDisplay = Array.from(new Set(allNotesToPlay)).map((note) =>
+		JSON.parse(note)
+	).sort((a, b) => a.value - b.value);
+	console.log("ScaleInfoBar component > uniqueNotesForForDisplay", uniqueNotesForForDisplay);
 
+	console.log("ScaleInfoBar component > allNotesToPlay", allNotesToPlay);
 	const handleClickPlay = (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
@@ -101,7 +110,7 @@ function ScaleInfoBar({
 					}, 500);
 				}, 500 * index);
 			});
-		}, notesToPlay.length * 500);
+		}, notesToPlay.length * 500 + 1000);
 	};
 	console.log("ScaleInfoBar component > notesToPlay", notesToPlay);
 	return (
@@ -133,18 +142,23 @@ function ScaleInfoBar({
 				</select>
 			</div>
 			<div className="notes-info">
-				<span>Notes: </span>
+				<p>Notes: </p>
 				<ul className="notes-list">
-					{notesToPlay.map((note, index: number) => (
-						<li
-							data-note-name={note.name}
-							data-octave={note.octave}
-							className={"note-pill"}
+					{uniqueNotesForForDisplay.map((note, index: number) => {
+						const isDescendingVariantNote = uniqueNotesForForDisplay[index + 1]?.value - note.value === 0.5;
+						return (
+							<li
+								data-note-name={note.name}
+								data-octave={note.octave}
+								className={classNames("note-pill", {
+									"descending-variant": isDescendingVariantNote,
+								})}
 							key={index}
 						>
 							{note.name}
 						</li>
-					))}
+					);
+				})}
 				</ul>
 			</div>
 		</div>
