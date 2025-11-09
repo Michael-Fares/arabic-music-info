@@ -1,7 +1,7 @@
 import * as Scale from "@tonaljs/scale";
 import * as Note from "@tonaljs/note";
 
-// console.log("All available scale names", Scale.names());
+console.log("All available scale names", Scale.names());
 
 export function generateScale(scaleKeyAndScaleName: string | null): string[] {
 	if (!scaleKeyAndScaleName) {
@@ -51,4 +51,8 @@ export class Transformer {
 	static dorianToBayati(dorianScale: string[] | null): string[] | undefined {
 		return this.transform(this.quarterToneDegreesDorianToBayati, dorianScale);
 	}
+
 }
+
+console.log("D melodic minor scale debugging:", generateScale("D melodic minor"));
+

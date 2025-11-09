@@ -1,3 +1,4 @@
+import { descending } from "@tonaljs/note";
 import { generateScale, Transformer } from "./scaleGenerator";
 
 export const transformer = new Transformer();
@@ -174,6 +175,55 @@ export const SCALE_DATA = {
 			},
 		},
 	},
+	hijaz: {
+		name: "Hijaz",
+		descendingScaleVariantDegree: 6,
+		rootNotes: {
+			D: {
+				// add jins rast as 2nd half of ascending hijaz scale
+				notes: (generateScale("D phrygian dominant") || []).slice(0,5).concat(
+					(Transformer.majorToRast(generateScale("G major")) || []).slice(0,4)
+				),
+				descendingNotes: generateScale("D phrygian dominant"),
+			},
+			G: {
+				notes: (generateScale("G phrygian dominant") || []).slice(0,5).concat(
+					(Transformer.majorToRast(generateScale("C major")) || []).slice(0,4)
+				),
+				descendingNotes: generateScale("G phrygian dominant"),
+			},
+			A: {
+				notes: (generateScale("A phrygian dominant") || []).slice(0,5).concat(
+					(Transformer.majorToRast(generateScale("D major")) || []).slice(0,4)
+				),
+				descendingNotes: generateScale("A phrygian dominant"),
+			},
+		},
+	},
+	saba: {
+		name: "Saba",
+		rootNotes: {
+			D: {
+			
+				notes: (Transformer.minorToBayati(generateScale("D minor")) || []).slice(0,2).concat((generateScale("F phrygian dominant") || []).slice(0,5)),
+				descendingNotes:  (Transformer.minorToBayati(generateScale("D minor")) || []).slice(0,2).concat((generateScale("F phrygian dominant") || []).slice(0,5)),			
+			},
+			G: {
+
+				notes: (Transformer.minorToBayati(generateScale("G minor")) || []).slice(0,2).concat((generateScale("Bb phrygian dominant") || []).slice(0,5)),
+				descendingNotes:  (Transformer.minorToBayati(generateScale("G minor")) || []).slice(0,2).concat((generateScale("Bb phrygian dominant") || []).slice(0,5)),
+			},
+			A: {
+			
+				notes: (Transformer.minorToBayati(generateScale("A minor")) || []).slice(0,2).concat(
+					(generateScale("F phrygian dominant") || []).slice(0,5)
+				),
+				descendingNotes:  (Transformer.minorToBayati(generateScale("D minor")) || []).slice(0,2).concat(
+					(generateScale("F phrygian dominant") || []).slice(0,5)
+				),			
+			},
+		},
+	},
 	nahawand: {
 		name: "Nahawand",
 		descendingScaleVariantDegree: 7,
@@ -196,6 +246,7 @@ export const SCALE_DATA = {
 			},
 		},
 	},
+	
 	/** WESTERN SCALES STARTING HERE */
 	major: {
 		name: "Major",
