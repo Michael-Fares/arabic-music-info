@@ -1,4 +1,4 @@
-import { descending } from "@tonaljs/note";
+
 import { generateScale, Transformer } from "./scaleGenerator";
 
 export const transformer = new Transformer();
@@ -210,16 +210,16 @@ export const SCALE_DATA = {
 			},
 			G: {
 
-				notes: (Transformer.minorToBayati(generateScale("G minor")) || []).slice(0,2).concat((generateScale("Bb phrygian dominant") || []).slice(0,5)),
-				descendingNotes:  (Transformer.minorToBayati(generateScale("G minor")) || []).slice(0,2).concat((generateScale("Bb phrygian dominant") || []).slice(0,5)),
+				notes: (Transformer.minorToBayati(generateScale("G minor")) || []).slice(0,2).concat((generateScale("Bb phrygian dominant") || []).slice(0,5)).map(note => note === "Cb" ? "B" : note),
+				descendingNotes:  (Transformer.minorToBayati(generateScale("G minor")) || []).slice(0,2).concat((generateScale("Bb phrygian dominant") || []).slice(0,5)).map(note => note === "Cb" ? "B" : note),
 			},
 			A: {
 			
 				notes: (Transformer.minorToBayati(generateScale("A minor")) || []).slice(0,2).concat(
-					(generateScale("F phrygian dominant") || []).slice(0,5)
+					(generateScale("C phrygian dominant") || []).slice(0,5)
 				),
-				descendingNotes:  (Transformer.minorToBayati(generateScale("D minor")) || []).slice(0,2).concat(
-					(generateScale("F phrygian dominant") || []).slice(0,5)
+				descendingNotes:  (Transformer.minorToBayati(generateScale("A minor")) || []).slice(0,2).concat(
+					(generateScale("C phrygian dominant") || []).slice(0,5)
 				),			
 			},
 		},

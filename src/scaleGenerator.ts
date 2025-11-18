@@ -54,5 +54,5 @@ export class Transformer {
 
 }
 
-console.log("D melodic minor scale debugging:", generateScale("D melodic minor"));
+console.log("Bb phrygian dominant scale debugging:", generateScale("Bb phrygian dominant").slice(0,5));
 
