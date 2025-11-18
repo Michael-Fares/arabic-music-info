@@ -5,5 +5,10 @@
     margin-top: 0.25rem;
     background-color: #f9f9f9;
     max-width: 1000px;
-    margin-inline: auto
+    margin-inline: auto;
+    .score-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
 }

@@ -10,7 +10,8 @@ interface KeyboardProps {
 		samples: Record<string, any>;
 	};
 	scale: {
-		rootNotes: Record<string, { notes: string[] }>;
+		descendingScaleVariantDegree: number;
+		rootNotes: Record<string, { notes: string[]; descendingNotes?: string[] }>;
 	};
 	rootNote: string;
 	instrument: string;
@@ -19,9 +20,24 @@ interface KeyboardProps {
 function Keyboard({ audioManager, scale, rootNote, instrument }: KeyboardProps) {
 	// all notes in the scale anywhere on the keyboard
 	const notesInScale = scale.rootNotes[rootNote].notes;
+	const descendingNotesInScale =
+		scale.rootNotes[rootNote].descendingNotes || [];
 	console.log("Keyboard component > notesInScale", notesInScale);
-	const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);
+	console.log("Keyboard component > descendingNotesInScale", descendingNotesInScale);
 	// the 8 notes of the scale, in order, starting from the root note on the keyboard
+	const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);
+	const descendingNotesToPlay = getNotesToPlay(
+		NOTE_VALUES,
+		descendingNotesInScale
+	).reverse();
+	const allNotesToPlay = [...notesToPlay, ...descendingNotesToPlay].map(
+		(note) => JSON.stringify(note)
+	);
+	const uniqueNotesForForDisplay = Array.from(new Set(allNotesToPlay)).map((note) =>
+		JSON.parse(note)
+	).sort((a, b) => a.value - b.value);
+	
+	console.log("Keyboard component > uniqueNotesForForDisplay", uniqueNotesForForDisplay);
 
 	const handleClick = (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -54,9 +70,9 @@ function Keyboard({ audioManager, scale, rootNote, instrument }: KeyboardProps) 
 								whiteKey: !name.includes("b"),
 								"no-offset": name.includes("C") || name.includes("F"),
 								"in-current-scale":
-									scale.rootNotes[rootNote].notes.includes(name) ||
-									scale.rootNotes[rootNote].notes.includes(name + "-hf"),
-								quarter: scale.rootNotes[rootNote].notes.includes(
+									notesInScale.includes(name) ||
+									notesInScale.includes(name + "-hf"),
+								quarter: notesInScale.includes(
 									name.split("_")[0] + "-hf"
 								),
 								"in-current-run": notesToPlay.some(
@@ -64,6 +80,7 @@ function Keyboard({ audioManager, scale, rootNote, instrument }: KeyboardProps) 
 										(note.name === name || note.name === name + "-hf") &&
 										note.octave === octave
 								),
+								"descending-variant": descendingNotesInScale.includes(name) && !notesInScale.includes(name),
 							})}
 							onClick={(event) => handleClick(event)}
 						></button>

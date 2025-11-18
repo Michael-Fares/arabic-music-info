@@ -37,6 +37,7 @@ function ScalePanel({ audioManager, scale, instrument }: ScalePanelProps) {
 				setRootNote={setRootNote}
 				instrument={instrument}
 			/>
+			<div className="score-container">
 			<Score
 				audioManager={audioManager}
 				scale={scale}
@@ -55,6 +56,8 @@ function ScalePanel({ audioManager, scale, instrument }: ScalePanelProps) {
 					instrument={instrument}
 				/>
 			)}
+			</div>
+
 			<Keyboard
 				audioManager={audioManager}
 				scale={scale}

@@ -1,3 +1,4 @@
+@import url("../../variables.css");
 .scale-info-bar {
     margin: 0.25rem;
     background-color: #eee;
@@ -9,7 +10,7 @@
     padding: 1rem;
 
     .play-button {
-        background-color: #4caf50;
+        background-color: var(--play-button-color);
         color: white;
         padding: 0.5rem 1rem;
         border: none;
@@ -33,14 +34,15 @@
         padding: 0;
     }
     .note-pill {
-        background-color: black;
-        color: white;
+        background-color: var(--in-current-run-color);
+        color: black;
         padding: 0.5rem;
         &.descending-variant {
-            background-color: #777;
+            background-color: var(--descending-variant-note-color);
         }
     }
      .note-pill.highlight {
         background-color: royalblue;
+        color: white;
     }
 }

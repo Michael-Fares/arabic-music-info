@@ -3,5 +3,8 @@
     --highlight-color: royalblue;
     --black-key-color: black;
     --white-key-color: white;
-    --quarter-tone-key-color: red;
+    --quarter-tone-key-color: rgb(157, 32, 32);
+    --in-current-run-color: #81cc83;
+    --descending-variant-note-color: #d7fe98;
+    --play-button-color: #1e7e51;
 }
