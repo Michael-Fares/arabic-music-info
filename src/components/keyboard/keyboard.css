@@ -13,9 +13,11 @@
             border: 1px solid black;
             cursor: pointer;
             position: relative;
-
+            &.no-offset:not(:first-child) {
+                border-left: none;
+            }
             &:not(.no-offset) {
-                margin-left: -1rem;
+                margin-left: -1.3vmax;
             }
 
             &:focus {
@@ -39,15 +41,15 @@
             }
         }
         .whiteKey {
-            height: 8rem;
-            width: 2.5rem;
+            height: 10.5vmax;
+            width: 3.5vmax;
             z-index: 1;
             background-color: var(--white-key-color);
         }
 
         .blackKey {
-            height: 4.5rem;
-            width: 2rem;
+            height: 5.5vmax;
+            width: 2.5vmax;
             z-index: 2;
             background-color: var(--black-key-color);
         }

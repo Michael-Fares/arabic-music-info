@@ -200,6 +200,29 @@ export const SCALE_DATA = {
 			},
 		},
 	},
+
+	nahawand: {
+		name: "Nahawand",
+		descendingScaleVariantDegree: 7,
+		rootNotes: {
+			C: {
+				notes: generateScale("C harmonic minor"),
+				descendingNotes: generateScale("C minor"),
+			},
+			D: {
+				notes: generateScale("D harmonic minor"),
+				descendingNotes: generateScale("D minor"),
+			},
+			G: {
+				notes: generateScale("G harmonic minor"),
+				descendingNotes: generateScale("G minor"),
+			},
+			A: {
+				notes: generateScale("A harmonic minor"),
+				descendingNotes: generateScale("A minor"),
+			},
+		},
+	},
 	saba: {
 		name: "Saba",
 		rootNotes: {
@@ -224,29 +247,6 @@ export const SCALE_DATA = {
 			},
 		},
 	},
-	nahawand: {
-		name: "Nahawand",
-		descendingScaleVariantDegree: 7,
-		rootNotes: {
-			C: {
-				notes: generateScale("C harmonic minor"),
-				descendingNotes: generateScale("C minor"),
-			},
-			D: {
-				notes: generateScale("D harmonic minor"),
-				descendingNotes: generateScale("D minor"),
-			},
-			G: {
-				notes: generateScale("G harmonic minor"),
-				descendingNotes: generateScale("G minor"),
-			},
-			A: {
-				notes: generateScale("A harmonic minor"),
-				descendingNotes: generateScale("A minor"),
-			},
-		},
-	},
-	
 	/** WESTERN SCALES STARTING HERE */
 	major: {
 		name: "Major",
