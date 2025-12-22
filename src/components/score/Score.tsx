@@ -46,7 +46,7 @@ function Score({ audioManager, notes, scale, rootNote, instrument, direction }: 
 			VexFlow.loadFonts("Bravura", "Academico").then(() => {
 				VexFlow.setFonts("Bravura", "Academico");
 				const factory = new VexFlow.Factory({
-					renderer: { elementId: container.id, width: 330, height: 120 },
+					renderer: { elementId: container.id, width: 330, height: 110 },
 				});
 				const system = factory.System({ width: 310 });
 				console.log('vfnotes in Score component', vfnotes);

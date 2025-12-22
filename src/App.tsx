@@ -1,12 +1,15 @@
 import "./App.css";
 import { MAQAM_DATA, INSTUMENTS } from "./constants";
 import ScalePanel from "./components/scalePanel/ScalePanel";
+import Nav from "./components/nav/Nav";
 import { useState } from "react";
 import { AudioManager } from "./audio";
+
 
 function App() {
 	const audioManager = new AudioManager();
 	const [instrument, setInstrument] = useState(INSTUMENTS.piano);
+	const maqamList = Object.values(MAQAM_DATA).map((scale) => scale.name.toLowerCase());
 	return (
 		<>
 			<h1>Arabic Music Ear Trainer</h1>
@@ -25,6 +28,7 @@ function App() {
 					))}
 				</select>
 			</div>
+			<Nav maqamList={maqamList} />
 			{Object.keys(MAQAM_DATA).map((scaleName) => {
 				const scale = MAQAM_DATA[scaleName as keyof typeof MAQAM_DATA];
 				const rootNote = Object.keys(scale.rootNotes)[0]; // pick the first available root note

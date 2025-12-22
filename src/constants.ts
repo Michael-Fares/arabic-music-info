@@ -281,7 +281,7 @@ export const MAQAM_DATA = {
 		},
 	},
 	sikah: {
-		name: "Sikah (Huzam)",
+		name: "Sikah",
 		rootNotes: {
 			// hard coded because it's clearer that sikah always starts with a half flat note
 			"E-hf": { 

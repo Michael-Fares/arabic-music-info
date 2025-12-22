@@ -38,6 +38,7 @@
     .note-pill {
         background-color: var(--in-current-run-color);
         color: black;
+        outline: 1px solid black;
         padding: 0.5rem;
         &.descending-variant {
             background-color: var(--descending-variant-note-color);

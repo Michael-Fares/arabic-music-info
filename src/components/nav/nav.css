@@ -1,0 +1,20 @@
+nav {
+  background-color: #eee;
+  padding: 0.5rem;
+
+  gap: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  overflow: auto;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+li {
+  cursor: pointer;
+}
