@@ -14,7 +14,7 @@
             cursor: pointer;
             position: relative;
             &:not(.no-offset) {
-                margin-left: -1.3vmax;
+                margin-left: min(-1.3vmax, -0.5rem);
             }
 
             &:focus {
