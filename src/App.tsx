@@ -1,5 +1,5 @@
 import "./App.css";
-import { SCALE_DATA, INSTUMENTS } from "./constants";
+import { MAQAM_DATA, INSTUMENTS } from "./constants";
 import ScalePanel from "./components/scalePanel/ScalePanel";
 import { useState } from "react";
 import { AudioManager } from "./audio";
@@ -25,8 +25,8 @@ function App() {
 					))}
 				</select>
 			</div>
-			{Object.keys(SCALE_DATA).map((scaleName) => {
-				const scale = SCALE_DATA[scaleName as keyof typeof SCALE_DATA];
+			{Object.keys(MAQAM_DATA).map((scaleName) => {
+				const scale = MAQAM_DATA[scaleName as keyof typeof MAQAM_DATA];
 				const rootNote = Object.keys(scale.rootNotes)[0]; // pick the first available root note
 				// Filter out nulls from notes arrays to satisfy type requirements
 				const filteredScale = {

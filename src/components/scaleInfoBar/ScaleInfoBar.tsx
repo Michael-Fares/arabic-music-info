@@ -123,10 +123,10 @@ function ScaleInfoBar({
 				className="play-button"
 				onClick={(event) => handleClickPlay(event)}
 			>
-				Play Scale
+				Play Maqam
 			</button>
 			<p>
-				Scale: <span>{scale.name}</span>
+				Maqam: <b>{scale.name}</b>
 			</p>
 			<div>
 				<label htmlFor="keys">Key: {` `}</label>

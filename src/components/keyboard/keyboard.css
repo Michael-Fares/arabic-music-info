@@ -10,12 +10,9 @@
         .key {
             display: inline-block;
             vertical-align: top;
-            border: 1px solid black;
+            outline: 1px solid black;
             cursor: pointer;
             position: relative;
-            &.no-offset:not(:first-child) {
-                border-left: none;
-            }
             &:not(.no-offset) {
                 margin-left: -1.3vmax;
             }

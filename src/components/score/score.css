@@ -1,5 +1,9 @@
 @import url("../../variables.css");
 .score {
+    svg {
+        width: 100% !important;
+        height: auto !important;
+    }
     .vf-note {
         cursor: pointer;
         user-select: none;

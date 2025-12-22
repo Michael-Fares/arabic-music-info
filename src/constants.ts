@@ -130,7 +130,7 @@ export const NOTE_VALUES = [
 	},
 ];
 
-export const SCALE_DATA = {
+export const MAQAM_DATA = {
 	rast: {
 		name: "Rast",
 		nearestWesternScale: { asc: "major", desc: "mixolydian" },
@@ -281,7 +281,7 @@ export const SCALE_DATA = {
 		},
 	},
 	sikah: {
-		name: "Sikah",
+		name: "Sikah (Huzam)",
 		rootNotes: {
 			// hard coded because it's clearer that sikah always starts with a half flat note
 			"E-hf": { 
@@ -295,6 +295,10 @@ export const SCALE_DATA = {
 		}
 	},
 	/** WESTERN SCALES STARTING HERE */
+
+};
+
+export const WESTERN_SCALES = {
 	major: {
 		name: "Major",
 		rootNotes: {
