@@ -3,7 +3,7 @@ import * as Note from "@tonaljs/note";
 
 console.log("All available scale names", Scale.names());
 
-export function generateScale(scaleKeyAndScaleName: string | null): string[] {
+export function generateScale(scaleKeyAndScaleName: string | null): string[] | [] {
 	if (!scaleKeyAndScaleName) {
 		return [];
 	}

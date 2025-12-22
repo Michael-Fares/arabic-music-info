@@ -3,7 +3,7 @@
  * Check if a scale is half flat or not
  *
  */
-export function isHalfFlat(notesInScale, note) {
+export function isHalfFlat(notesInScale: Array<string>, note: { name: string }) {
 	return notesInScale.includes(note.name + "-hf");
 }
 
@@ -13,8 +13,7 @@ export function isHalfFlat(notesInScale, note) {
  * Transform it into it's corresponding quarter tone
  * E.g. make it half flat
  */
-
-export function quarterize(note) {
+export function quarterize(note: { name: string; value: number }) {
 	return {
 		...note,
 		name: note.name + "-hf",
@@ -33,10 +32,14 @@ export function quarterize(note) {
  *
  * */
 export function getNotesToPlay(noteValues, notesInScale: Array<string>) {
-	const firstNote = notesInScale[0];
+	console.log("notesInScale[0]", notesInScale[0]);
+	const isSikah = notesInScale[0]?.includes("-hf");
+	const firstNote = isSikah ? notesInScale[0].split("-")[0] : notesInScale[0];
+	console.log("firstNote", firstNote);
 	const startIndex = noteValues.findIndex(
 		(note) => note.name === firstNote || quarterize(note.name) === firstNote
 	);
+	console.log("startIndex", startIndex);
 
 	const notesToPlay = noteValues
 		.filter((note, index) => {
@@ -51,6 +54,7 @@ export function getNotesToPlay(noteValues, notesInScale: Array<string>) {
 			return false;
 		})
 		.map((note) => (isHalfFlat(notesInScale, note) ? quarterize(note) : note));
+		console.log("notesToPlay before return", notesToPlay);
 	return notesToPlay;
 }
 

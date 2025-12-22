@@ -193,14 +193,12 @@ export const SCALE_DATA = {
 				descendingNotes: generateScale("G phrygian dominant"),
 			},
 			A: {
-				notes: (generateScale("A phrygian dominant") || []).slice(0,5).concat(
-					(Transformer.majorToRast(generateScale("D major")) || []).slice(0,4)
+				notes: (generateScale("A phrygian dominant") || []).slice(0,5).concat((Transformer.majorToRast(generateScale("D major")) || []).slice(0,4)
 				),
-				descendingNotes: generateScale("A phrygian dominant"),
+				descendingNotes: generateScale("A phrygian dominant") || [],
 			},
 		},
 	},
-
 	nahawand: {
 		name: "Nahawand",
 		descendingScaleVariantDegree: 7,
@@ -246,6 +244,55 @@ export const SCALE_DATA = {
 				),			
 			},
 		},
+	},
+	kurd: {
+		name: "Kurd",
+		rootNotes: {
+			D: {
+				notes: generateScale("D phrygian"),
+				descendingNotes: generateScale("D phrygian"),
+			},
+			G: {
+				notes: generateScale("G phrygian"),
+				descendingNotes: generateScale("G phrygian"),
+			},
+			A: {
+				notes: generateScale("A phrygian"),
+				descendingNotes: generateScale("A phrygian"),
+			},
+		},
+	},
+	ajam: {
+		name: "Ajam",
+		descendingScaleVariantDegree: 7,
+		rootNotes: {
+			C: {
+				notes: generateScale("C major"),
+				descendingNotes: generateScale("C mixolydian"),
+			},
+			F: {
+				notes: generateScale("F major"),
+				descendingNotes: generateScale("F mixolydian"),
+			},
+			G: {
+				notes: generateScale("G major"),
+				descendingNotes: generateScale("G mixolydian"),
+			},
+		},
+	},
+	sikah: {
+		name: "Sikah",
+		rootNotes: {
+			// hard coded because it's clearer that sikah always starts with a half flat note
+			"E-hf": { 
+				notes: ['E-hf', 'F', 'G', 'Ab', 'B', 'C', 'D', 'E-hf'],
+				descendingNotes: ['E-hf', 'F', 'G', 'Ab', 'B', 'C', 'D', 'E-hf'],
+			},
+			"B-hf": { 
+				notes: ['B-hf', 'C', 'D', 'Eb', 'Gb', 'G', 'A', 'B-hf'],
+				descendingNotes: ['B-hf', 'C', 'D', 'Eb', 'Gb', 'G', 'A', 'B-hf'],
+			}
+		}
 	},
 	/** WESTERN SCALES STARTING HERE */
 	major: {

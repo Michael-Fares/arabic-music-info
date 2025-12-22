@@ -25,9 +25,11 @@ function ScaleInfoBar({
 }: ScaleInfoBarProps) {
 	console.log("ScaleInfoBar component > scale", scale);
 	const notesInScale = scale.rootNotes[rootNote].notes;
+	console.log("ScaleInfoBar component > notesInScale", notesInScale);
 	const descendingNotesInScale =
 		scale.rootNotes[rootNote].descendingNotes || [];
 	const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);
+	console.log("ScaleInfoBar component > notesToPlay", notesToPlay);
 	const descendingNotesToPlay = getNotesToPlay(
 		NOTE_VALUES,
 		descendingNotesInScale
