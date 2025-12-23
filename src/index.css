@@ -39,3 +39,13 @@ a {
     background-color: #ffffff;
   }
 } */
+
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
