@@ -13,11 +13,11 @@ export function isHalfFlat(notesInScale: Array<string>, note: { name: string }) 
  * Transform it into it's corresponding quarter tone
  * E.g. make it half flat
  */
-export function quarterize(note: { name: string; value: number }) {
+export function quarterize(note: NoteObject): NoteObject {
 	return {
-		...note,
 		name: note.name + "-hf",
 		value: note.value - 0.5,
+		octave: note.octave,
 	};
 }
 
@@ -31,18 +31,18 @@ export function quarterize(note: { name: string; value: number }) {
  * noteValues  is an array of notes always same as NOTE_VALUES constant
  *
  * */
-export function getNotesToPlay(noteValues, notesInScale: Array<string>) {
+export function getNotesToPlay(noteValues: NoteObject[], notesInScale: Array<string>): NoteObject[] {
 	console.log("notesInScale[0]", notesInScale[0]);
 	const isSikah = notesInScale[0]?.includes("-hf");
 	const firstNote = isSikah ? notesInScale[0].split("-")[0] : notesInScale[0];
 	console.log("firstNote", firstNote);
 	const startIndex = noteValues.findIndex(
-		(note) => note.name === firstNote || quarterize(note.name) === firstNote
+		(note: NoteObject) => note.name === firstNote || quarterize(note).name === firstNote
 	);
 	console.log("startIndex", startIndex);
 
 	const notesToPlay = noteValues
-		.filter((note, index) => {
+		.filter((note: NoteObject, index: number) => {
 			if (index >= startIndex && index <= startIndex + 12) {
 				if (
 					notesInScale.includes(note.name) ||
@@ -53,14 +53,14 @@ export function getNotesToPlay(noteValues, notesInScale: Array<string>) {
 			}
 			return false;
 		})
-		.map((note) => (isHalfFlat(notesInScale, note) ? quarterize(note) : note));
+		.map((note: NoteObject) => (isHalfFlat(notesInScale, note) ? quarterize(note) : note));
 		console.log("notesToPlay before return", notesToPlay);
 	return notesToPlay;
 }
 
 // fix the any type for notesToPlay later
-export function formatNotesForVexflowScore(notesToPlay: Array<any>) {
-	const vfnotes = notesToPlay.map((note) => {
+export function formatNotesForVexflowScore(notesToPlay: NoteObject[]) {
+	const vfnotes = notesToPlay.map((note: NoteObject) => {
 		const { name, octave, value } = note;
 		const vfnote = `${name[0]}/${octave}`;
 		let accidental = null;
