@@ -7,19 +7,27 @@ nav {
   top: 0;
   z-index: 100;
   overflow: auto;
+  ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    /* progressive enhancement - css only scrollspy with scroll-target group */
+    scroll-target-group: auto;
+  }
 }
 
-ul {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-}
+
 
 li {
   cursor: pointer;
   a {
     transition: ease-in-out 0.2s;
     &.active {
+      font-weight: bold;
+      color: darkgreen;
+    }
+    /* progressive enhancement - css only scrollspy with scroll-target group */
+    &:target-current {
       font-weight: bold;
       color: darkgreen;
     }
