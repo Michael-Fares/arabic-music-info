@@ -14,22 +14,19 @@ nav {
     /* progressive enhancement - css only scrollspy with scroll-target group */
     scroll-target-group: auto;
   }
-}
-
-
-
-li {
+  li {
   cursor: pointer;
-  a {
-    transition: ease-in-out 0.2s;
-    &.active {
-      font-weight: bold;
-      color: darkgreen;
-    }
-    /* progressive enhancement - css only scrollspy with scroll-target group */
-    &:target-current {
-      font-weight: bold;
-      color: darkgreen;
-    }
-  }
+    a {
+      transition: ease-in-out 0.2s;
+      &.active {
+        font-weight: bold;
+        color: darkgreen;
+      }
+      /* progressive enhancement - css only scrollspy with scroll-target group */
+      &:target-current {
+        font-weight: bold;
+        color: darkgreen;
+      }
+    } 
+  }   
 }

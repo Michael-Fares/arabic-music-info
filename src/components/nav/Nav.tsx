@@ -7,10 +7,9 @@ function Nav({ maqamList }: { maqamList: string[] }) {
 
 		const CSS_only_scrollspy = window.CSS.supports("scroll-target-group", "auto");
 		if (CSS_only_scrollspy) {
-			console.log("Using CSS only scrollspy");
 			return;
 		}
-		console.log("Using JS scrollspy");
+
 		// 1. Keep track of all visible sections in a Map
 		const visibleSections = new Map();
 

@@ -29,36 +29,15 @@ function App() {
 				</select>
 			</div>
 			<Nav maqamList={maqamList} />
-			{Object.keys(MAQAM_DATA).map((scaleName) => {
-				const scale = MAQAM_DATA[scaleName as keyof typeof MAQAM_DATA];
-				const rootNote = Object.keys(scale.rootNotes)[0]; // pick the first available root note
-				// Filter out nulls from notes arrays to satisfy type requirements
-				const filteredScale = {
-					...scale,
-					rootNotes: Object.fromEntries(
-						Object.entries(scale.rootNotes).map(([note, data]) => {
-							const notes = data.notes?.filter((n): n is string => n !== null);
-							const descendingNotes =
-								"descendingNotes" in data
-									? data.descendingNotes?.filter((n): n is string => n !== null)
-									: undefined;
-							return [
-								note,
-								{
-									...data,
-									notes,
-									...(descendingNotes ? { descendingNotes } : {}),
-								},
-							];
-						})
-					),
-				};
-				console.log("App component > filteredScale", filteredScale);
+			{MAQAM_DATA.map((maqam) => {
+
+				const rootNote = Object.keys(maqam.rootNotes)[0]; // pick the first available root note
+
 				return (
 					<ScalePanel
-						key={scaleName}
+						key={maqam.name}
 						audioManager={audioManager}
-						scale={filteredScale}
+						scale={maqam}
 						rootNote={rootNote}
 						instrument={instrument}
 					/>

@@ -1,4 +1,3 @@
-
 import { generateScale, Transformer } from "./scaleGenerator";
 
 export const transformer = new Transformer();
@@ -130,8 +129,8 @@ export const NOTE_VALUES = [
 	},
 ];
 
-export const MAQAM_DATA = {
-	rast: {
+export const MAQAM_DATA = [
+	{
 		name: "Rast",
 		nearestWesternScale: { asc: "major", desc: "mixolydian" },
 		descendingScaleVariantDegree: 7,
@@ -156,7 +155,7 @@ export const MAQAM_DATA = {
 			},
 		},
 	},
-	bayati: {
+	{
 		name: "Bayati",
 		nearestWesternScale: { asc: "dorian", desc: "minor" },
 		descendingScaleVariantDegree: 6,
@@ -175,31 +174,47 @@ export const MAQAM_DATA = {
 			},
 		},
 	},
-	hijaz: {
+	{
 		name: "Hijaz",
 		descendingScaleVariantDegree: 6,
 		rootNotes: {
 			D: {
 				// add jins rast as 2nd half of ascending hijaz scale
-				notes: (generateScale("D phrygian dominant") || []).slice(0,5).concat(
-					(Transformer.majorToRast(generateScale("G major")) || []).slice(0,4)
-				),
+				notes: (generateScale("D phrygian dominant") || [])
+					.slice(0, 5)
+					.concat(
+						(Transformer.majorToRast(generateScale("G major")) || []).slice(
+							0,
+							4
+						)
+					),
 				descendingNotes: generateScale("D phrygian dominant"),
 			},
 			G: {
-				notes: (generateScale("G phrygian dominant") || []).slice(0,5).concat(
-					(Transformer.majorToRast(generateScale("C major")) || []).slice(0,4)
-				),
+				notes: (generateScale("G phrygian dominant") || [])
+					.slice(0, 5)
+					.concat(
+						(Transformer.majorToRast(generateScale("C major")) || []).slice(
+							0,
+							4
+						)
+					),
 				descendingNotes: generateScale("G phrygian dominant"),
 			},
 			A: {
-				notes: (generateScale("A phrygian dominant") || []).slice(0,5).concat((Transformer.majorToRast(generateScale("D major")) || []).slice(0,4)
-				),
+				notes: (generateScale("A phrygian dominant") || [])
+					.slice(0, 5)
+					.concat(
+						(Transformer.majorToRast(generateScale("D major")) || []).slice(
+							0,
+							4
+						)
+					),
 				descendingNotes: generateScale("A phrygian dominant") || [],
 			},
 		},
 	},
-	nahawand: {
+	{
 		name: "Nahawand",
 		descendingScaleVariantDegree: 7,
 		rootNotes: {
@@ -221,31 +236,44 @@ export const MAQAM_DATA = {
 			},
 		},
 	},
-	saba: {
+	{
 		name: "Saba",
 		rootNotes: {
 			D: {
-			
-				notes: (Transformer.minorToBayati(generateScale("D minor")) || []).slice(0,2).concat((generateScale("F phrygian dominant") || []).slice(0,5)),
-				descendingNotes:  (Transformer.minorToBayati(generateScale("D minor")) || []).slice(0,2).concat((generateScale("F phrygian dominant") || []).slice(0,5)),			
+				notes: (Transformer.minorToBayati(generateScale("D minor")) || [])
+					.slice(0, 2)
+					.concat((generateScale("F phrygian dominant") || []).slice(0, 5)),
+				descendingNotes: (
+					Transformer.minorToBayati(generateScale("D minor")) || []
+				)
+					.slice(0, 2)
+					.concat((generateScale("F phrygian dominant") || []).slice(0, 5)),
 			},
 			G: {
-
-				notes: (Transformer.minorToBayati(generateScale("G minor")) || []).slice(0,2).concat((generateScale("Bb phrygian dominant") || []).slice(0,5)).map(note => note === "Cb" ? "B" : note),
-				descendingNotes:  (Transformer.minorToBayati(generateScale("G minor")) || []).slice(0,2).concat((generateScale("Bb phrygian dominant") || []).slice(0,5)).map(note => note === "Cb" ? "B" : note),
+				notes: (Transformer.minorToBayati(generateScale("G minor")) || [])
+					.slice(0, 2)
+					.concat((generateScale("Bb phrygian dominant") || []).slice(0, 5))
+					.map((note) => (note === "Cb" ? "B" : note)),
+				descendingNotes: (
+					Transformer.minorToBayati(generateScale("G minor")) || []
+				)
+					.slice(0, 2)
+					.concat((generateScale("Bb phrygian dominant") || []).slice(0, 5))
+					.map((note) => (note === "Cb" ? "B" : note)),
 			},
 			A: {
-			
-				notes: (Transformer.minorToBayati(generateScale("A minor")) || []).slice(0,2).concat(
-					(generateScale("C phrygian dominant") || []).slice(0,5)
-				),
-				descendingNotes:  (Transformer.minorToBayati(generateScale("A minor")) || []).slice(0,2).concat(
-					(generateScale("C phrygian dominant") || []).slice(0,5)
-				),			
+				notes: (Transformer.minorToBayati(generateScale("A minor")) || [])
+					.slice(0, 2)
+					.concat((generateScale("C phrygian dominant") || []).slice(0, 5)),
+				descendingNotes: (
+					Transformer.minorToBayati(generateScale("A minor")) || []
+				)
+					.slice(0, 2)
+					.concat((generateScale("C phrygian dominant") || []).slice(0, 5)),
 			},
 		},
 	},
-	kurd: {
+	{
 		name: "Kurd",
 		rootNotes: {
 			D: {
@@ -262,7 +290,7 @@ export const MAQAM_DATA = {
 			},
 		},
 	},
-	ajam: {
+	{
 		name: "Ajam",
 		descendingScaleVariantDegree: 7,
 		rootNotes: {
@@ -280,23 +308,21 @@ export const MAQAM_DATA = {
 			},
 		},
 	},
-	sikah: {
+	{
 		name: "Sikah",
 		rootNotes: {
 			// hard coded because it's clearer that sikah always starts with a half flat note
-			"E-hf": { 
-				notes: ['E-hf', 'F', 'G', 'Ab', 'B', 'C', 'D', 'E-hf'],
-				descendingNotes: ['E-hf', 'F', 'G', 'Ab', 'B', 'C', 'D', 'E-hf'],
+			"E-hf": {
+				notes: ["E-hf", "F", "G", "Ab", "B", "C", "D", "E-hf"],
+				descendingNotes: ["E-hf", "F", "G", "Ab", "B", "C", "D", "E-hf"],
 			},
-			"B-hf": { 
-				notes: ['B-hf', 'C', 'D', 'Eb', 'Gb', 'G', 'A', 'B-hf'],
-				descendingNotes: ['B-hf', 'C', 'D', 'Eb', 'Gb', 'G', 'A', 'B-hf'],
-			}
-		}
+			"B-hf": {
+				notes: ["B-hf", "C", "D", "Eb", "Gb", "G", "A", "B-hf"],
+				descendingNotes: ["B-hf", "C", "D", "Eb", "Gb", "G", "A", "B-hf"],
+			},
+		},
 	},
-	/** WESTERN SCALES STARTING HERE */
-
-};
+];
 
 export const WESTERN_SCALES = {
 	major: {

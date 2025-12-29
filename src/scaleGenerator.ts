@@ -1,7 +1,6 @@
 import * as Scale from "@tonaljs/scale";
 import * as Note from "@tonaljs/note";
 
-console.log("All available scale names", Scale.names());
 
 export function generateScale(scaleKeyAndScaleName: string | null): string[] | [] {
 	if (!scaleKeyAndScaleName) {
@@ -54,5 +53,4 @@ export class Transformer {
 
 }
 
-console.log("Bb phrygian dominant scale debugging:", generateScale("Bb phrygian dominant").slice(0,5));
 

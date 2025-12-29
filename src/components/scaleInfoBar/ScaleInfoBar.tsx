@@ -23,22 +23,20 @@ function ScaleInfoBar({
 	setRootNote,
 	instrument,
 }: ScaleInfoBarProps) {
-	console.log("ScaleInfoBar component > scale", scale);
+	
 	const notesInScale = scale.rootNotes[rootNote].notes;
-	console.log("ScaleInfoBar component > notesInScale", notesInScale);
+	
 	const descendingNotesInScale =
 		scale.rootNotes[rootNote].descendingNotes || [];
 	const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);
-	console.log("ScaleInfoBar component > notesToPlay", notesToPlay);
+	
 	const descendingNotesToPlay = getNotesToPlay(
 		NOTE_VALUES,
 		descendingNotesInScale
 	).reverse();
-	console.log("ScaleInfoBar component > notesToPlay", notesToPlay);
-	console.log(
-		"ScaleInfoBar component > descendingNotesToPlay",
-		descendingNotesToPlay
-	);
+	
+	
+
 	const allNotesToPlay = [...notesToPlay, ...descendingNotesToPlay.toReversed()].map(
 		(note) => JSON.stringify(note)
 	);
@@ -46,9 +44,9 @@ function ScaleInfoBar({
 	const uniqueNotesForForDisplay = Array.from(new Set(allNotesToPlay)).map((note) =>
 		JSON.parse(note)
 	).sort((a, b) => a.value - b.value);
-	console.log("ScaleInfoBar component > uniqueNotesForForDisplay", uniqueNotesForForDisplay);
+	
 
-	console.log("ScaleInfoBar component > allNotesToPlay", allNotesToPlay);
+	
 	const handleClickPlay = (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
@@ -63,7 +61,7 @@ function ScaleInfoBar({
 		const notesInScale = scale.rootNotes[rootNote].notes;
 
 		const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);
-		console.log("notesToPlay", notesToPlay);
+		
 
 		notesToPlay.forEach((note, index: number) => {
 			const { name, value, octave } = note;
@@ -116,7 +114,7 @@ function ScaleInfoBar({
 			});
 		}, notesToPlay.length * 500 + 1000);
 	};
-	console.log("ScaleInfoBar component > notesToPlay", notesToPlay);
+	
 	return (
 		<div className="scale-info-bar">
 			<button

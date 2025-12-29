@@ -22,22 +22,14 @@ function Keyboard({ audioManager, scale, rootNote, instrument }: KeyboardProps) 
 	const notesInScale = scale.rootNotes[rootNote].notes;
 	const descendingNotesInScale =
 		scale.rootNotes[rootNote].descendingNotes || [];
-	console.log("Keyboard component > notesInScale", notesInScale);
-	console.log("Keyboard component > descendingNotesInScale", descendingNotesInScale);
+	
+	
 	// the 8 notes of the scale, in order, starting from the root note on the keyboard
 	const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);
-	const descendingNotesToPlay = getNotesToPlay(
-		NOTE_VALUES,
-		descendingNotesInScale
-	).reverse();
-	const allNotesToPlay = [...notesToPlay, ...descendingNotesToPlay].map(
-		(note) => JSON.stringify(note)
-	);
-	const uniqueNotesForForDisplay = Array.from(new Set(allNotesToPlay)).map((note) =>
-		JSON.parse(note)
-	).sort((a, b) => a.value - b.value);
+
+
+
 	
-	console.log("Keyboard component > uniqueNotesForForDisplay", uniqueNotesForForDisplay);
 
 	const handleClick = (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>

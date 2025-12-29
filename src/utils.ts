@@ -32,14 +32,14 @@ export function quarterize(note: NoteObject): NoteObject {
  *
  * */
 export function getNotesToPlay(noteValues: NoteObject[], notesInScale: Array<string>): NoteObject[] {
-	console.log("notesInScale[0]", notesInScale[0]);
+	
 	const isSikah = notesInScale[0]?.includes("-hf");
 	const firstNote = isSikah ? notesInScale[0].split("-")[0] : notesInScale[0];
-	console.log("firstNote", firstNote);
+	
 	const startIndex = noteValues.findIndex(
 		(note: NoteObject) => note.name === firstNote || quarterize(note).name === firstNote
 	);
-	console.log("startIndex", startIndex);
+	
 
 	const notesToPlay = noteValues
 		.filter((note: NoteObject, index: number) => {
@@ -54,7 +54,7 @@ export function getNotesToPlay(noteValues: NoteObject[], notesInScale: Array<str
 			return false;
 		})
 		.map((note: NoteObject) => (isHalfFlat(notesInScale, note) ? quarterize(note) : note));
-		console.log("notesToPlay before return", notesToPlay);
+		
 	return notesToPlay;
 }
 

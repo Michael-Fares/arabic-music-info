@@ -19,10 +19,10 @@ interface ScalePanelProps {
 }
 
 function ScalePanel({ audioManager, scale, instrument }: ScalePanelProps) {
-	console.log(`-------------- ${scale.name}------------`);
-	console.log("ScalePanel component > scale", scale);
+	
+	
 	const [rootNote, setRootNote] = useState(Object.keys(scale.rootNotes)[0]);
-	console.log("ScalePanel component > scale", scale);
+	
 	const { notes, descendingNotes} = scale.rootNotes[rootNote];
 	return (
 		<div
