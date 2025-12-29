@@ -11,8 +11,9 @@ interface ScalePanelProps {
 	};
 	scale: {
 		name: string;
-		descendingScaleVariantDegree: number;
-		rootNotes: Record<string, { notes: string[], descendingNotes?: string[] }>;
+		descendingScaleVariantDegree: number | undefined;
+		rootNotes: Record<string, { notes: string[]; descendingNotes?: string[] }>;
+		description: string;
 	};
 	rootNote: string;
 	instrument: string;
@@ -20,6 +21,7 @@ interface ScalePanelProps {
 
 function ScalePanel({ audioManager, scale, instrument }: ScalePanelProps) {
 	
+	console.log("description.split", scale.description?.split("|"));
 	
 	const [rootNote, setRootNote] = useState(Object.keys(scale.rootNotes)[0]);
 	
@@ -64,6 +66,8 @@ function ScalePanel({ audioManager, scale, instrument }: ScalePanelProps) {
 				rootNote={rootNote}
 				instrument={instrument}
 			/>
+			{/* DESCRIPTION PLACEHOLDER RESTING HERE */}
+			<div className="description"> {scale.description ?? null}</div>
 		</div>
 	);
 }

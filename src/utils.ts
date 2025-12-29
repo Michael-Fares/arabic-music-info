@@ -85,3 +85,18 @@ export function formatNotesForVexflowScore(notesToPlay: NoteObject[]) {
 	});
 	return vfnotes;
 }
+
+export function normalizeMaqam(maqam: any) {
+  return {
+    ...maqam,
+    rootNotes: Object.fromEntries(
+      Object.entries(maqam.rootNotes).map(([k, v]: [string, any]) => [
+        k,
+        {
+          notes: v?.notes ?? [], // ensure notes is always an array
+          descendingNotes: v?.descendingNotes,
+        },
+      ])
+    ),
+  } as Maqam;
+}

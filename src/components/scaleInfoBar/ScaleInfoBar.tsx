@@ -9,8 +9,9 @@ interface ScaleInfoBarProps {
 	};
 	scale: {
 		name: string;
-		descendingScaleVariantDegree: number;
+		descendingScaleVariantDegree: number | undefined;
 		rootNotes: Record<string, { notes: string[]; descendingNotes?: string[] }>;
+		description: string;
 	};
 	rootNote: string;
 	setRootNote: (note: string) => void;

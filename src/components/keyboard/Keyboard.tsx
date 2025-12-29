@@ -10,7 +10,7 @@ interface KeyboardProps {
 		samples: Record<string, any>;
 	};
 	scale: {
-		descendingScaleVariantDegree: number;
+		descendingScaleVariantDegree: number | undefined;
 		rootNotes: Record<string, { notes: string[]; descendingNotes?: string[] }>;
 	};
 	rootNote: string;
