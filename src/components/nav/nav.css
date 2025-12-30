@@ -1,7 +1,7 @@
 @import url("../../variables.css");
 
 nav {
-  background-color: #eee;
+  background-color: var(--base-background-color);
   padding: 0.5rem;
   display: flex;
   align-items: start;
@@ -23,12 +23,12 @@ nav {
       transition: ease-in-out 0.2s;
       &.active {
         font-weight: bold;
-        color: var(--play-button-color);
+        color: var(--red-primary);
       }
       /* progressive enhancement - css only scrollspy with scroll-target group */
       &:target-current {
         font-weight: bold;
-        color: var(--play-button-color);
+        color: var(--red-primary);
       }
     } 
   }   

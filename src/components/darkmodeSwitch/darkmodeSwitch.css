@@ -1,0 +1,11 @@
+@import url("../../variables.css");
+#darkmode-switch {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 0.5rem;
+    background-color: var(--base-background-color);
+    svg {
+        fill: var(--base-color)
+    }
+}

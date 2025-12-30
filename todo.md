@@ -5,6 +5,8 @@ Probably good to have a "Start Here" button.
 
 - Dark mode switch + implement dark mode decide on colors CSS
 
+- Differentiate in current RUN color (all notes) VS in current SCALE color (8 notes in scale)
+
 - Descriptions - probably keep as static string and then just have the component manpipulate / split out any links on a | delimiter
 
 - Implement Hijaz narrow interval
