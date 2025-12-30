@@ -4,8 +4,10 @@ import { useEffect } from "react";
 
 function Nav({ maqamList }: { maqamList: string[] }) {
 	useEffect(() => {
-
-		const CSS_only_scrollspy = window.CSS.supports("scroll-target-group", "auto");
+		const CSS_only_scrollspy = window.CSS.supports(
+			"scroll-target-group",
+			"auto"
+		);
 		if (CSS_only_scrollspy) {
 			return;
 		}
@@ -64,13 +66,16 @@ function Nav({ maqamList }: { maqamList: string[] }) {
 
 	return (
 		<nav>
-			<p>Select a Maqam:</p>
+			<p>Maqams:</p>
 			<ul>
-				{maqamList.map((maqam) => (
-					<li key={maqam}>
-						<a href={`#${maqam}`}>{maqam.toUpperCase()}</a>
-					</li>
-				))}
+				{maqamList.map((maqam) => {
+					const formattedMaqamName = maqam.charAt(0).toUpperCase() + maqam.substring(1);
+					return (
+						<li key={maqam}>
+							<a href={`#${maqam}`}>{formattedMaqamName}</a>
+						</li>
+					);
+				})}
 			</ul>
 		</nav>
 	);

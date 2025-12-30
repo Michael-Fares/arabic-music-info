@@ -1,15 +1,17 @@
+@import url("../../variables.css");
 nav {
   background-color: #eee;
   padding: 0.5rem;
   display: flex;
+  align-items: start;
   gap: 1rem;
   position: sticky;
   top: 0;
   z-index: 100;
-  overflow: auto;
   ul {
     list-style: none;
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
     /* progressive enhancement - css only scrollspy with scroll-target group */
     scroll-target-group: auto;
@@ -20,12 +22,12 @@ nav {
       transition: ease-in-out 0.2s;
       &.active {
         font-weight: bold;
-        color: darkgreen;
+        color: var(--play-button-color);
       }
       /* progressive enhancement - css only scrollspy with scroll-target group */
       &:target-current {
         font-weight: bold;
-        color: darkgreen;
+        color: var(--play-button-color);
       }
     } 
   }   

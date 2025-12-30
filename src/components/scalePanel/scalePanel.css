@@ -2,9 +2,9 @@
     border: 1px solid #ccc;
     padding: 1rem;
     border-radius: 1rem;
-    margin-top: 0.25rem;
+    margin-top: 2rem;
     background-color: #f9f9f9;
-    max-width: 900px;
+    max-width: 1200px;
     margin-inline: auto;
     .score-container {
         display: flex;

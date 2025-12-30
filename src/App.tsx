@@ -2,6 +2,8 @@ import "./App.css";
 import { MAQAM_DATA, INSTUMENTS } from "./constants";
 import ScalePanel from "./components/scalePanel/ScalePanel";
 import Nav from "./components/nav/Nav";
+import Header from "./components/header/Header";
+import InstrumentSelector from "./components/intstumentSelector/InstrumentSelector";
 import { useState } from "react";
 import { AudioManager } from "./audio";
 import { normalizeMaqam } from "./utils";
@@ -11,24 +13,13 @@ function App() {
 	const audioManager = new AudioManager();
 	const [instrument, setInstrument] = useState(INSTUMENTS.piano);
 	const maqamList = Object.values(MAQAM_DATA).map((scale) => scale.name.toLowerCase());
+	let showInstSelector  = false;
 	return (
 		<>
-			<h1>Arabic Music Ear Trainer</h1>
-			<p>Learn about microtonal Middle Eastern scales</p>
-			<div className="instrument-selector">
-				<label htmlFor="instrument">Select Instrument: </label>
-				<select
-					id="instrument"
-					value={instrument}
-					onChange={(e) => setInstrument(e.target.value)}
-				>
-					{Object.values(INSTUMENTS).map((inst) => (
-						<option key={inst} value={inst}>
-							{inst.charAt(0).toUpperCase() + inst.slice(1)}
-						</option>
-					))}
-				</select>
-			</div>
+			<Header />
+			{/* placeholder add this in later if needed, probably piano is enough for now */}
+			{showInstSelector && <InstrumentSelector instrument={instrument} setInstrument={setInstrument} instruments={INSTUMENTS} />}
+
 			<Nav maqamList={maqamList} />
 			{MAQAM_DATA.map((maqam) => {
 
