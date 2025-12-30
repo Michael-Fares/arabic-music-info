@@ -1,7 +1,7 @@
 @import url("../../variables.css");
 .scale-info-bar {
     margin: 0.25rem;
-    background-color: #eee;
+    background-color: var(--scale-info-bar-background-color);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -11,7 +11,7 @@
 
     .play-button {
         background-color: var(--play-button-color);
-        color: white;
+        color: var(--base-background-color);
         padding: 0.5rem 1rem;
         border: none;
         border-radius: 0.25rem;

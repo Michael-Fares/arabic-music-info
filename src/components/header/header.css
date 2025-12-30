@@ -4,7 +4,7 @@
     background-color: var(--in-current-run-color);
     padding-block: 0.5rem;
     .start-here-button-placholder {
-        background-color: white;
+        background-color: var(--base-background-color);
         padding: 0.75rem;
         position: absolute;
         top: 0;

@@ -1,9 +1,9 @@
+@import url("../../variables.css");
 .scale-panel {
-    border: 1px solid #ccc;
+    border: 1px solid var(--scale-panel-border-color);
     padding: 1rem;
     border-radius: 1rem;
     margin-top: 2rem;
-    background-color: #f9f9f9;
     max-width: 1200px;
     margin-inline: auto;
     .score-container {

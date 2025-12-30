@@ -1,10 +1,31 @@
 :root {
-    /* note highlight color */
+    /* for both dark and light - global */
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    /* base color variables */
+    --base-color: #1b0a0a;
+    --base-background-color: #ffffff;
+    --green-primary: #81cc83;
+    --green-secondary: #1e7e51;
+    --green-3: #d7fe98;
+    --base-grey: #eee;
+
+    /* specific color variables */
+    --scale-panel-border-color: #ccc;
+    --scale-info-bar-background-color: var(--base-grey);
     --highlight-color: royalblue;
     --black-key-color: black;
     --white-key-color: white;
-    --quarter-tone-key-color: rgb(157, 32, 32);
+    --quarter-tone-key-color: #9d2020;
     --in-current-run-color: #81cc83;
-    --descending-variant-note-color: #d7fe98;
-    --play-button-color: #1e7e51;
+    --descending-variant-note-color: var(--green-3);
+    --play-button-color: var(--green-secondary);
+    
+    color: var(--base-color); 
+    background-color: var(--base-background-color);
 }
