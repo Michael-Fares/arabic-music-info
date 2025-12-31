@@ -12,6 +12,7 @@ dist
 dist-ssr
 vanilla-testing
 *.local
+todo.md
 
 # Editor directories and files
 .vscode/*
