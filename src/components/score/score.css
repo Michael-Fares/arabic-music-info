@@ -4,8 +4,8 @@
         width: 100% !important;
         height: auto !important;
         user-select: none;
-        fill: var(--base-color);
-        stroke: var(--base-color);
+        fill: var(--score-color);
+        stroke: var(--score-color);
     }
     .vf-note {
         cursor: pointer;

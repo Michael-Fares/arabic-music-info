@@ -16,14 +16,17 @@
     --base-grey: #eee;
     --red-primary: #9d2020;
 
-    --sun-moon-icon-fill: rgb(151, 61, 184);
+    --sun-moon-icon-fill: #973db8;
 
     /* specific color variables */
     --scale-panel-border-color: #ccc;
     --scale-info-bar-background-color: var(--base-grey);
+    --score-color: black;
+
     --highlight-color: royalblue;
     --black-key-color: black;
     --white-key-color: white;
+    --key-outline-color: black;
     --quarter-tone-key-color: var(--red-primary);
     --in-current-run-color: var(--green-primary);
     --descending-variant-note-color: var(--green-3);
@@ -33,9 +36,33 @@
     background-color: var(--base-background-color);
 }
 [data-theme="dark"] {
-    --base-color:white;
-    --base-background-color: #1b0a0a;
-    --base-grey: #5b0e0e;
+
+        /* base color variables */
+    --base-color: white; 
+    --base-background-color:  #3D0000;
+    --green-primary:  #1e7e51;
+    --green-secondary:  #81cc83;
+    --green-3: #35ad51;
+    --base-grey: #463f3f;
+    --red-primary: #ff4444;
+
+    --sun-moon-icon-fill: #6bdfff;
+
+    /* specific color variables */
+    --scale-panel-border-color: #ccc;
+    --scale-info-bar-background-color: var(--base-grey);
+    --score-color: #d9bdbd;
+    --highlight-color: #a6b2d7;
+    --black-key-color: #351919;
+    --white-key-color: white;
+    --key-outline-color: #d9bdbd;
+    --quarter-tone-key-color: gold;
+    --in-current-run-color: var(--green-primary);
+    --descending-variant-note-color: #2b4431;
+    --play-button-color: var(--green-secondary);
+    
+    color: var(--base-color); 
+    background-color: var(--base-background-color);
 }
 
 

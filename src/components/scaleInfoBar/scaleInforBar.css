@@ -37,15 +37,16 @@
     }
     .note-pill {
         background-color: var(--in-current-run-color);
-        color: black;
-        outline: 1px solid black;
+        color: var(--base-color);
+        outline: 1px solid var(--base-color);
         padding: 0.5rem;
         &.descending-variant {
             background-color: var(--descending-variant-note-color);
+            color: var(--base-color)
         }
     }
      .note-pill.highlight {
-        background-color: royalblue;
-        color: white;
+        background-color: var(--highlight-color);
+        color: var(--base-background-color);
     }
 }

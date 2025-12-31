@@ -2,12 +2,12 @@
 .keyboard-widget {
     padding: 1rem;
     .keyboard {
-        display: flex;
-        justify-content: center;
+        width: max-content;
+        margin: 0 auto;
         .key {
             display: inline-block;
             vertical-align: top;
-            outline: 1px solid var(--black-key-color);
+            outline: 1px solid var(--key-outline-color);
             cursor: pointer;
             position: relative;
             &:not(.no-offset) {
