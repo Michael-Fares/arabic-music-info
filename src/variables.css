@@ -29,10 +29,10 @@
     
     color: var(--base-color); 
     background-color: var(--base-background-color);
-
-
-    .darkmode {
-        --base-color:white;
-        --base-background-color: #1b0a0a;
-    }
 }
+[data-theme="dark"] {
+    --base-color:white;
+    --base-background-color: #1b0a0a;
+}
+
+

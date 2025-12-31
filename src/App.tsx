@@ -1,8 +1,10 @@
 import "./App.css";
+import useLocalStorage from "use-local-storage";
 import { MAQAM_DATA, INSTUMENTS } from "./constants";
 import ScalePanel from "./components/scalePanel/ScalePanel";
 import Nav from "./components/nav/Nav";
 import Header from "./components/header/Header";
+import DarkmodeSwitch from "./components/darkmodeSwitch/DarkmodeSwitch";
 import InstrumentSelector from "./components/intstumentSelector/InstrumentSelector";
 import { useState } from "react";
 import { AudioManager } from "./audio";
@@ -14,8 +16,11 @@ function App() {
 	const [instrument, setInstrument] = useState(INSTUMENTS.piano);
 	const maqamList = Object.values(MAQAM_DATA).map((scale) => scale.name.toLowerCase());
 	let showInstSelector  = false;
+
+	const [isDark, setIsDark] = useLocalStorage("isDark", false)
 	return (
-		<>
+		<div className="App" data-theme={isDark ? "dark" : "light"}>
+			<DarkmodeSwitch isChecked={isDark} handleChange={() => setIsDark(!isDark)} />
 			<Header />
 			{/* placeholder add this in later if needed, probably piano is enough for now */}
 			{showInstSelector && <InstrumentSelector instrument={instrument} setInstrument={setInstrument} instruments={INSTUMENTS} />}
@@ -46,7 +51,7 @@ function App() {
 					/>
 				);
 			})}
-		</>
+		</div>
 	);
 }
 

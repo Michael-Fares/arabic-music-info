@@ -1,11 +1,43 @@
 @import url("../../variables.css");
-#darkmode-switch {
-    position: fixed;
+.darkmode-switch-container {
+    position: absolute;
     top: 0;
     left: 0;
     padding: 0.5rem;
-    background-color: var(--base-background-color);
     svg {
         fill: var(--base-color)
+    }
+
+    .toggle {
+        visibility: hidden;
+    }
+    .toggle + label {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        cursor: pointer;
+        color: var(--base-color);
+        /* background of switch */
+        &::before {
+            content: "";
+            height: 1rem;
+            width: 2rem;
+            border-radius: 1rem;
+            background-color: var(--red-primary);
+        }
+        /* circle inside of switch */
+        &::after {
+            content: "";
+            height: 0.8rem;
+            width: 0.8rem;
+            border-radius: 1rem;
+            background-color: var(--green-3);
+            position: absolute;
+            left: 0.7rem;
+            transition: ease-in-out 0.2s;
+        }
+    }
+    .toggle:checked + label::after {
+        transform: translateX(100%);
     }
 }
