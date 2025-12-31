@@ -336,7 +336,7 @@ export const SCALE_DATA = [
 	 * WESTERN SCALES
 	 * 
 	 */
-		{
+	{
 		name: "Major",
 		isMaqam: false,
 		rootNotes: {

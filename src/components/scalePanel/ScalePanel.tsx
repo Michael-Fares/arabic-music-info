@@ -25,7 +25,7 @@ function ScalePanel({ audioManager, scale, instrument }: ScalePanelProps) {
 	
 	const [rootNote, setRootNote] = useState(Object.keys(scale.rootNotes)[0]);
 	
-	const { notes, descendingNotes} = scale.rootNotes[rootNote];
+	const { notes, descendingNotes } = scale.rootNotes[rootNote];
 	return (
 		<div
 			className="scale-panel"
