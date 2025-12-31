@@ -16,7 +16,7 @@ function App() {
 	const [instrument, setInstrument] = useState(INSTUMENTS.piano);
 	const [isDark, setIsDark] = useLocalStorage("isDark", false)
 
-	const maqams = Object.values(SCALE_DATA).filter((scale) => scale.isMaqam);
+	const maqams = SCALE_DATA.filter((scale) => scale.isMaqam);
 	const maqamList = maqams.map((maqam) => maqam.name.toLowerCase());
 
 	let showInstSelector  = false;
