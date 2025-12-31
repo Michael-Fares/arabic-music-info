@@ -4,8 +4,9 @@ interface NoteObject {
     octave: number
 }
 
-interface Maqam {
+interface Scale {
     name: string,
+    isMaqam: boolean;
     descendingScaleVariantDegree: number | undefined,
     rootNotes: Record<string, { notes?: string[], descendingNotes?: string[] }>
     description: string;

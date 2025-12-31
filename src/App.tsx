@@ -1,6 +1,6 @@
 import "./App.css";
 import useLocalStorage from "use-local-storage";
-import { MAQAM_DATA, INSTUMENTS } from "./constants";
+import { SCALE_DATA, INSTUMENTS } from "./constants";
 import ScalePanel from "./components/scalePanel/ScalePanel";
 import Nav from "./components/nav/Nav";
 import Header from "./components/header/Header";
@@ -14,10 +14,14 @@ import { normalizeMaqam } from "./utils";
 function App() {
 	const audioManager = new AudioManager();
 	const [instrument, setInstrument] = useState(INSTUMENTS.piano);
-	const maqamList = Object.values(MAQAM_DATA).map((scale) => scale.name.toLowerCase());
+	const [isDark, setIsDark] = useLocalStorage("isDark", false)
+
+	const maqams = Object.values(SCALE_DATA).filter((scale) => scale.isMaqam);
+	const maqamList = maqams.map((maqam) => maqam.name.toLowerCase());
+
 	let showInstSelector  = false;
 
-	const [isDark, setIsDark] = useLocalStorage("isDark", false)
+
 	return (
 		<div className="App" data-theme={isDark ? "dark" : "light"}>
 			<DarkmodeSwitch isChecked={isDark} handleChange={() => setIsDark(!isDark)} />
@@ -26,11 +30,11 @@ function App() {
 			{showInstSelector && <InstrumentSelector instrument={instrument} setInstrument={setInstrument} instruments={INSTUMENTS} />}
 
 			<Nav maqamList={maqamList} />
-			{MAQAM_DATA.map((maqam) => {
+			{maqams.map((maqam) => {
 
 				const rootNote = Object.keys(maqam.rootNotes)[0]; // pick the first available root note
 
-				const normalized = normalizeMaqam(maqam) as Maqam;
+				const normalized = normalizeMaqam(maqam) as Scale;
 				const safeScale = {
 					...normalized,
 					rootNotes: Object.fromEntries(

@@ -129,10 +129,12 @@ export const NOTE_VALUES = [
 	},
 ];
 
-export const MAQAM_DATA = [
+export const SCALE_DATA = [
 	{
 		name: "Rast",
-		description: "Rast has 2 variants. The first variant is like a |major| scale with a half flat 3rd and half flat 7th degree. The second variant is like a |mixolydian| scale with a half flat 3rd degree. Tradionally, the first variant is used for ascending phrases, while the second variant is used for descending phrases, however, both variants can be used in either direction depending on the musical context.",
+		isMaqam: true,
+		description:
+			"Rast has 2 variants. The first variant is like a |major| scale with a half flat 3rd and half flat 7th degree. The second variant is like a |mixolydian| scale with a half flat 3rd degree. Tradionally, the first variant is used for ascending phrases, while the second variant is used for descending phrases, however, both variants can be used in either direction depending on the musical context.",
 		descendingScaleVariantDegree: 7,
 		rootNotes: {
 			C: {
@@ -157,6 +159,7 @@ export const MAQAM_DATA = [
 	},
 	{
 		name: "Bayati",
+		isMaqam: true,
 		descendingScaleVariantDegree: 6,
 		rootNotes: {
 			D: {
@@ -175,6 +178,7 @@ export const MAQAM_DATA = [
 	},
 	{
 		name: "Hijaz",
+		isMaqam: true,
 		descendingScaleVariantDegree: 6,
 		rootNotes: {
 			D: {
@@ -215,6 +219,7 @@ export const MAQAM_DATA = [
 	},
 	{
 		name: "Nahawand",
+		isMaqam: true,
 		descendingScaleVariantDegree: 7,
 		rootNotes: {
 			C: {
@@ -237,6 +242,7 @@ export const MAQAM_DATA = [
 	},
 	{
 		name: "Saba",
+		isMaqam: true,
 		rootNotes: {
 			D: {
 				notes: (Transformer.minorToBayati(generateScale("D minor")) || [])
@@ -274,6 +280,7 @@ export const MAQAM_DATA = [
 	},
 	{
 		name: "Kurd",
+		isMaqam: true,
 		rootNotes: {
 			D: {
 				notes: generateScale("D phrygian"),
@@ -291,6 +298,7 @@ export const MAQAM_DATA = [
 	},
 	{
 		name: "Ajam",
+		isMaqam: true,
 		descendingScaleVariantDegree: 7,
 		rootNotes: {
 			C: {
@@ -309,6 +317,7 @@ export const MAQAM_DATA = [
 	},
 	{
 		name: "Sikah",
+		isMaqam: true,
 		rootNotes: {
 			// hard coded because it's clearer that sikah always starts with a half flat note
 			"E-hf": {
@@ -321,11 +330,15 @@ export const MAQAM_DATA = [
 			},
 		},
 	},
-];
-
-export const WESTERN_SCALES = {
-	major: {
+	/*******
+	 * 
+	 * 
+	 * WESTERN SCALES
+	 * 
+	 */
+		{
 		name: "Major",
+		isMaqam: false,
 		rootNotes: {
 			C: {
 				notes: generateScale("C major"), // ["C", "D", "E", "F", "G", "A", "B", "C"],
@@ -338,8 +351,9 @@ export const WESTERN_SCALES = {
 			},
 		},
 	},
-	minor: {
+	{
 		name: "Minor",
+		isMaqam: false,
 		rootNotes: {
 			C: {
 				notes: generateScale("C minor"),
@@ -355,7 +369,8 @@ export const WESTERN_SCALES = {
 			},
 		},
 	},
-};
+];
+
 
 export const INSTUMENTS = {
 	piano: "piano",
