@@ -21,6 +21,10 @@
             margin-right: 0.5rem;
         }
     }
+    select {
+        background-color: var(--base-background-color);
+        color: var(--base-color)
+    }
     .notes-info {
         display: flex;
         align-items: center;
