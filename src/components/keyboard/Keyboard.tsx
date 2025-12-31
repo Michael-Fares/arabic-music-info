@@ -10,6 +10,7 @@ interface KeyboardProps {
 		samples: Record<string, any>;
 	};
 	scale: {
+		name: string;
 		descendingScaleVariantDegree: number | undefined;
 		rootNotes: Record<string, { notes: string[]; descendingNotes?: string[] }>;
 	};
@@ -30,16 +31,37 @@ function Keyboard({ audioManager, scale, rootNote, instrument }: KeyboardProps) 
 
 
 	
-
-	const handleClick = (
+    const parentScalePanelId = `${scale.name.toLowerCase()}`;
+	const handleKeyClick = (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
-		// one possible mechanism is to handle the quarter tone based on class
 		const noteValue = Number(
 			(event.target as HTMLButtonElement).getAttribute("data-note-value")
 		);
 		audioManager.playSample(noteValue, audioManager.samples[instrument]);
 	};
+	const handleKeyMouseDown = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+		const keyPressed = (event.target as HTMLButtonElement);
+		const vexflowScoreNoteToHighlight = document.querySelector(
+			`#${parentScalePanelId} svg .vf-note[data-note-name="${keyPressed.getAttribute("data-note-name")}"][data-octave="${keyPressed.getAttribute("data-octave")}"]`
+		)
+		const notePillToHighlight = document.querySelector(
+			`#${parentScalePanelId} .note-pill[data-note-name="${keyPressed.getAttribute("data-note-name")}"][data-octave="${keyPressed.getAttribute("data-octave")}"]`
+		)
+		vexflowScoreNoteToHighlight?.classList.add("highlight");
+		notePillToHighlight?.classList.add("highlight");
+	}
+	const handleKeyMouseUp = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+		const keyPressed = (event.target as HTMLButtonElement);
+		const vexflowScoreNoteToHighlight = document.querySelector(
+			`#${parentScalePanelId} svg .vf-note[data-note-name="${keyPressed.getAttribute("data-note-name")}"][data-octave="${keyPressed.getAttribute("data-octave")}"]`
+		)
+		const notePillToHighlight = document.querySelector(
+			`#${parentScalePanelId} .note-pill[data-note-name="${keyPressed.getAttribute("data-note-name")}"][data-octave="${keyPressed.getAttribute("data-octave")}"]`
+		)
+		notePillToHighlight?.classList.remove("highlight");
+		vexflowScoreNoteToHighlight?.classList.remove("highlight");
+	}
 	return (
 		<div className="keyboard-widget">
 			<div className="keyboard">
@@ -74,7 +96,9 @@ function Keyboard({ audioManager, scale, rootNote, instrument }: KeyboardProps) 
 								),
 								"descending-variant": descendingNotesInScale.includes(name) && !notesInScale.includes(name),
 							})}
-							onClick={(event) => handleClick(event)}
+							onClick={(event) => handleKeyClick(event)}
+							onMouseDown={(event) => handleKeyMouseDown(event)}
+							onMouseUp={(event) => handleKeyMouseUp(event)}
 						></button>
 					);
 				})}

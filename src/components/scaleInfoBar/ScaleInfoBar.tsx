@@ -55,7 +55,7 @@ function ScaleInfoBar({
 		const parent =
 			event.target instanceof Element
 				? event.target.closest(
-						`.scale-panel[data-scale-and-key="${scale.name}-${rootNote}"]`
+						`.scale-panel[id="${scale.name.toLowerCase()}"]`
 				  )
 				: null;
 

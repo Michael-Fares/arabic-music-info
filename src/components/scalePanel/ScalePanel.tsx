@@ -26,11 +26,12 @@ function ScalePanel({ audioManager, scale, instrument }: ScalePanelProps) {
 	const [rootNote, setRootNote] = useState(Object.keys(scale.rootNotes)[0]);
 	
 	const { notes, descendingNotes } = scale.rootNotes[rootNote];
+	const id = `${scale.name.toLowerCase()}`;
 	return (
 		<div
 			className="scale-panel"
-			id={`${scale.name.split(" ").join("-").toLowerCase()}`}
-			data-scale-and-key={`${scale.name}-${rootNote}`}
+			id={id}
+			data-scale-and-key={`${id}-${rootNote}`}
 		>
 			<ScaleInfoBar
 				audioManager={audioManager}

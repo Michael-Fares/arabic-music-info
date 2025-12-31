@@ -35,11 +35,44 @@ function Score({ audioManager, notes, scale, rootNote, instrument, direction }: 
 	interface HandleNoteClick {
 		(svg: NoteSVGElement): void;
 	}
+	interface HandleNoteMouseDown {
+		(svg: NoteSVGElement): void;
+	}
+	interface HandleNoteMouseUp {
+		(svg: NoteSVGElement): void;
+	}
 
+	const parentScalePanelId = scale.name.toLowerCase();
 	const handleNoteClick: HandleNoteClick = (svg) => {
 		const noteValue = Number(svg.getAttribute("data-note-value"));
 		audioManager.playSample(noteValue, audioManager.samples[instrument]);
 	};
+	const handleNoteMouseDown: HandleNoteMouseDown = (svg) => {
+
+		// if a corresponding keyboard key exists, highlight it
+		// similarly if a corresponding note pill exists, highlight it
+		const keyboardKeyToHilight = document.querySelector(
+			`#${parentScalePanelId} .key[data-note-name="${svg.getAttribute("data-note-name")}"][data-octave="${svg.getAttribute("data-octave")}"]`
+		) as HTMLButtonElement;
+		const notePillToHighlight = document.querySelector(
+			`#${parentScalePanelId} .note-pill[data-note-name="${svg.getAttribute("data-note-name")}"][data-octave="${svg.getAttribute("data-octave")}"]`
+		) as HTMLLIElement;
+		keyboardKeyToHilight?.classList.add("highlight");
+		notePillToHighlight?.classList.add("highlight");
+	};
+	const handleNoteMouseUp: HandleNoteMouseUp = (svg) => {
+		// if a corresponding keyboard key exists, remove highlight
+		// similarly if a corresponding note pill exists, remove highlight
+		const keyboardKeyToHilight = document.querySelector(
+			`#${parentScalePanelId} .key[data-note-name="${svg.getAttribute("data-note-name")}"][data-octave="${svg.getAttribute("data-octave")}"]`
+		) as HTMLButtonElement;
+		const notePillToHighlight = document.querySelector(
+			`#${parentScalePanelId} .note-pill[data-note-name="${svg.getAttribute("data-note-name")}"][data-octave="${svg.getAttribute("data-octave")}"]`
+		) as HTMLLIElement;
+		keyboardKeyToHilight?.classList.remove("highlight");
+		notePillToHighlight?.classList.remove("highlight");
+	};
+
 	useEffect(() => {
 		if (vexFlowContainerRef.current !== null && !rendered) {
 			const container = vexFlowContainerRef.current;
@@ -116,6 +149,8 @@ function Score({ audioManager, notes, scale, rootNote, instrument, direction }: 
 					if (svg) {
 						// listen to whatever event you want here
 						svg.addEventListener("click", () => handleNoteClick(svg), false);
+						svg.addEventListener("mousedown", () => handleNoteMouseDown(svg), false);
+						svg.addEventListener("mouseup", () => handleNoteMouseUp(svg), false);
 					}
 				});
 
@@ -131,6 +166,12 @@ function Score({ audioManager, notes, scale, rootNote, instrument, direction }: 
 					.forEach((note) => {
 						note.removeEventListener("click", () =>
 							handleNoteClick(note as NoteSVGElement)
+						);
+						note.removeEventListener("mousedown", () =>
+							handleNoteMouseDown(note as NoteSVGElement)
+						);
+						note.removeEventListener("mouseup", () =>
+							handleNoteMouseUp(note as NoteSVGElement)
 						);
 					});
 				vexFlowContainerRef.current.innerHTML = "";
