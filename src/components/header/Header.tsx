@@ -1,6 +1,6 @@
 
 import "./header.css";
-import DarkmodeSwitch from "../darkmodeSwitch/DarkmodeSwitch";
+
 
 function Header() {
     return (
