@@ -30,12 +30,12 @@ function ScaleInfoBar({
 	const notesInScale = scale.rootNotes[rootNote].notes;
 	
 	const descendingNotesInScale =
-		scale.rootNotes[rootNote].descendingNotes || [];
+		scale.rootNotes[rootNote]?.descendingNotes ?? scale.rootNotes[rootNote].notes.toReversed();
 	const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);
 	
 	const descendingNotesToPlay = getNotesToPlay(
 		NOTE_VALUES,
-		descendingNotesInScale
+		descendingNotesInScale 
 	).reverse();
 	
 	

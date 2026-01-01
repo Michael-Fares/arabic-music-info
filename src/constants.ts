@@ -133,7 +133,8 @@ export const SCALE_DATA = [
 	{
 		name: "Rast",
 		isMaqam: true,
-		description: "Rast has 2 variants. The first variant is like a |major| scale with a half flat 3rd and half flat 7th degree. The second variant is like a |mixolydian| scale with a half flat 3rd degree. Tradionally, the first variant is used for ascending phrases, while the second variant is used for descending phrases, however, both variants can be used in either direction depending on the musical context.",
+		description:
+			"Rast has 2 variants. The first variant is like a |major| scale with a half flat 3rd and half flat 7th degree. The second variant is like a |mixolydian| scale with a half flat 3rd degree. Tradionally, the first variant is used for ascending phrases, while the second variant is used for descending phrases, however, both variants can be used in either direction depending on the musical context.",
 		descendingScaleVariantDegree: 7,
 		rootNotes: {
 			C: {
@@ -159,7 +160,8 @@ export const SCALE_DATA = [
 	{
 		name: "Bayati",
 		isMaqam: true,
-		description: "Bayati is similar to the |dorian| scale, but with a half flat 3rd degree. The descending variant of Bayati is similar to the |natural minor| scale, but with a half flat 6th degree.",
+		description:
+			"Bayati is similar to the |dorian| scale, but with a half flat 3rd degree. The descending variant of Bayati is similar to the |natural minor| scale, but with a half flat 6th degree.",
 		descendingScaleVariantDegree: 6,
 		rootNotes: {
 			D: {
@@ -179,7 +181,8 @@ export const SCALE_DATA = [
 	{
 		name: "Hijaz",
 		isMaqam: true,
-		description: "Hijaz description placeholder lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet.",
+		description:
+			"Hijaz description placeholder lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet.",
 		descendingScaleVariantDegree: 6,
 		rootNotes: {
 			D: {
@@ -221,7 +224,8 @@ export const SCALE_DATA = [
 	{
 		name: "Nahawand",
 		isMaqam: true,
-		description: "Nahawand description placeholder lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet.",
+		description:
+			"Nahawand description placeholder lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet.",
 		descendingScaleVariantDegree: 7,
 		rootNotes: {
 			C: {
@@ -243,9 +247,27 @@ export const SCALE_DATA = [
 		},
 	},
 	{
+		name: "Kurd",
+		description:
+			"Kurd description placeholder lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet.",
+		isMaqam: true,
+		rootNotes: {
+			D: {
+				notes: generateScale("D phrygian"),
+			},
+			G: {
+				notes: generateScale("G phrygian"),
+			},
+			A: {
+				notes: generateScale("A phrygian"),
+			},
+		},
+	},
+	{
 		name: "Saba",
 		isMaqam: true,
-		description: "Saba description placeholder lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet.",
+		description:
+			"Saba description placeholder lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet.",
 		rootNotes: {
 			D: {
 				notes: (Transformer.minorToBayati(generateScale("D minor")) || [])
@@ -281,28 +303,11 @@ export const SCALE_DATA = [
 			},
 		},
 	},
-	{
-		name: "Kurd",
-		description: "Kurd description placeholder lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet.",
-		isMaqam: true,
-		rootNotes: {
-			D: {
-				notes: generateScale("D phrygian"),
-				descendingNotes: generateScale("D phrygian"),
-			},
-			G: {
-				notes: generateScale("G phrygian"),
-				descendingNotes: generateScale("G phrygian"),
-			},
-			A: {
-				notes: generateScale("A phrygian"),
-				descendingNotes: generateScale("A phrygian"),
-			},
-		},
-	},
+
 	{
 		name: "Ajam",
-		description: "Ajam description placeholder lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet.",
+		description:
+			"Ajam description placeholder lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet.",
 		isMaqam: true,
 		descendingScaleVariantDegree: 7,
 		rootNotes: {
@@ -322,7 +327,8 @@ export const SCALE_DATA = [
 	},
 	{
 		name: "Sikah",
-		description: "Sikah description placeholder lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet.",
+		description:
+			"Sikah description placeholder lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet.",
 		isMaqam: true,
 		rootNotes: {
 			// hard coded because it's clearer that sikah always starts with a half flat note
@@ -337,10 +343,10 @@ export const SCALE_DATA = [
 		},
 	},
 	/*******
-	 * 
-	 * 
+	 *
+	 *
 	 * WESTERN SCALES
-	 * 
+	 *
 	 */
 	{
 		name: "Major",
@@ -376,7 +382,6 @@ export const SCALE_DATA = [
 		},
 	},
 ];
-
 
 export const INSTUMENTS = {
 	piano: "piano",

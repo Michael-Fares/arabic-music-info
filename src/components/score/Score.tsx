@@ -10,22 +10,35 @@ interface ScoreProps {
 		samples: Record<string, any>;
 	};
 	scale: {
-		rootNotes: Record<string, { notes: string[] }>;
+		rootNotes: Record<string, { notes: string[]; descendingNotes?: string[] }>;
 		name: string;
 	};
-	notes: string[];
+
 	direction?: "asc" | "desc";
 	rootNote: string;
 	instrument: string;
 	parentScalePanelRef: React.RefObject<HTMLDivElement> | null;
 }
 
-function Score({ audioManager, notes, scale, rootNote, instrument, direction, parentScalePanelRef }: ScoreProps) {
-	
+function Score({ audioManager, scale, rootNote, instrument, direction, parentScalePanelRef }: ScoreProps) {
+	console.log("Score component > scale group of notes is", scale.rootNotes[rootNote]);
+
+	const noteSet = scale.rootNotes[rootNote];
+	const hasDifferentDescendingVersion = !!noteSet?.descendingNotes;
+	console.log("Score component > hasDifferentDescendingVersion:", hasDifferentDescendingVersion);
+
 	let rendered = false;
-	const notesInScale = notes;
-	
-	const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);
+	let notesInScale: string[] | undefined;
+
+	if (hasDifferentDescendingVersion && direction === "desc") {
+		notesInScale = noteSet?.descendingNotes;
+	} else if (!hasDifferentDescendingVersion && direction === "desc") {
+		notesInScale = noteSet?.notes.toReversed();
+	} else {
+		notesInScale = noteSet?.notes;
+	}
+
+	const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale ?? []);
 	const vexFlowContainerRef = useRef<HTMLDivElement>(null);
 	const vfnotes = direction === "desc" ? formatNotesForVexflowScore(notesToPlay).reverse() : formatNotesForVexflowScore(notesToPlay);
 	interface NoteSVGElement extends SVGElement {

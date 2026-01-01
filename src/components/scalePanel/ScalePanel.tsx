@@ -20,12 +20,10 @@ interface ScalePanelProps {
 }
 
 function ScalePanel({ audioManager, scale, instrument }: ScalePanelProps) {
-	
 	const parentScalePanelRef = useRef<HTMLDivElement>(null);
-	
+
 	const [rootNote, setRootNote] = useState(Object.keys(scale.rootNotes)[0]);
-	
-	const { notes, descendingNotes } = scale.rootNotes[rootNote];
+
 	const id = `${scale.name.toLowerCase()}`;
 	return (
 		<div
@@ -40,29 +38,33 @@ function ScalePanel({ audioManager, scale, instrument }: ScalePanelProps) {
 				rootNote={rootNote}
 				setRootNote={setRootNote}
 				instrument={instrument}
-				parentScalePanelRef={parentScalePanelRef as React.RefObject<HTMLDivElement>}
+				parentScalePanelRef={
+					parentScalePanelRef as React.RefObject<HTMLDivElement>
+				}
 			/>
 			<div className="score-container">
-			<Score
-				audioManager={audioManager}
-				scale={scale}
-				notes={notes}
-				direction="asc"
-				rootNote={rootNote}
-				instrument={instrument}
-				parentScalePanelRef={parentScalePanelRef as React.RefObject<HTMLDivElement>}
-			/>
-			{descendingNotes && (
 				<Score
 					audioManager={audioManager}
 					scale={scale}
-					notes={descendingNotes}	
+
+					direction="asc"
+					rootNote={rootNote}
+					instrument={instrument}
+					parentScalePanelRef={
+						parentScalePanelRef as React.RefObject<HTMLDivElement>
+					}
+				/>
+				<Score
+					audioManager={audioManager}
+					scale={scale}
+
 					direction="desc"
 					rootNote={rootNote}
 					instrument={instrument}
-					parentScalePanelRef={parentScalePanelRef as React.RefObject<HTMLDivElement>}
+					parentScalePanelRef={
+						parentScalePanelRef as React.RefObject<HTMLDivElement>
+					}
 				/>
-			)}
 			</div>
 
 			<Keyboard
@@ -70,7 +72,9 @@ function ScalePanel({ audioManager, scale, instrument }: ScalePanelProps) {
 				scale={scale}
 				rootNote={rootNote}
 				instrument={instrument}
-				parentScalePanelRef={parentScalePanelRef as React.RefObject<HTMLDivElement>}
+				parentScalePanelRef={
+					parentScalePanelRef as React.RefObject<HTMLDivElement>
+				}
 			/>
 			{/* DESCRIPTION PLACEHOLDER RESTING HERE */}
 			<div className="description"> {scale.description ?? null}</div>
