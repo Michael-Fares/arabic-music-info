@@ -133,6 +133,18 @@ export const SCALE_DATA = [
 	{
 		name: "Rast",
 		isMaqam: true,
+		comparisonWesternScaleNames: {
+			asc: {
+				name: "Major",
+				same: false,
+				withDegreesAsQuarterTones: [3, 7],
+			},
+			desc: {
+				name: "Mixolydian",
+				same: false,
+				withDegreesAsQuarterTones: [3],
+			},
+		},
 		description:
 			"Rast has 2 variants. The first variant is like a |major| scale with a half flat 3rd and half flat 7th degree. The second variant is like a |mixolydian| scale with a half flat 3rd degree. Tradionally, the first variant is used for ascending phrases, while the second variant is used for descending phrases, however, both variants can be used in either direction depending on the musical context.",
 		descendingScaleVariantDegree: 7,
@@ -160,6 +172,18 @@ export const SCALE_DATA = [
 	{
 		name: "Bayati",
 		isMaqam: true,
+		comparisonWesternScaleNames: {
+			asc: {
+				name: "Dorian",
+				same: false,
+				withDegreesAsQuarterTones: [2, 6],
+			},
+			desc: {
+				name: "Minor",
+				same: false,
+				withDegreesAsQuarterTones: [2],
+			},
+		},
 		description:
 			"Bayati is similar to the |dorian| scale, but with a half flat 3rd degree. The descending variant of Bayati is similar to the |natural minor| scale, but with a half flat 6th degree.",
 		descendingScaleVariantDegree: 6,
@@ -181,6 +205,18 @@ export const SCALE_DATA = [
 	{
 		name: "Hijaz",
 		isMaqam: true,
+		comparisonWesternScaleNames: {
+			asc: {
+				name: "Phrygian Dominant",
+				same: false,
+				withDegreesAsQuarterTones: [6],
+			},
+			desc: {
+				name: "Phrygian Dominant",
+				same: true,
+				withDegreesAsQuarterTones: null,
+			},
+		},
 		description:
 			"Hijaz description placeholder lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet.",
 		descendingScaleVariantDegree: 6,
@@ -224,6 +260,18 @@ export const SCALE_DATA = [
 	{
 		name: "Nahawand",
 		isMaqam: true,
+		comparisonWesternScaleNames: {
+			asc: {
+				name: "Harmonic Minor",
+				same: true,
+				withDegreesAsQuarterTones: null,
+			},
+			desc: {
+				name: "Minor",
+				same: true,
+				withDegreesAsQuarterTones: null,
+			},
+		},
 		description:
 			"Nahawand description placeholder lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet.",
 		descendingScaleVariantDegree: 7,
@@ -248,6 +296,13 @@ export const SCALE_DATA = [
 	},
 	{
 		name: "Kurd",
+		comparisonWesternScaleNames: {
+			both: {
+				name: "Phrygian",
+				same: true,
+				withDegreesAsQuarterTones: null,
+			}
+		},
 		description:
 			"Kurd description placeholder lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet.",
 		isMaqam: true,
@@ -260,6 +315,39 @@ export const SCALE_DATA = [
 			},
 			A: {
 				notes: generateScale("A phrygian"),
+			},
+		},
+	},
+	{
+		name: "Ajam",
+		description:
+			"Ajam description placeholder lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet.",
+		isMaqam: true,
+		comparisonWesternScaleNames: {
+			asc: {
+				name: "Major",
+				same: true,
+				withDegreesAsQuarterTones: null,
+			},
+			desc: {
+				name: "Mixolydian",
+				same: true,
+				withDegreesAsQuarterTones: null,
+			},
+		},
+		descendingScaleVariantDegree: 7,
+		rootNotes: {
+			C: {
+				notes: generateScale("C major"),
+				descendingNotes: generateScale("C mixolydian"),
+			},
+			F: {
+				notes: generateScale("F major"),
+				descendingNotes: generateScale("F mixolydian"),
+			},
+			G: {
+				notes: generateScale("G major"),
+				descendingNotes: generateScale("G mixolydian"),
 			},
 		},
 	},
@@ -300,28 +388,6 @@ export const SCALE_DATA = [
 				)
 					.slice(0, 2)
 					.concat((generateScale("C phrygian dominant") || []).slice(0, 5)),
-			},
-		},
-	},
-
-	{
-		name: "Ajam",
-		description:
-			"Ajam description placeholder lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet.",
-		isMaqam: true,
-		descendingScaleVariantDegree: 7,
-		rootNotes: {
-			C: {
-				notes: generateScale("C major"),
-				descendingNotes: generateScale("C mixolydian"),
-			},
-			F: {
-				notes: generateScale("F major"),
-				descendingNotes: generateScale("F mixolydian"),
-			},
-			G: {
-				notes: generateScale("G major"),
-				descendingNotes: generateScale("G mixolydian"),
 			},
 		},
 	},
