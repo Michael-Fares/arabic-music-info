@@ -147,7 +147,7 @@ export const SCALE_DATA = [
 		},
 		description:
 			"Rast has 2 variants. The first variant is like a |major| scale with a half flat 3rd and half flat 7th degree. The second variant is like a |mixolydian| scale with a half flat 3rd degree. Tradionally, the first variant is used for ascending phrases, while the second variant is used for descending phrases, however, both variants can be used in either direction depending on the musical context.",
-		descendingScaleVariantDegree: 7,
+		descendiSngcaleVariantDegree: 7,
 		rootNotes: {
 			C: {
 				notes: Transformer.majorToRast(generateScale("C major")),
