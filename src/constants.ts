@@ -137,12 +137,12 @@ export const SCALE_DATA = [
 			asc: {
 				name: "Major",
 				same: false,
-				withDegreesAsQuarterTones: [3, 7],
+				withDegreesAsQuarterTones: ["3rd", "7th"],
 			},
 			desc: {
 				name: "Mixolydian",
 				same: false,
-				withDegreesAsQuarterTones: [3],
+				withDegreesAsQuarterTones: ["3rd"],
 			},
 		},
 		description:
@@ -176,12 +176,12 @@ export const SCALE_DATA = [
 			asc: {
 				name: "Dorian",
 				same: false,
-				withDegreesAsQuarterTones: [2, 6],
+				withDegreesAsQuarterTones: ["2nd", "6th"],
 			},
 			desc: {
 				name: "Minor",
 				same: false,
-				withDegreesAsQuarterTones: [2],
+				withDegreesAsQuarterTones: ["2nd"],
 			},
 		},
 		description:
@@ -209,12 +209,11 @@ export const SCALE_DATA = [
 			asc: {
 				name: "Phrygian Dominant",
 				same: false,
-				withDegreesAsQuarterTones: [6],
+				withDegreesAsQuarterTones: ["6th"], // REMEBER THAT THIS IS TECHNICALY HALF SHARP AND PUT IN THE DSCRIPTION ACCORDINGLY
 			},
 			desc: {
 				name: "Phrygian Dominant",
 				same: true,
-				withDegreesAsQuarterTones: null,
 			},
 		},
 		description:
@@ -264,12 +263,10 @@ export const SCALE_DATA = [
 			asc: {
 				name: "Harmonic Minor",
 				same: true,
-				withDegreesAsQuarterTones: null,
 			},
 			desc: {
 				name: "Minor",
 				same: true,
-				withDegreesAsQuarterTones: null,
 			},
 		},
 		description:
@@ -300,7 +297,6 @@ export const SCALE_DATA = [
 			both: {
 				name: "Phrygian",
 				same: true,
-				withDegreesAsQuarterTones: null,
 			}
 		},
 		description:
@@ -327,12 +323,10 @@ export const SCALE_DATA = [
 			asc: {
 				name: "Major",
 				same: true,
-				withDegreesAsQuarterTones: null,
 			},
 			desc: {
 				name: "Mixolydian",
 				same: true,
-				withDegreesAsQuarterTones: null,
 			},
 		},
 		descendingScaleVariantDegree: 7,
