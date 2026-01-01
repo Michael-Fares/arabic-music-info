@@ -16,6 +16,7 @@ interface ScaleInfoBarProps {
 	rootNote: string;
 	setRootNote: (note: string) => void;
 	instrument: string;
+	parentScalePanelRef: React.RefObject<HTMLDivElement> | null;
 }
 function ScaleInfoBar({
 	audioManager,
@@ -23,6 +24,7 @@ function ScaleInfoBar({
 	rootNote,
 	setRootNote,
 	instrument,
+	parentScalePanelRef
 }: ScaleInfoBarProps) {
 	
 	const notesInScale = scale.rootNotes[rootNote].notes;
@@ -49,15 +51,10 @@ function ScaleInfoBar({
 
 	
 	const handleClickPlay = (
-		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+
 	) => {
-		// will need this later for DOM selection styling probably
-		const parent =
-			event.target instanceof Element
-				? event.target.closest(
-						`.scale-panel[id="${scale.name.toLowerCase()}"]`
-				  )
-				: null;
+		
+		const parent = parentScalePanelRef?.current;
 
 		const notesInScale = scale.rootNotes[rootNote].notes;
 
@@ -120,7 +117,7 @@ function ScaleInfoBar({
 		<div className="scale-info-bar">
 			<button
 				className="play-button"
-				onClick={(event) => handleClickPlay(event)}
+				onClick={() => handleClickPlay()}
 			>
 				Play Maqam
 			</button>

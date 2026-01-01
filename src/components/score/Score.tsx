@@ -17,9 +17,10 @@ interface ScoreProps {
 	direction?: "asc" | "desc";
 	rootNote: string;
 	instrument: string;
+	parentScalePanelRef: React.RefObject<HTMLDivElement> | null;
 }
 
-function Score({ audioManager, notes, scale, rootNote, instrument, direction }: ScoreProps) {
+function Score({ audioManager, notes, scale, rootNote, instrument, direction, parentScalePanelRef }: ScoreProps) {
 	
 	let rendered = false;
 	const notesInScale = notes;
@@ -42,32 +43,33 @@ function Score({ audioManager, notes, scale, rootNote, instrument, direction }: 
 		(svg: NoteSVGElement): void;
 	}
 
-	const parentScalePanelId = scale.name.toLowerCase();
+
 	const handleNoteClick: HandleNoteClick = (svg) => {
 		const noteValue = Number(svg.getAttribute("data-note-value"));
 		audioManager.playSample(noteValue, audioManager.samples[instrument]);
 	};
 	const handleNoteMouseDown: HandleNoteMouseDown = (svg) => {
-
+		const parentScalePanel = parentScalePanelRef?.current;
 		// if a corresponding keyboard key exists, highlight it
 		// similarly if a corresponding note pill exists, highlight it
-		const keyboardKeyToHilight = document.querySelector(
-			`#${parentScalePanelId} .key[data-note-name="${svg.getAttribute("data-note-name")}"][data-octave="${svg.getAttribute("data-octave")}"]`
+		const keyboardKeyToHilight = parentScalePanel?.querySelector(
+			`.key[data-note-name="${svg.getAttribute("data-note-name")}"][data-octave="${svg.getAttribute("data-octave")}"]`
 		) as HTMLButtonElement;
-		const notePillToHighlight = document.querySelector(
-			`#${parentScalePanelId} .note-pill[data-note-name="${svg.getAttribute("data-note-name")}"][data-octave="${svg.getAttribute("data-octave")}"]`
+		const notePillToHighlight = parentScalePanel?.querySelector(
+			`.note-pill[data-note-name="${svg.getAttribute("data-note-name")}"][data-octave="${svg.getAttribute("data-octave")}"]`
 		) as HTMLLIElement;
 		keyboardKeyToHilight?.classList.add("highlight");
 		notePillToHighlight?.classList.add("highlight");
 	};
 	const handleNoteMouseUp: HandleNoteMouseUp = (svg) => {
+		const parentScalePanel = parentScalePanelRef?.current;
 		// if a corresponding keyboard key exists, remove highlight
 		// similarly if a corresponding note pill exists, remove highlight
-		const keyboardKeyToHilight = document.querySelector(
-			`#${parentScalePanelId} .key[data-note-name="${svg.getAttribute("data-note-name")}"][data-octave="${svg.getAttribute("data-octave")}"]`
+		const keyboardKeyToHilight = parentScalePanel?.querySelector(
+			`.key[data-note-name="${svg.getAttribute("data-note-name")}"][data-octave="${svg.getAttribute("data-octave")}"]`
 		) as HTMLButtonElement;
-		const notePillToHighlight = document.querySelector(
-			`#${parentScalePanelId} .note-pill[data-note-name="${svg.getAttribute("data-note-name")}"][data-octave="${svg.getAttribute("data-octave")}"]`
+		const notePillToHighlight = parentScalePanel?.querySelector(
+			`.note-pill[data-note-name="${svg.getAttribute("data-note-name")}"][data-octave="${svg.getAttribute("data-octave")}"]`
 		) as HTMLLIElement;
 		keyboardKeyToHilight?.classList.remove("highlight");
 		notePillToHighlight?.classList.remove("highlight");

@@ -16,9 +16,10 @@ interface KeyboardProps {
 	};
 	rootNote: string;
 	instrument: string;
+	parentScalePanelRef: React.RefObject<HTMLDivElement> | null;
 }
 
-function Keyboard({ audioManager, scale, rootNote, instrument }: KeyboardProps) {
+function Keyboard({ audioManager, scale, rootNote, instrument, parentScalePanelRef }: KeyboardProps) {
 	// all notes in the scale anywhere on the keyboard
 	const notesInScale = scale.rootNotes[rootNote].notes;
 	const descendingNotesInScale =
@@ -28,10 +29,6 @@ function Keyboard({ audioManager, scale, rootNote, instrument }: KeyboardProps) 
 	// the 8 notes of the scale, in order, starting from the root note on the keyboard
 	const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);
 
-
-
-	
-    const parentScalePanelId = `${scale.name.toLowerCase()}`;
 	const handleKeyClick = (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
@@ -41,23 +38,25 @@ function Keyboard({ audioManager, scale, rootNote, instrument }: KeyboardProps) 
 		audioManager.playSample(noteValue, audioManager.samples[instrument]);
 	};
 	const handleKeyMouseDown = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+		const parentScalePanel = parentScalePanelRef?.current;
 		const keyPressed = (event.target as HTMLButtonElement);
-		const vexflowScoreNoteToHighlight = document.querySelector(
-			`#${parentScalePanelId} svg .vf-note[data-note-name="${keyPressed.getAttribute("data-note-name")}"][data-octave="${keyPressed.getAttribute("data-octave")}"]`
+		const vexflowScoreNoteToHighlight = parentScalePanel?.querySelector(
+			`svg .vf-note[data-note-name="${keyPressed.getAttribute("data-note-name")}"][data-octave="${keyPressed.getAttribute("data-octave")}"]`
 		)
-		const notePillToHighlight = document.querySelector(
-			`#${parentScalePanelId} .note-pill[data-note-name="${keyPressed.getAttribute("data-note-name")}"][data-octave="${keyPressed.getAttribute("data-octave")}"]`
+		const notePillToHighlight = parentScalePanel?.querySelector(
+			`.note-pill[data-note-name="${keyPressed.getAttribute("data-note-name")}"][data-octave="${keyPressed.getAttribute("data-octave")}"]`
 		)
 		vexflowScoreNoteToHighlight?.classList.add("highlight");
 		notePillToHighlight?.classList.add("highlight");
 	}
 	const handleKeyMouseUp = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+		const parentScalePanel = parentScalePanelRef?.current;
 		const keyPressed = (event.target as HTMLButtonElement);
-		const vexflowScoreNoteToHighlight = document.querySelector(
-			`#${parentScalePanelId} svg .vf-note[data-note-name="${keyPressed.getAttribute("data-note-name")}"][data-octave="${keyPressed.getAttribute("data-octave")}"]`
+		const vexflowScoreNoteToHighlight = parentScalePanel?.querySelector(
+			`svg .vf-note[data-note-name="${keyPressed.getAttribute("data-note-name")}"][data-octave="${keyPressed.getAttribute("data-octave")}"]`
 		)
-		const notePillToHighlight = document.querySelector(
-			`#${parentScalePanelId} .note-pill[data-note-name="${keyPressed.getAttribute("data-note-name")}"][data-octave="${keyPressed.getAttribute("data-octave")}"]`
+		const notePillToHighlight = parentScalePanel?.querySelector(
+			`.note-pill[data-note-name="${keyPressed.getAttribute("data-note-name")}"][data-octave="${keyPressed.getAttribute("data-octave")}"]`
 		)
 		notePillToHighlight?.classList.remove("highlight");
 		vexflowScoreNoteToHighlight?.classList.remove("highlight");

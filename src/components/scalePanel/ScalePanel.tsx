@@ -2,7 +2,7 @@ import ScaleInfoBar from "../scaleInfoBar/ScaleInfoBar";
 import "../scalePanel/scalePanel.css";
 import Keyboard from "../keyboard/Keyboard";
 import Score from "../score/Score";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 interface ScalePanelProps {
 	audioManager: {
@@ -21,7 +21,7 @@ interface ScalePanelProps {
 
 function ScalePanel({ audioManager, scale, instrument }: ScalePanelProps) {
 	
-	console.log("description.split", scale.description?.split("|"));
+	const parentScalePanelRef = useRef<HTMLDivElement>(null);
 	
 	const [rootNote, setRootNote] = useState(Object.keys(scale.rootNotes)[0]);
 	
@@ -32,6 +32,7 @@ function ScalePanel({ audioManager, scale, instrument }: ScalePanelProps) {
 			className="scale-panel"
 			id={id}
 			data-scale-and-key={`${id}-${rootNote}`}
+			ref={parentScalePanelRef as React.RefObject<HTMLDivElement>}
 		>
 			<ScaleInfoBar
 				audioManager={audioManager}
@@ -39,6 +40,7 @@ function ScalePanel({ audioManager, scale, instrument }: ScalePanelProps) {
 				rootNote={rootNote}
 				setRootNote={setRootNote}
 				instrument={instrument}
+				parentScalePanelRef={parentScalePanelRef as React.RefObject<HTMLDivElement>}
 			/>
 			<div className="score-container">
 			<Score
@@ -48,6 +50,7 @@ function ScalePanel({ audioManager, scale, instrument }: ScalePanelProps) {
 				direction="asc"
 				rootNote={rootNote}
 				instrument={instrument}
+				parentScalePanelRef={parentScalePanelRef as React.RefObject<HTMLDivElement>}
 			/>
 			{descendingNotes && (
 				<Score
@@ -57,6 +60,7 @@ function ScalePanel({ audioManager, scale, instrument }: ScalePanelProps) {
 					direction="desc"
 					rootNote={rootNote}
 					instrument={instrument}
+					parentScalePanelRef={parentScalePanelRef as React.RefObject<HTMLDivElement>}
 				/>
 			)}
 			</div>
@@ -66,6 +70,7 @@ function ScalePanel({ audioManager, scale, instrument }: ScalePanelProps) {
 				scale={scale}
 				rootNote={rootNote}
 				instrument={instrument}
+				parentScalePanelRef={parentScalePanelRef as React.RefObject<HTMLDivElement>}
 			/>
 			{/* DESCRIPTION PLACEHOLDER RESTING HERE */}
 			<div className="description"> {scale.description ?? null}</div>
