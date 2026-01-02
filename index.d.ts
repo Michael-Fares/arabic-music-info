@@ -1,18 +1,16 @@
-interface NoteObject {
+type NoteObject = {
     name: string,
     value: number,
     octave: number
 }
 
-interface Scale {
+type Scale = {
     name: string,
     isMaqam: boolean;
     descendingScaleVariantDegree: number | undefined,
     rootNotes: Record<string, { notes?: string[], descendingNotes?: string[] }>
-    description: string;
     comparisonWesternScaleNames?: Partial<comparisonWesternScaleNames>;
 }
-
 
 type Direction = "asc" | "desc" | "both";
 

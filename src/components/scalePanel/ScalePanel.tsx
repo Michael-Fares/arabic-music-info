@@ -2,6 +2,7 @@ import ScaleInfoBar from "../scaleInfoBar/ScaleInfoBar";
 import "../scalePanel/scalePanel.css";
 import Keyboard from "../keyboard/Keyboard";
 import Score from "../score/Score";
+import Description from "../description/Description";
 import { useState, useRef } from "react";
 
 interface ScalePanelProps {
@@ -11,6 +12,7 @@ interface ScalePanelProps {
 	};
 	scale: {
 		name: string;
+		isMaqam: boolean;
 		descendingScaleVariantDegree: number | undefined;
 		rootNotes: Record<string, { notes: string[]; descendingNotes?: string[] }>;
 		description: string;
@@ -76,14 +78,7 @@ function ScalePanel({ audioManager, scale, instrument }: ScalePanelProps) {
 					parentScalePanelRef as React.RefObject<HTMLDivElement>
 				}
 			/>
-
-			<div className="description"> 
-				{scale.comparisonWesternScaleNames && 
-			<p>
-					{scale.name} is like a <button style={{'backgroundColor': 'red', "padding": "1rem"}}>{scale?.comparisonWesternScaleNames?.asc?.name}</button> {` `}scale when played ascending with the {scale?.comparisonWesternScaleNames?.asc?.withDegreesAsQuarterTones?.join(" and ")} degrees lowered by a quarter tone.
-			</p>}
-
-			</div>
+			<Description scale={scale} />
 		</div>
 	);
 }

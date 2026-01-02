@@ -98,5 +98,5 @@ export function normalizeMaqam(maqam: any) {
         },
       ])
     ),
-  } as Maqam;
+  } as Scale;
 }
