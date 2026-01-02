@@ -42,7 +42,7 @@
     --base-background-color:  #330101;
     --green-primary:  #1e7e51;
     --green-secondary:  #81cc83;
-    --green-3: #35ad51;
+    --green-3: #27391C;
     --base-grey: #463f3f;
     --red-primary: #ff4444;
 
@@ -53,12 +53,12 @@
     --scale-info-bar-background-color: var(--base-grey);
     --score-color: #d9bdbd;
     --highlight-color: #a6b2d7;
-    --black-key-color: #351919;
+    --black-key-color: black;
     --white-key-color: white;
     --key-outline-color: #d9bdbd;
     --quarter-tone-key-color: gold;
     --in-current-run-color: var(--green-primary);
-    --descending-variant-note-color: #9d2020;;
+    --descending-variant-note-color: var(--green-3);
     --play-button-color: var(--green-secondary);
     
     color: var(--base-color); 

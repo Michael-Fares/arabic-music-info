@@ -57,7 +57,7 @@
         }
 
         .quarter {
-            border-bottom: 15px solid var(--quarter-tone-key-color);
+            border-bottom: 1rem solid var(--quarter-tone-key-color);
         }
         .key.highlight {
             background-color: var(--highlight-color);
