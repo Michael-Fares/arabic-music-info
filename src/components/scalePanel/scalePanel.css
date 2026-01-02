@@ -7,9 +7,4 @@
     margin-top: 2rem;
     max-width: 1200px;
     margin-inline: auto;
-    .score-container {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
 }

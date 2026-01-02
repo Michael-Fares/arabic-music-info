@@ -25,7 +25,6 @@ function Score({ audioManager, scale, rootNote, instrument, direction, parentSca
 
 	const noteSet = scale.rootNotes[rootNote];
 	const hasDifferentDescendingVersion = !!noteSet?.descendingNotes;
-	console.log("Score component > hasDifferentDescendingVersion:", hasDifferentDescendingVersion);
 
 	let rendered = false;
 	let notesInScale: string[] | undefined;

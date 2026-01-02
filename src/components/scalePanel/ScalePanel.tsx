@@ -1,9 +1,10 @@
 import ScaleInfoBar from "../scaleInfoBar/ScaleInfoBar";
 import "../scalePanel/scalePanel.css";
 import Keyboard from "../keyboard/Keyboard";
-import Score from "../score/Score";
+import ScoreGroup from "../scoreGroup/ScoreGroup";
 import Description from "../description/Description";
 import { useState, useRef } from "react";
+
 
 interface ScalePanelProps {
 	audioManager: {
@@ -43,30 +44,16 @@ function ScalePanel({ audioManager, scale, instrument }: ScalePanelProps) {
 					parentScalePanelRef as React.RefObject<HTMLDivElement>
 				}
 			/>
-			<div className="score-container">
-				<Score
-					audioManager={audioManager}
-					scale={scale}
 
-					direction="asc"
-					rootNote={rootNote}
-					instrument={instrument}
-					parentScalePanelRef={
-						parentScalePanelRef as React.RefObject<HTMLDivElement>
-					}
-				/>
-				<Score
-					audioManager={audioManager}
-					scale={scale}
-
-					direction="desc"
-					rootNote={rootNote}
-					instrument={instrument}
-					parentScalePanelRef={
-						parentScalePanelRef as React.RefObject<HTMLDivElement>
-					}
-				/>
-			</div>
+			<ScoreGroup
+				audioManager={audioManager}
+				scale={scale}
+				rootNote={rootNote}
+				instrument={instrument}
+				parentScalePanelRef={
+					parentScalePanelRef as React.RefObject<HTMLDivElement>
+				}
+			/>
 
 			<Keyboard
 				audioManager={audioManager}
@@ -77,6 +64,7 @@ function ScalePanel({ audioManager, scale, instrument }: ScalePanelProps) {
 					parentScalePanelRef as React.RefObject<HTMLDivElement>
 				}
 			/>
+
 			<Description scale={scale} />
 		</div>
 	);
