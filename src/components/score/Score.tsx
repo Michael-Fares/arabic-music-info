@@ -88,7 +88,7 @@ function Score({ audioManager, scale, rootNote, instrument, direction, parentSca
 	};
 
 	useEffect(() => {
-		if (vexFlowContainerRef.current !== null && !rendered) {
+		if (vexFlowContainerRef.current && !rendered) {
 			const container = vexFlowContainerRef.current;
 			VexFlow.loadFonts("Bravura", "Academico").then(() => {
 				VexFlow.setFonts("Bravura", "Academico");
@@ -191,7 +191,7 @@ function Score({ audioManager, scale, rootNote, instrument, direction, parentSca
 				vexFlowContainerRef.current.innerHTML = "";
 			}
 		};
-	}, [scale, rootNote]);
+	}, [scale, rootNote, rendered]);
 
 	return (
 		<div

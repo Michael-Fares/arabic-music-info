@@ -1,8 +1,8 @@
 @import url("../../variables.css");
 .score {
     svg {
-        width: 100% !important;
-        height: auto !important;
+        /* width: 100% !important;
+        height: auto !important; */
         user-select: none;
         fill: var(--score-color);
         stroke: var(--score-color);

@@ -2,6 +2,7 @@ import ScaleInfoBar from "../scaleInfoBar/ScaleInfoBar";
 import "../scalePanel/scalePanel.css";
 import Keyboard from "../keyboard/Keyboard";
 import ScoreGroup from "../scoreGroup/ScoreGroup";
+
 import Description from "../description/Description";
 import { useState, useRef } from "react";
 
