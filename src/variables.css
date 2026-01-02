@@ -31,7 +31,7 @@
     --in-current-run-color: var(--green-primary);
     --descending-variant-note-color: var(--green-3);
     --play-button-color: var(--green-secondary);
-    
+    --scale-panel-bg-color: var(var(--base-background-color));
     color: var(--base-color); 
     background-color: var(--base-background-color);
 }
@@ -49,9 +49,9 @@
     --sun-moon-icon-fill: #6bdfff;
 
     /* specific color variables */
-    --scale-panel-border-color: #ccc;
+    --scale-panel-border-color: rgba(255,255,255,0.4);
     --scale-info-bar-background-color: var(--base-grey);
-    --score-color: #d9bdbd;
+    --score-color: white;
     --highlight-color: #a6b2d7;
     --black-key-color: black;
     --white-key-color: white;
@@ -60,7 +60,7 @@
     --in-current-run-color: var(--green-primary);
     --descending-variant-note-color: var(--green-3);
     --play-button-color: var(--green-secondary);
-    
+    --scale-panel-bg-color: black;
     color: var(--base-color); 
     background-color: var(--base-background-color);
 }

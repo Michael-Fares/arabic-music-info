@@ -1,6 +1,7 @@
 @import url("../../variables.css");
 .scale-panel {
     border: 1px solid var(--scale-panel-border-color);
+    background-color: var(--scale-panel-bg-color);
     padding: 1rem;
     border-radius: 1rem;
     margin-top: 2rem;
