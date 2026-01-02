@@ -184,8 +184,7 @@ export const SCALE_DATA = [
 				withDegreesAsQuarterTones: ["2nd"],
 			},
 		},
-		description:
-			"Bayati is similar to the |dorian| scale, but with a half flat 3rd degree. The descending variant of Bayati is similar to the |natural minor| scale, but with a half flat 6th degree.",
+
 		descendingScaleVariantDegree: 6,
 		rootNotes: {
 			D: {
@@ -216,8 +215,6 @@ export const SCALE_DATA = [
 				same: true,
 			},
 		},
-		description:
-			"Hijaz description placeholder lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet.",
 		descendingScaleVariantDegree: 6,
 		rootNotes: {
 			D: {
@@ -269,8 +266,6 @@ export const SCALE_DATA = [
 				same: true,
 			},
 		},
-		description:
-			"Nahawand description placeholder lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet.",
 		descendingScaleVariantDegree: 7,
 		rootNotes: {
 			C: {
@@ -299,8 +294,6 @@ export const SCALE_DATA = [
 				same: true,
 			}
 		},
-		description:
-			"Kurd description placeholder lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet.",
 		isMaqam: true,
 		rootNotes: {
 			D: {
@@ -316,8 +309,6 @@ export const SCALE_DATA = [
 	},
 	{
 		name: "Ajam",
-		description:
-			"Ajam description placeholder lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet.",
 		isMaqam: true,
 		comparisonWesternScaleNames: {
 			asc: {
@@ -348,8 +339,6 @@ export const SCALE_DATA = [
 	{
 		name: "Saba",
 		isMaqam: true,
-		description:
-			"Saba description placeholder lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet.",
 		rootNotes: {
 			D: {
 				notes: (Transformer.minorToBayati(generateScale("D minor")) || [])
@@ -387,8 +376,6 @@ export const SCALE_DATA = [
 	},
 	{
 		name: "Sikah",
-		description:
-			"Sikah description placeholder lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet. lorem ipsum dolor sit amet.",
 		isMaqam: true,
 		rootNotes: {
 			// hard coded because it's clearer that sikah always starts with a half flat note

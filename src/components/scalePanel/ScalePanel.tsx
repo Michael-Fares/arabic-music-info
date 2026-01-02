@@ -15,7 +15,6 @@ interface ScalePanelProps {
 		isMaqam: boolean;
 		descendingScaleVariantDegree: number | undefined;
 		rootNotes: Record<string, { notes: string[]; descendingNotes?: string[] }>;
-		description: string;
 	};
 	rootNote: string;
 	instrument: string;
