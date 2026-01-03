@@ -88,12 +88,15 @@ function Score({ audioManager, scale, rootNote, instrument, direction, parentSca
 	};
 
 	useEffect(() => {
-		if (vexFlowContainerRef.current && !rendered) {
-			const container = vexFlowContainerRef.current;
+		if (vexFlowContainerRef.current !== null && !rendered) {
+		
+			if(vexFlowContainerRef.current) {
+				vexFlowContainerRef.current.innerHTML = "";
+			}
 			VexFlow.loadFonts("Bravura", "Academico").then(() => {
 				VexFlow.setFonts("Bravura", "Academico");
 				const factory = new VexFlow.Factory({
-					renderer: { elementId: container.id, width: 330, height: 110 },
+					renderer: { elementId: vexFlowContainerRef.current, width: 330, height: 110 },
 				});
 				const system = factory.System({ width: 310 });
 				
@@ -145,10 +148,11 @@ function Score({ audioManager, scale, rootNote, instrument, direction, parentSca
 				factory.draw();
 
 				// slightly offset flat half flat notes
-				const flatHalfFlatNotes = container.querySelectorAll(
+				const container = vexFlowContainerRef.current;
+				const flatHalfFlatNotes = container?.querySelectorAll(
 					".vf-notehead text:first-child:nth-last-child(3) ~ text:nth-child(3)"
 				);
-				flatHalfFlatNotes.forEach((note) => {
+				flatHalfFlatNotes?.forEach((note) => {
 					note.setAttribute("dx", "1%");
 				});
 				notes.forEach((note, index) => {
@@ -188,16 +192,14 @@ function Score({ audioManager, scale, rootNote, instrument, direction, parentSca
 							handleNoteMouseUp(note as NoteSVGElement)
 						);
 					});
-				vexFlowContainerRef.current.innerHTML = "";
 			}
 		};
-	}, [scale, rootNote, rendered]);
+	}, [scale, rootNote]);
 
 	return (
 		<div
 			className="score"
 			data-direction={direction}
-			id={`${scale.name}-${rootNote}-${direction}`}
 			ref={vexFlowContainerRef}
 		/>
 	);

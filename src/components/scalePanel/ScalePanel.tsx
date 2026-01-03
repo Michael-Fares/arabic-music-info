@@ -5,6 +5,7 @@ import ScoreGroup from "../scoreGroup/ScoreGroup";
 
 import Description from "../description/Description";
 import { useState, useRef } from "react";
+import { SCALE_DATA } from "../../constants"; 
 
 
 interface ScalePanelProps {
