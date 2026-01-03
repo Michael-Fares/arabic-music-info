@@ -96,7 +96,7 @@ function Score({ audioManager, scale, rootNote, instrument, direction, parentSca
 			VexFlow.loadFonts("Bravura", "Academico").then(() => {
 				VexFlow.setFonts("Bravura", "Academico");
 				const factory = new VexFlow.Factory({
-					renderer: { elementId: vexFlowContainerRef.current, width: 330, height: 110 },
+					renderer: { elementId: vexFlowContainerRef.current as unknown as string, width: 330, height: 110 },
 				});
 				const system = factory.System({ width: 310 });
 				

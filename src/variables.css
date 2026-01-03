@@ -39,7 +39,7 @@
 
         /* base color variables */
     --base-color: white; 
-    --base-background-color:  #330101;
+    --base-background-color:  #1e0101;
     --green-primary:  #1e7e51;
     --green-secondary:  #81cc83;
     --green-3: #27391C;
@@ -51,10 +51,10 @@
     /* specific color variables */
     --scale-panel-border-color: rgba(255,255,255,0.4);
     --scale-info-bar-background-color: var(--base-grey);
-    --score-color: white;
+    --score-color: whitesmoke;
     --highlight-color: #a6b2d7;
     --black-key-color: black;
-    --white-key-color: white;
+    --white-key-color: whitesmoke;
     --key-outline-color: #d9bdbd;
     --quarter-tone-key-color: gold;
     --in-current-run-color: var(--green-primary);
