@@ -1,6 +1,7 @@
 import "./nav.css";
 
 import { useEffect } from "react";
+import { uppercase } from "../../utils";
 
 function Nav({ maqamList }: { maqamList: string[] }) {
 	useEffect(() => {
@@ -69,10 +70,10 @@ function Nav({ maqamList }: { maqamList: string[] }) {
 			<p>Maqams:</p>
 			<ul>
 				{maqamList.map((maqam) => {
-					const formattedMaqamName = maqam.charAt(0).toUpperCase() + maqam.substring(1);
+
 					return (
 						<li key={maqam}>
-							<a href={`#${maqam}`}>{formattedMaqamName}</a>
+							<a href={`#${maqam}`}>{uppercase(maqam)}</a>
 						</li>
 					);
 				})}

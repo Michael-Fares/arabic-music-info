@@ -5,12 +5,7 @@ interface ScoreGroupProps {
 		playSample: (noteValue: number, sample: any) => void;
 		samples: Record<string, any>;
 	};
-	scale: {
-		name: string;
-		isMaqam: boolean;
-		descendingScaleVariantDegree: number | undefined;
-		rootNotes: Record<string, { notes: string[]; descendingNotes?: string[] }>;
-	};
+	scale: Scale
 	rootNote: string;
 	instrument: string;
     parentScalePanelRef: React.RefObject<HTMLDivElement> | null;

@@ -9,11 +9,7 @@ interface KeyboardProps {
 		playSample: (noteValue: number, sample: any) => void;
 		samples: Record<string, any>;
 	};
-	scale: {
-		name: string;
-		descendingScaleVariantDegree: number | undefined;
-		rootNotes: Record<string, { notes: string[]; descendingNotes?: string[] }>;
-	};
+	scale: Scale;
 	rootNote: string;
 	instrument: string;
 	parentScalePanelRef: React.RefObject<HTMLDivElement> | null;
@@ -21,11 +17,11 @@ interface KeyboardProps {
 
 function Keyboard({ audioManager, scale, rootNote, instrument, parentScalePanelRef }: KeyboardProps) {
 	// all notes in the scale anywhere on the keyboard
-	const notesInScale = scale.rootNotes[rootNote].notes;
+	const notesInScale = scale.rootNotes[rootNote]?.notes || [];
 	const descendingNotesInScale =
-		scale.rootNotes[rootNote].descendingNotes || [];
-	
-	
+		scale.rootNotes[rootNote]?.descendingNotes || [];
+
+
 	// the 8 notes of the scale, in order, starting from the root note on the keyboard
 	const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);
 
@@ -62,7 +58,7 @@ function Keyboard({ audioManager, scale, rootNote, instrument, parentScalePanelR
 		vexflowScoreNoteToHighlight?.classList.remove("highlight");
 	}
 	return (
-		<div className="keyboard-widget">
+	
 			<div className="keyboard">
 				{NOTE_VALUES.map((note) => {
 					const { name, value, octave } = note;
@@ -102,7 +98,7 @@ function Keyboard({ audioManager, scale, rootNote, instrument, parentScalePanelR
 					);
 				})}
 			</div>
-		</div>
+		
 	);
 }
 export default Keyboard;

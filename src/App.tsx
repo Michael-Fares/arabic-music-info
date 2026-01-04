@@ -1,36 +1,43 @@
 import "./App.css";
 import useLocalStorage from "use-local-storage";
 import { SCALE_DATA, INSTUMENTS } from "./constants";
-import ScalePanel from "./components/scalePanel/ScalePanel";
+import MaqamBoard from "./components/maqamBoard/MaqamBoard";
 import Nav from "./components/nav/Nav";
 import Header from "./components/header/Header";
 import DarkmodeSwitch from "./components/darkmodeSwitch/DarkmodeSwitch";
 import InstrumentSelector from "./components/intstumentSelector/InstrumentSelector";
 import { useState } from "react";
 import { AudioManager } from "./audio";
-import { normalizeMaqam } from "./utils";
 
 
 function App() {
 	const audioManager = new AudioManager();
 	const [instrument, setInstrument] = useState(INSTUMENTS.piano);
-	const [isDark, setIsDark] = useLocalStorage("isDark", false)
+	const [isDark, setIsDark] = useLocalStorage("isDark", false);
 
 	const maqams = SCALE_DATA.filter((scale) => scale.isMaqam);
 	const maqamList = maqams.map((maqam) => maqam.name.toLowerCase());
 
-	let showInstSelector  = false;
-
+	let showInstSelector = false;
 
 	return (
 		<div className="App" data-theme={isDark ? "dark" : "light"}>
-			<DarkmodeSwitch isChecked={isDark} handleChange={() => setIsDark(!isDark)} />
+			<DarkmodeSwitch
+				isChecked={isDark}
+				handleChange={() => setIsDark(!isDark)}
+			/>
 			<Header />
 			{/* placeholder add this in later if needed, probably piano is enough for now */}
-			{showInstSelector && <InstrumentSelector instrument={instrument} setInstrument={setInstrument} instruments={INSTUMENTS} />}
+			{showInstSelector && (
+				<InstrumentSelector
+					instrument={instrument}
+					setInstrument={setInstrument}
+					instruments={INSTUMENTS}
+				/>
+			)}
 
 			<Nav maqamList={maqamList} />
-			{maqams.map((maqam) => {
+			{/* {maqams.map((maqam) => {
 
 				const rootNote = Object.keys(maqam.rootNotes)[0]; // pick the first available root note
 
@@ -51,6 +58,18 @@ function App() {
 						audioManager={audioManager}
 						scale={safeScale}
 						rootNote={rootNote}
+						instrument={instrument}
+					/>
+				);
+			})} */}
+
+			{maqams.map((scale: Scale) => {
+				return (
+					<MaqamBoard
+						key={scale.name}
+						audioManager={audioManager}
+						scale={scale}
+						rootNote={Object.keys(scale.rootNotes)[0]}
 						instrument={instrument}
 					/>
 				);

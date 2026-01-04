@@ -6,15 +6,19 @@ function Description({ scale }: { scale: Scale }) {
 
     switch(name) {
         case "Rast":
-            descriptionMarkup = <p>Maqam {name} is like the western major scale</p>;
+            descriptionMarkup = <p>Maqam {name} is like the western <button className="comparison-button">major</button> scale</p>;
             break;
         case "Bayati":
-            descriptionMarkup =  <p>Maqam {name} is like the western minor scale</p>;
+            descriptionMarkup =  <p>Maqam {name} is like the western <button className="comparison-button">minor</button> scale</p>;
             break;
         default:
             descriptionMarkup = null;
     }
-    return descriptionMarkup;
+    return (
+        <div className="description">
+            {descriptionMarkup}
+        </div>
+    );
 }
 
 export default Description;

@@ -1,66 +1,66 @@
 @import url("../../variables.css");
-.keyboard-widget {
+
+.keyboard {
     padding: 1rem;
-    .keyboard {
-        width: max-content;
-        margin: 0 auto;
-        .key {
-            display: inline-block;
-            vertical-align: top;
-            outline: 1px solid var(--key-outline-color);
-            cursor: pointer;
-            position: relative;
-            &:not(.no-offset) {
-                margin-left: min(-1.3vmax, -0.5rem);
-            }
-
-            &:focus {
-                outline: 1px solid var(--highlight-color);
-            }
-            &:active {
-                background-color: var(--highlight-color);
-            }
-
-        }
-        .key.in-current-scale {
-            /* change to something else if want to differentiate eg */
-            /* background-color: var(--base-grey); */
-            background-color: var(--in-current-run-color);
-            &:active {
-                background-color: var(--highlight-color);
-            }
-        }
-        .key.in-current-run {
-            background-color: var(--in-current-run-color);
-            &:active {
-                background-color: var(--highlight-color);
-            }
-        }
-        .key.descending-variant {
-            background-color: var(--descending-variant-note-color);
-             &:active {
-                background-color: var(--highlight-color);
-            }
-        }
-        .whiteKey {
-            height: 10.5vmax;
-            width: 3.5vmax;
-            z-index: 1;
-            background-color: var(--white-key-color);
+    width: max-content;
+    margin: 0 auto;
+    .key {
+        display: inline-block;
+        vertical-align: top;
+        outline: 1px solid var(--key-outline-color);
+        cursor: pointer;
+        position: relative;
+        &:not(.no-offset) {
+            margin-left: min(-1.3vmax, -0.5rem);
         }
 
-        .blackKey {
-            height: 5.5vmax;
-            width: 2.5vmax;
-            z-index: 2;
-            background-color: var(--black-key-color);
+        &:focus {
+            outline: 1px solid var(--highlight-color);
+        }
+        &:active {
+            background-color: var(--highlight-color);
         }
 
-        .quarter {
-            border-bottom: 1rem solid var(--quarter-tone-key-color);
-        }
-        .key.highlight {
+    }
+    .key.in-current-scale {
+        /* change to something else if want to differentiate eg */
+        /* background-color: var(--base-grey); */
+        background-color: var(--in-current-run-color);
+        &:active {
             background-color: var(--highlight-color);
         }
     }
+    .key.in-current-run {
+        background-color: var(--in-current-run-color);
+        &:active {
+            background-color: var(--highlight-color);
+        }
+    }
+    .key.descending-variant {
+        background-color: var(--descending-variant-note-color);
+            &:active {
+            background-color: var(--highlight-color);
+        }
+    }
+    .whiteKey {
+        height: 10.5vmax;
+        width: 3.5vmax;
+        z-index: 1;
+        background-color: var(--white-key-color);
+    }
+
+    .blackKey {
+        height: 5.5vmax;
+        width: 2.5vmax;
+        z-index: 2;
+        background-color: var(--black-key-color);
+    }
+
+    .quarter {
+        border-bottom: 1rem solid var(--quarter-tone-key-color);
+    }
+    .key.highlight {
+        background-color: var(--highlight-color);
+    }
 }
+

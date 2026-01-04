@@ -12,17 +12,13 @@ interface ScalePanelProps {
 		playSample: (noteValue: number, sample: any) => void;
 		samples: Record<string, any>;
 	};
-	scale: {
-		name: string;
-		isMaqam: boolean;
-		descendingScaleVariantDegree: number | undefined;
-		rootNotes: Record<string, { notes: string[]; descendingNotes?: string[] }>;
-	};
+	scale: Scale
 	rootNote: string;
 	instrument: string;
+	setComparingScaleName: (value: ComparisonWesternScale | ComparisonMaqam | null) => void;
 }
 
-function ScalePanel({ audioManager, scale, instrument }: ScalePanelProps) {
+function ScalePanel({ audioManager, scale, instrument, setComparingScaleName }: ScalePanelProps) {
 	const parentScalePanelRef = useRef<HTMLDivElement>(null);
 
 	const [rootNote, setRootNote] = useState(Object.keys(scale.rootNotes)[0]);

@@ -1,17 +1,13 @@
 import "./scaleInforBar.css";
 import { NOTE_VALUES } from "../../constants";
-import { getNotesToPlay } from "../../utils";
+import { getNotesToPlay, uppercase } from "../../utils";
 import classNames from "classnames";
 interface ScaleInfoBarProps {
 	audioManager: {
 		playSample: (noteValue: number, sample: any) => void;
 		samples: Record<string, any>;
 	};
-	scale: {
-		name: string;
-		descendingScaleVariantDegree: number | undefined;
-		rootNotes: Record<string, { notes: string[]; descendingNotes?: string[] }>;
-	};
+	scale: Scale;
 	rootNote: string;
 	setRootNote: (note: string) => void;
 	instrument: string;
@@ -25,16 +21,16 @@ function ScaleInfoBar({
 	instrument,
 	parentScalePanelRef
 }: ScaleInfoBarProps) {
-	
-	const notesInScale = scale.rootNotes[rootNote].notes;
-	
+
+	const notesInScale = scale.rootNotes[rootNote]?.notes || [];
+
 	const descendingNotesInScale =
-		scale.rootNotes[rootNote]?.descendingNotes ?? scale.rootNotes[rootNote].notes.toReversed();
+		scale.rootNotes[rootNote]?.descendingNotes ?? scale.rootNotes[rootNote]?.notes?.toReversed();
 	const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);
 	
 	const descendingNotesToPlay = getNotesToPlay(
 		NOTE_VALUES,
-		descendingNotesInScale 
+		descendingNotesInScale || []
 	).reverse();
 	
 	
@@ -55,7 +51,7 @@ function ScaleInfoBar({
 		
 		const parent = parentScalePanelRef?.current;
 
-		const notesInScale = scale.rootNotes[rootNote].notes;
+		const notesInScale = scale.rootNotes[rootNote]?.notes || [];
 
 		const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);
 		
@@ -121,7 +117,7 @@ function ScaleInfoBar({
 				Play Maqam
 			</button>
 			<p>
-				Maqam: <b>{scale.name}</b>
+				Maqam: <b>{uppercase(scale.name)}</b>
 			</p>
 			<div>
 				<label htmlFor="keys">Key: {` `}</label>

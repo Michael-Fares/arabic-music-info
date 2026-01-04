@@ -6,7 +6,7 @@ export const transformer = new Transformer();
  * Factors by which to multiply a sample of a C note (0)
  * in order to pitch shift it to other needed notes in 2 octaves
  */
-export const NOTE_VALUES = [
+export const NOTE_VALUES: NoteObject[] = [
 	{
 		name: "C",
 		value: 0,
@@ -129,24 +129,10 @@ export const NOTE_VALUES = [
 	},
 ];
 
-export const SCALE_DATA = [
+export const SCALE_DATA: Scale[] = [
 	{
-		name: "Rast",
+		name: "rast",
 		isMaqam: true,
-		comparisonWesternScaleNames: {
-			asc: {
-				name: "Major",
-				same: false,
-				withDegreesAsQuarterTones: ["3rd", "7th"],
-			},
-			desc: {
-				name: "Mixolydian",
-				same: false,
-				withDegreesAsQuarterTones: ["3rd"],
-			},
-		},
-		description:
-			"Rast has 2 variants. The first variant is like a |major| scale with a half flat 3rd and half flat 7th degree. The second variant is like a |mixolydian| scale with a half flat 3rd degree. Tradionally, the first variant is used for ascending phrases, while the second variant is used for descending phrases, however, both variants can be used in either direction depending on the musical context.",
 		descendingScaleVariantDegree: 7,
 		rootNotes: {
 			C: {
@@ -170,21 +156,8 @@ export const SCALE_DATA = [
 		},
 	},
 	{
-		name: "Bayati",
+		name: "bayati",
 		isMaqam: true,
-		comparisonWesternScaleNames: {
-			asc: {
-				name: "Dorian",
-				same: false,
-				withDegreesAsQuarterTones: ["2nd", "6th"],
-			},
-			desc: {
-				name: "Minor",
-				same: false,
-				withDegreesAsQuarterTones: ["2nd"],
-			},
-		},
-
 		descendingScaleVariantDegree: 6,
 		rootNotes: {
 			D: {
@@ -202,19 +175,8 @@ export const SCALE_DATA = [
 		},
 	},
 	{
-		name: "Hijaz",
+		name: "hijaz",
 		isMaqam: true,
-		comparisonWesternScaleNames: {
-			asc: {
-				name: "Phrygian Dominant",
-				same: false,
-				withDegreesAsQuarterTones: ["6th"], // REMEBER THAT THIS IS TECHNICALY HALF SHARP AND PUT IN THE DSCRIPTION ACCORDINGLY
-			},
-			desc: {
-				name: "Phrygian Dominant",
-				same: true,
-			},
-		},
 		descendingScaleVariantDegree: 6,
 		rootNotes: {
 			D: {
@@ -254,18 +216,8 @@ export const SCALE_DATA = [
 		},
 	},
 	{
-		name: "Nahawand",
+		name: "nahawand",
 		isMaqam: true,
-		comparisonWesternScaleNames: {
-			asc: {
-				name: "Harmonic Minor",
-				same: true,
-			},
-			desc: {
-				name: "Minor",
-				same: true,
-			},
-		},
 		descendingScaleVariantDegree: 7,
 		rootNotes: {
 			C: {
@@ -287,13 +239,7 @@ export const SCALE_DATA = [
 		},
 	},
 	{
-		name: "Kurd",
-		comparisonWesternScaleNames: {
-			both: {
-				name: "Phrygian",
-				same: true,
-			}
-		},
+		name: "kurd",
 		isMaqam: true,
 		rootNotes: {
 			D: {
@@ -308,18 +254,8 @@ export const SCALE_DATA = [
 		},
 	},
 	{
-		name: "Ajam",
+		name: "ajam",
 		isMaqam: true,
-		comparisonWesternScaleNames: {
-			asc: {
-				name: "Major",
-				same: true,
-			},
-			desc: {
-				name: "Mixolydian",
-				same: true,
-			},
-		},
 		descendingScaleVariantDegree: 7,
 		rootNotes: {
 			C: {
@@ -337,7 +273,7 @@ export const SCALE_DATA = [
 		},
 	},
 	{
-		name: "Saba",
+		name: "saba",
 		isMaqam: true,
 		rootNotes: {
 			D: {
@@ -375,7 +311,7 @@ export const SCALE_DATA = [
 		},
 	},
 	{
-		name: "Sikah",
+		name: "sikah",
 		isMaqam: true,
 		rootNotes: {
 			// hard coded because it's clearer that sikah always starts with a half flat note
@@ -396,7 +332,7 @@ export const SCALE_DATA = [
 	 *
 	 */
 	{
-		name: "Major",
+		name: "major",
 		isMaqam: false,
 		rootNotes: {
 			C: {
@@ -411,7 +347,22 @@ export const SCALE_DATA = [
 		},
 	},
 	{
-		name: "Minor",
+		name: "mixolydian",
+		isMaqam: false,
+		rootNotes: {
+			C: {
+				notes: generateScale("C mixolydian"),
+			},
+			F: {
+				notes: generateScale("F mixolydian"),
+			},
+			G: {
+				notes: generateScale("G mixolydian"),
+			},
+		},
+	},
+	{
+		name: "minor",
 		isMaqam: false,
 		rootNotes: {
 			C: {
@@ -425,6 +376,24 @@ export const SCALE_DATA = [
 			},
 			A: {
 				notes: generateScale("A minor"),
+			},
+		},
+	},
+	{
+		name: "harmonic minor",
+		isMaqam: false,
+		rootNotes: {
+			C: {
+				notes: generateScale("C harmonic minor"),
+			},
+			D: {
+				notes: generateScale("D harmonic minor"),
+			},
+			G: {
+				notes: generateScale("G harmonic minor"),
+			},
+			A: {
+				notes: generateScale("A harmonic minor"),
 			},
 		},
 	},

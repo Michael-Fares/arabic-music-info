@@ -1,6 +1,14 @@
 @import url('../../variables.css');
 .description {
-  .comparison-western-scale-button {
-    background-color: var();
+  .comparison-button {
+    background-color: var(--green-primary);
+    padding: 0.25rem;
+    transition: ease-in-out 0.2s;
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--green-secondary);
+        color: var(--base-background-color);
+      }
+    }
   }
 }

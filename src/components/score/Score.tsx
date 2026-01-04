@@ -9,11 +9,7 @@ interface ScoreProps {
 		playSample: (noteValue: number, sample: any) => void;
 		samples: Record<string, any>;
 	};
-	scale: {
-		rootNotes: Record<string, { notes: string[]; descendingNotes?: string[] }>;
-		name: string;
-	};
-
+	scale: Scale;
 	direction?: "asc" | "desc";
 	rootNote: string;
 	instrument: string;
@@ -32,7 +28,7 @@ function Score({ audioManager, scale, rootNote, instrument, direction, parentSca
 	if (hasDifferentDescendingVersion && direction === "desc") {
 		notesInScale = noteSet?.descendingNotes;
 	} else if (!hasDifferentDescendingVersion && direction === "desc") {
-		notesInScale = noteSet?.notes.toReversed();
+		notesInScale = noteSet?.notes?.toReversed();
 	} else {
 		notesInScale = noteSet?.notes;
 	}
