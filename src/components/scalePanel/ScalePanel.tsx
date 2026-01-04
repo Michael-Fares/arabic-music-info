@@ -3,7 +3,7 @@ import "../scalePanel/scalePanel.css";
 import Keyboard from "../keyboard/Keyboard";
 import ScoreGroup from "../scoreGroup/ScoreGroup";
 
-import Description from "../description/Description";
+
 import { useState, useRef } from "react";
 
 
@@ -15,20 +15,19 @@ interface ScalePanelProps {
 	scale: Scale
 	rootNote: string;
 	instrument: string;
-	setComparingScaleName: (value: ComparisonWesternScale | ComparisonMaqam | null) => void;
 }
 
-function ScalePanel({ audioManager, scale, instrument, setComparingScaleName }: ScalePanelProps) {
+function ScalePanel({ audioManager, scale, instrument }: ScalePanelProps) {
 	const parentScalePanelRef = useRef<HTMLDivElement>(null);
 
 	const [rootNote, setRootNote] = useState(Object.keys(scale.rootNotes)[0]);
 
-	const id = `${scale.name.toLowerCase()}`;
+
 	return (
 		<div
 			className="scale-panel"
-			id={id}
-			data-scale-and-key={`${id}-${rootNote}`}
+
+
 			ref={parentScalePanelRef as React.RefObject<HTMLDivElement>}
 		>
 			<ScaleInfoBar
@@ -62,7 +61,6 @@ function ScalePanel({ audioManager, scale, instrument, setComparingScaleName }: 
 				}
 			/>
 
-			<Description scale={scale} />
 		</div>
 	);
 }

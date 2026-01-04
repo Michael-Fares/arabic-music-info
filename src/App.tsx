@@ -37,31 +37,6 @@ function App() {
 			)}
 
 			<Nav maqamList={maqamList} />
-			{/* {maqams.map((maqam) => {
-
-				const rootNote = Object.keys(maqam.rootNotes)[0]; // pick the first available root note
-
-				const normalized = normalizeMaqam(maqam) as Scale;
-				const safeScale = {
-					...normalized,
-					rootNotes: Object.fromEntries(
-						Object.entries(normalized.rootNotes).map(([k, v]) => [
-							k,
-							{ notes: v.notes ?? [], descendingNotes: v.descendingNotes },
-						])
-					),
-				};
-
-				return (
-					<ScalePanel
-						key={maqam.name}
-						audioManager={audioManager}
-						scale={safeScale}
-						rootNote={rootNote}
-						instrument={instrument}
-					/>
-				);
-			})} */}
 
 			{maqams.map((scale: Scale) => {
 				return (

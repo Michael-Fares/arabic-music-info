@@ -2,6 +2,9 @@ import "./maqamBoard.css";
 import { useState } from "react";
 import { SCALE_DATA } from "../../constants";
 import ScalePanel from "../scalePanel/ScalePanel";
+import Description from "../description/Description";
+
+import { uppercase } from "../../utils"; 
 
 interface MaqamBoardProps {
 	audioManager: {
@@ -27,16 +30,17 @@ function MaqamBoard({
 		SCALE_DATA.find((s) => s.name === comparingScaleName) ?? undefined;
 
 	return (
-		<div className="maqam-board">
-			<h2>Maqam Board</h2>
+		<div className="maqam-board" id={scale.name}>
+			<h2>{uppercase(scale.name)}</h2>
 
 			<ScalePanel
 				audioManager={audioManager}
 				scale={scale}
 				rootNote={rootNote}
 				instrument={instrument}
-        setComparingScaleName={setComparingScaleName}
+
 			/>
+        <Description scale={scale} comparingScaleName={comparingScaleName} setComparingScaleName={setComparingScaleName}/>
 
 				{scaleToCompare ? (
 					<ScalePanel
@@ -44,10 +48,8 @@ function MaqamBoard({
 						scale={scaleToCompare}
 						rootNote={rootNote}
 						instrument={instrument}
-            setComparingScaleName={setComparingScaleName}
 					/>
 				) : null}
-
 		</div>
 	);
 }

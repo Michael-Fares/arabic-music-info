@@ -57,7 +57,7 @@ function Nav({ maqamList }: { maqamList: string[] }) {
 
 		// Start observing
 		document
-			.querySelectorAll(".scale-panel[id]")
+			.querySelectorAll(".maqam-board[id]")
 			.forEach((section) => observer.observe(section));
 
 		return () => {

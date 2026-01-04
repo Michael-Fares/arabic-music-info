@@ -114,7 +114,7 @@ function ScaleInfoBar({
 				className="play-button"
 				onClick={() => handleClickPlay()}
 			>
-				Play Maqam
+				Hear It!
 			</button>
 			<p>
 				Maqam: <b>{uppercase(scale.name)}</b>
