@@ -1,0 +1,9 @@
+.maqam-board {
+    border: 1px solid var(--scale-panel-border-color);
+    background-color: var(--scale-panel-bg-color);
+    max-width: 1200px;
+    margin-inline: auto;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-top: 2rem;
+}

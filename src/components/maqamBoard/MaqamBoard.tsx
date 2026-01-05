@@ -12,26 +12,43 @@ interface MaqamBoardProps {
 		samples: Record<string, any>;
 	};
 	scale: Scale;
-	rootNote: string;
 	instrument: string;
 }
 
 function MaqamBoard({
 	audioManager,
 	scale,
-	rootNote,
+
 	instrument,
 }: MaqamBoardProps) {
+  	const [rootNote, setRootNote] = useState(Object.keys(scale.rootNotes)[0]);
 	const [comparingScaleName, setComparingScaleName] = useState<
 		ComparisonWesternScale | ComparisonMaqam | null
 	>(null);
-
+ 
 	const scaleToCompare: Scale | undefined =
 		SCALE_DATA.find((s) => s.name === comparingScaleName) ?? undefined;
 
 	return (
 		<div className="maqam-board" id={scale.name}>
 			<h2>{uppercase(scale.name)}</h2>
+      			<div>
+				<label htmlFor="keys">Key: {` `}</label>
+				<select
+					name="keys"
+					id="keys"
+					value={rootNote}
+					onChange={(e) => {
+						setRootNote(e.target.value);
+					}}
+				>
+					{Object.keys(scale.rootNotes).map((key) => (
+						<option value={key} key={key}>
+							{key}
+						</option>
+					))}
+				</select>
+			</div>
 
 			<ScalePanel
 				audioManager={audioManager}

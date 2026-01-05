@@ -3,38 +3,35 @@ import "../scalePanel/scalePanel.css";
 import Keyboard from "../keyboard/Keyboard";
 import ScoreGroup from "../scoreGroup/ScoreGroup";
 
-
-import { useState, useRef } from "react";
-
+import { useRef } from "react";
 
 interface ScalePanelProps {
 	audioManager: {
 		playSample: (noteValue: number, sample: any) => void;
 		samples: Record<string, any>;
 	};
-	scale: Scale
+	scale: Scale;
 	rootNote: string;
 	instrument: string;
 }
 
-function ScalePanel({ audioManager, scale, instrument }: ScalePanelProps) {
+function ScalePanel({
+	audioManager,
+	scale,
+	rootNote,
+	instrument,
+}: ScalePanelProps) {
 	const parentScalePanelRef = useRef<HTMLDivElement>(null);
-
-	const [rootNote, setRootNote] = useState(Object.keys(scale.rootNotes)[0]);
-
 
 	return (
 		<div
 			className="scale-panel"
-
-
 			ref={parentScalePanelRef as React.RefObject<HTMLDivElement>}
 		>
 			<ScaleInfoBar
 				audioManager={audioManager}
 				scale={scale}
 				rootNote={rootNote}
-				setRootNote={setRootNote}
 				instrument={instrument}
 				parentScalePanelRef={
 					parentScalePanelRef as React.RefObject<HTMLDivElement>
@@ -60,7 +57,6 @@ function ScalePanel({ audioManager, scale, instrument }: ScalePanelProps) {
 					parentScalePanelRef as React.RefObject<HTMLDivElement>
 				}
 			/>
-
 		</div>
 	);
 }

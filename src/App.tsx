@@ -44,7 +44,6 @@ function App() {
 						key={scale.name}
 						audioManager={audioManager}
 						scale={scale}
-						rootNote={Object.keys(scale.rootNotes)[0]}
 						instrument={instrument}
 					/>
 				);
