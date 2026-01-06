@@ -380,6 +380,24 @@ export const SCALE_DATA: Scale[] = [
 		},
 	},
 	{
+		name: "dorian",
+		isMaqam: false,
+		rootNotes: {
+			C: {
+				notes: generateScale("C dorian"),
+			},
+			D: {
+				notes: generateScale("D dorian"),
+			},
+			G: {
+				notes: generateScale("G dorian"),
+			},
+			A: {
+				notes: generateScale("A dorian"),
+			},
+		},
+	},
+	{
 		name: "harmonic minor",
 		isMaqam: false,
 		rootNotes: {
@@ -394,6 +412,36 @@ export const SCALE_DATA: Scale[] = [
 			},
 			A: {
 				notes: generateScale("A harmonic minor"),
+			},
+		},
+	},
+	{
+		name: "phrygian",
+		isMaqam: false,
+		rootNotes: {
+			D: {
+				notes: generateScale("D phrygian"),
+			},
+			G: {
+				notes: generateScale("G phrygian"),
+			},
+			A: {
+				notes: generateScale("A phrygian"),
+			},
+		},
+	},
+	{
+		name: "phrygian dominant",
+		isMaqam: false,
+		rootNotes: {
+			D: {
+				notes: generateScale("D phrygian dominant"),
+			},
+			G: {
+				notes: generateScale("G phrygian dominant"),
+			},
+			A: {
+				notes: generateScale("A phrygian dominant"),
 			},
 		},
 	},
