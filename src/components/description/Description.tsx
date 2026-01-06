@@ -26,8 +26,8 @@ function Description({
             The 1st and main variation is primarily played when ascending and
             the 2nd variation is primarily played when descending. However,{" "}
             <i>this is not a hard and fast requirement!</i> For example, when
-            improvising it's possible to play the visa-versa wherein the 1st
-            variation can be periodically used when ascensding and the 2nd
+            improvising it's possible to play these visa-versa wherein the 2nd
+            variation can be periodically used when ascensding and the 1st
             variation used when descending. You will often hear then in Arabic
             music using maqam {name}.
         </p>
@@ -135,8 +135,41 @@ function Description({
             );
             break;
         case "kurd":
+            descriptionMarkup = (
+                <Fragment>
+                    <p>
+                        Maqam {name} is identical to the western{" "}
+                        <CompareButton showsScale="phrygian" {...restProps} />{" "}
+                        mode, which a{" "}
+                        <CompareButton showsScale="minor" {...restProps} /> but
+                        with a lowered 2nd degree. You may recognize this scale
+                        from Spanish Adalusian Flamenco music, particularly
+                        Flamenco guitar music. As the Arabic speaking peoples
+                        ruled over this region during the Middle Ages more than 400 years, from roughly 711 -
+                        1492 C.E., it's widely believed that Flamenco style
+                        music later played the guitar had it's very first roots
+                        in Arabic maqam music and took specific influence from
+                        this particular maqam.
+                    </p>
+                    <br />
+                </Fragment>
+            );
             break;
         case "ajam":
+            descriptionMarkup = (
+                <Fragment>
+                    <p>
+                        Maqam {name} has 2 variations. The 1st and most common
+                        varation is identical to the western{" "}
+                        <CompareButton showsScale="major" {...restProps} />{" "}
+                        scale, and th 2nd variation is identical to the the western{" "}
+                        <CompareButton showsScale="mixolydian" {...restProps} />{" "}
+                        scale.
+                    </p>
+                    <br />
+                    {variationSwitchPossibilityNote}
+                </Fragment>
+            );
             break;
         case "saba":
             break;

@@ -7,7 +7,7 @@
     border-radius: 1rem;
     margin-top: 2rem;
     .comparing-scale-panel {
-        transition: ease-in-out 0.2s height, opacity;
+        transition: ease-in-out 0.2s;
         opacity: 1;
         interpolate-size: allow-keywords;
         height: auto;
