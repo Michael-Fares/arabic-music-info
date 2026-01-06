@@ -2,4 +2,5 @@
 .description {
   line-height: 1.5;
   text-align: left;
+  padding-inline: 0.5rem;
 }

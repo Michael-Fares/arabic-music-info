@@ -26,23 +26,25 @@ function MaqamBoard({ audioManager, scale, instrument }: MaqamBoardProps) {
 
     return (
         <div className="maqam-board" id={scale.name}>
-            <h2>{uppercase(scale.name)}</h2>
-            <div>
-                <label htmlFor="keys">Key: {` `}</label>
-                <select
-                    name="keys"
-                    id="keys"
-                    value={rootNote}
-                    onChange={(e) => {
-                        setRootNote(e.target.value);
-                    }}
-                >
-                    {Object.keys(scale.rootNotes).map((key) => (
-                        <option value={key} key={key}>
-                            {key}
-                        </option>
-                    ))}
-                </select>
+            <div className="header">
+                <h2 className="maqam-title">{uppercase(scale.name)}</h2>
+                <div className="key-picker">
+                    <label htmlFor="keys">Key: {` `}</label>
+                    <select
+                        name="keys"
+                        id="keys"
+                        value={rootNote}
+                        onChange={(e) => {
+                            setRootNote(e.target.value);
+                        }}
+                    >
+                        {Object.keys(scale.rootNotes).map((key) => (
+                            <option value={key} key={key}>
+                                {key}
+                            </option>
+                        ))}
+                    </select>
+                </div>
             </div>
 
             <ScalePanel
