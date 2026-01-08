@@ -44,13 +44,38 @@
         color: var(--base-color);
         outline: 1px solid var(--base-color);
         padding: 0.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        min-width: 2.5em;
+        border-radius: 100rem;
         &.descending-variant {
             background-color: var(--descending-variant-note-color);
             color: var(--base-color)
+        }
+        .accidental {
+            margin-left: -0.25em;
+            width: 1.4em;
+            height: 1.4em;
+            user-select: text;
+            fill: var(--base-color);
+            line {
+                stroke: var(--base-color);
+            }
+        }
+        .accidental + .accidental {
+            margin-left: -0.9em;
         }
     }
      .note-pill.highlight {
         background-color: var(--highlight-color);
         color: var(--base-background-color);
+        .accidental {
+            fill: var(--base-background-color);
+            line {
+                stroke: var(--base-background-color);
+            }
+        }
     }
 }

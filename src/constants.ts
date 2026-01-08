@@ -452,3 +452,5 @@ export const INSTUMENTS = {
 	violin: "violin",
 	oud: "oud",
 };
+
+export const flatPath = "M8.5 19 c4.86-2.74 7-5.09 7-7 c0-1.41-.71-3-3-3 c-.7 0-1.39.28-2 .67 V1h-2m2 11 c.62-.67 1.45-1.26 2-1.26c.59 0 1 .07 1 1 c0 .15-.1 1.3-3 3.38";
