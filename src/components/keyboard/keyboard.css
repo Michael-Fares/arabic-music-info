@@ -1,66 +1,74 @@
 @import url("../../variables.css");
 
-.keyboard {
-    padding: 1rem;
-    width: max-content;
-    margin: 0 auto;
-    .key {
-        display: inline-block;
-        vertical-align: top;
-        outline: 1px solid var(--key-outline-color);
-        cursor: pointer;
-        position: relative;
-        &:not(.no-offset) {
-            margin-left: min(-1.3vmax, -0.5rem);
-        }
+.keyboard-container {
+    width: 100%;
+    max-width: 56rem;
+    margin: 1rem auto;
+    .keyboard {
+            display: flex;
+            width: 100%;
+            height: calc(20vmax + 0.1rem); /* Height scales relative to viewport width */
+            max-height: 12rem;
+            min-height: 9rem;
+            padding: 0.5rem;
+        .key {
+            outline: 1px solid var(--key-outline-color);
+            cursor: pointer;
+            position: relative;
 
-        &:focus {
-            outline: 1px solid var(--highlight-color);
-        }
-        &:active {
-            background-color: var(--highlight-color);
-        }
+    
 
-    }
-    .key.in-current-scale {
-        /* change to something else if want to differentiate eg */
-        /* background-color: var(--base-grey); */
-        background-color: var(--in-current-run-color);
-        &:active {
-            background-color: var(--highlight-color);
-        }
-    }
-    .key.in-current-run {
-        background-color: var(--in-current-run-color);
-        &:active {
-            background-color: var(--highlight-color);
-        }
-    }
-    .key.descending-variant {
-        background-color: var(--descending-variant-note-color);
+            &:focus {
+                outline: 1px solid var(--highlight-color);
+            }
             &:active {
+                background-color: var(--highlight-color);
+            }
+
+        }
+        .key.in-current-scale {
+            /* change to something else if want to differentiate eg */
+            /* background-color: var(--base-grey); */
+            background-color: var(--in-current-run-color);
+            &:active {
+                background-color: var(--highlight-color);
+            }
+        }
+        .key.in-current-run {
+            background-color: var(--in-current-run-color);
+            &:active {
+                background-color: var(--highlight-color);
+            }
+        }
+        .key.descending-variant {
+            background-color: var(--descending-variant-note-color);
+                &:active {
+                background-color: var(--highlight-color);
+            }
+        }
+        .whiteKey {
+            flex: 1;
+            z-index: 1;
+            background-color: var(--white-key-color);
+        }
+
+        .blackKey {
+            width: 6%; /* Adjusts width relative to parent */
+            height: 55%;
+            margin-left: -3%; 
+            margin-right: -3%;
+            z-index: 2;
+            background-color: var(--black-key-color);
+        }
+
+        .quarter {
+            border-bottom: 0.8rem solid var(--quarter-tone-key-color);
+        }
+        .key.highlight {
             background-color: var(--highlight-color);
         }
-    }
-    .whiteKey {
-        height: 10.5vmax;
-        width: 3.5vmax;
-        z-index: 1;
-        background-color: var(--white-key-color);
-    }
-
-    .blackKey {
-        height: 5.5vmax;
-        width: 2.5vmax;
-        z-index: 2;
-        background-color: var(--black-key-color);
-    }
-
-    .quarter {
-        border-bottom: 1rem solid var(--quarter-tone-key-color);
-    }
-    .key.highlight {
-        background-color: var(--highlight-color);
+        .whiteKey + .whiteKey {
+            margin-left: 0;
+        }
     }
 }
-
