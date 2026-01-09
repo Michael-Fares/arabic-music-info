@@ -5,7 +5,7 @@ import MaqamBoard from "./components/maqamBoard/MaqamBoard";
 import Nav from "./components/nav/Nav";
 import Header from "./components/header/Header";
 import DarkmodeSwitch from "./components/darkmodeSwitch/DarkmodeSwitch";
-import InstrumentSelector from "./components/intstumentSelector/InstrumentSelector";
+import InstrumentSelector from "./components/instrumentSelector/InstrumentSelector";
 import { useState } from "react";
 import { AudioManager } from "./audio";
 
