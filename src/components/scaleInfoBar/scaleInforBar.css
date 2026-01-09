@@ -4,8 +4,6 @@
     background-color: var(--scale-info-bar-background-color);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     gap: 1rem;
     padding: 1rem;
     .play-button {
