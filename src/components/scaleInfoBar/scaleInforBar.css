@@ -7,20 +7,7 @@
     gap: 1rem;
     padding: 1rem;
     .play-button {
-        background-color: var(--play-button-color);
-        color: var(--base-background-color);
-        padding: 0.5rem 1rem;
-        border: none;
-        border-radius: 0.25rem;
-        cursor: pointer;
-        &::before {
-            content: "\25B6"; /* Unicode for play icon */
-            margin-right: 0.5rem;
-        }
-    }
-    select {
-        background-color: var(--base-background-color);
-        color: var(--base-color)
+
     }
      .notes-info {
         display: flex;
@@ -38,10 +25,28 @@
         .play-button {
             position: absolute;
             left: 0;
+            background-color: var(--play-button-color);
+            color: var(--base-background-color);
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            &::before {
+                content: "\25B6"; /* Unicode for play icon */
+                margin-right: 0.5rem;
+            }
         }
         .ok-button {
             position: absolute;
             right: 0;
+
+            color: var(--base-color);
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 2.5rem;
+            &::before {
+                content: "\00d7";
+            }
         }
     }
     .notes-list {
@@ -89,11 +94,5 @@
                 stroke: var(--base-background-color);
             }
         }
-    }
-    .ok-button {
-        background-color: var(--highlight-color);
-        color: var(--base-background-color);
-        padding: 0.5rem;
-        border-radius: 0.25rem;
     }
 }

@@ -152,7 +152,6 @@ function ScaleInfoBar({
                         className="ok-button"
                         onClick={handleComparingPanelClose}
                     >
-                        OK!
                     </button>
                 ) : null}
             </div>
