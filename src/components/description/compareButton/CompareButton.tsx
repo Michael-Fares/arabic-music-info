@@ -1,7 +1,7 @@
 import "./compareButton.css";
 import classNames from "classnames";
 import QuestionMark from "../../icons/QuestionMark";
-
+import { uppercase } from "../../../utils";
 interface CompareButtonProps {
     showsScale: ComparisonWesternScale | ComparisonMaqam;
     comparingScaleName: ComparisonWesternScale | ComparisonMaqam | null;
@@ -15,6 +15,8 @@ function CompareButton({
     comparingScaleName,
     setComparingScaleName,
 }: CompareButtonProps) {
+    const scaleName =
+        typeof showsScale === "string" ? uppercase(showsScale) : "";
     const handleComparisonClick = () => {
         if (
             !comparingScaleName ||
@@ -38,8 +40,7 @@ function CompareButton({
             onClick={handleComparisonClick}
         >
             <span>
-                {showsScale}
-
+                {uppercase(scaleName)}
                 <QuestionMark />
             </span>
         </button>

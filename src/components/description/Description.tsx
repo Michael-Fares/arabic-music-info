@@ -1,5 +1,5 @@
 import "./description.css";
-
+import { uppercase } from "../../utils";
 import { Fragment } from "react/jsx-runtime";
 
 import CompareButton from "./compareButton/CompareButton";
@@ -18,19 +18,38 @@ function Description({
     setComparingScaleName,
 }: DescriptionProps) {
     const { name } = scale;
+    const nameUpper = uppercase(name);
     let descriptionMarkup;
     const restProps = { comparingScaleName, setComparingScaleName };
 
-    const variationSwitchPossibilityNote = (
+    const variationSwitchPossibilityNoteLong = (
         <p className="variation-swap-note">
             The 1st and main variation is primarily played when ascending and
             the 2nd variation is primarily played when descending. However,{" "}
             <i>this is not a hard and fast requirement!</i> For example, when
             improvising it's possible to play these visa-versa wherein the 2nd
             variation can be periodically used when ascensding and the 1st
-            variation used when descending. You will often hear then in Arabic
-            music using maqam {name}.
+            variation used when descending. You will often hear this in Arabic
+            music improvistations or melodies composed in Maqam {nameUpper}.
+            This same pattern is common is several other Maqams, as you'll see in Maqams 
+            {" "}<a href="#bayati">Bayati</a>,
+            {" "}<a href="#hijaz">Hijaz</a>,
+            {" "}<a href="#nahawand">Nahawand</a>,
+            and
+            {" "}<a href="#ajam">Ajam</a>{" "}
+            below.
         </p>
+    );
+
+    const variationSwitchPossibilityNoteShort = (
+        <span className="variation-swap-note">
+            the 1st and main variation is primarily played when ascending and
+            the 2nd variation is primarily played when descending. But {" "}
+            this is not a hard and fast requirement and so when
+            improvising it's possible to play these visa-versa wherein the 2nd
+            variation can be periodically used when ascensding and the 1st
+            variation used when descending.
+        </span>
     );
 
     switch (name) {
@@ -38,18 +57,18 @@ function Description({
             descriptionMarkup = (
                 <Fragment>
                     <p>
-                        Maqam {name} has 2 variations. The 1st and most common
+                        Maqam {nameUpper} has 2 variations. The 1st and most common
                         varation is like the western{" "}
                         <CompareButton showsScale="major" {...restProps} />{" "}
-                        scale but with the 3rd and 7th degrees lowered by a{" "}
-                        <i>quater tone</i>. In other words, they are half flat.
+                        scale but with the <i className="text-italic-qt">3rd and 7th degrees lowered by a{" "}
+                        quater tone</i>. In other words, they are half flat.
                         The 2nd variation is like the western{" "}
                         <CompareButton showsScale="mixolydian" {...restProps} />{" "}
                         scale but with a the 3rd degree lowered by a{" "}
                         <i>quarter tone</i>, or half flat.{" "}
                     </p>
                     <br />
-                    {variationSwitchPossibilityNote}
+                    {variationSwitchPossibilityNoteLong}
                 </Fragment>
             );
             break;
@@ -57,18 +76,18 @@ function Description({
             descriptionMarkup = (
                 <Fragment>
                     <p>
-                        Maqam {name} has 2 variations. The 1st and most common
+                        Maqam {nameUpper} has 2 variations. The 1st and most common
                         varation is like the western{" "}
                         <CompareButton showsScale="dorian" {...restProps} />{" "}
                         mode but with the 3rd and 7th degrees lowered by a{" "}
-                        <i>quater tone</i>. In other words, they are half flat.
+                        <i className="text-italic-qt">quater tone</i>. In other words, they are half flat.
                         The 2nd variation is like the western{" "}
                         <CompareButton showsScale="minor" {...restProps} />{" "}
                         scale but with a the 3rd degree lowered by a{" "}
                         <i>quarter tone</i>, or half flat.{" "}
                     </p>
                     <br />
-                    {variationSwitchPossibilityNote}
+                    Similar to Maqam Rast above, {variationSwitchPossibilityNoteShort}
                 </Fragment>
             );
             break;
@@ -76,14 +95,14 @@ function Description({
             descriptionMarkup = (
                 <Fragment>
                     <p>
-                        Maqam {name} has 2 variations. The 1st and most common
+                        Maqam {nameUpper} has 2 variations. The 1st and most common
                         varation is like the western{" "}
                         <CompareButton
                             showsScale="phrygian dominant"
                             {...restProps}
                         />{" "}
                         scale but with the 6th degree raised by a{" "}
-                        <i>quater tone</i>. In other words, it is{" "}
+                        <i className="text-italic-qt">quater tone</i>. In other words, it is{" "}
                         <i>half sharp</i>. You will notice that this note is
                         notated as half flat for notiational consistency.
                         Another way to think of this variation is the first 3
@@ -92,13 +111,13 @@ function Description({
                         <i>
                             first 5 notes of maqam <a href="#rast">rast</a>
                         </i>
-                        . In other words, if the starting note of maqam {name}{" "}
+                        . In other words, if the starting note of maqam {nameUpper}{" "}
                         is "D", then starting from the perfect 4th of "G" it
                         will end with the first 5 notes of maqam rast. similarly
-                        if the starting note of maqam {name} is "G", then
+                        if the starting note of maqam {nameUpper} is "G", then
                         starting from the perfect 4th of "C" it will end with
                         the first 5 notes of maqam rast. And likewise, if the
-                        starting note of maqam {name} is "A", then starting from
+                        starting note of maqam {nameUpper} is "A", then starting from
                         the perfect 4th of "D" it will end with the first 5
                         notes of maqam rast.
                         {/*
@@ -108,10 +127,10 @@ function Description({
                             {...restProps}
                         />{" "}  */}
                         The 2nd variation is technically identical to the
-                        western phrygian dominant scale.
+                        western Phrygian Dominant Scale.
                     </p>
                     <br />
-                    {variationSwitchPossibilityNote}
+                    Like Maqam Bayati above, {variationSwitchPossibilityNoteShort}
                 </Fragment>
             );
             break;
@@ -119,7 +138,7 @@ function Description({
             descriptionMarkup = (
                 <Fragment>
                     <p>
-                        Maqam {name} has 2 variations. The 1st and most common
+                        Maqam {nameUpper} has 2 variations. The 1st and most common
                         varation is technically identical to the western{" "}
                         <CompareButton
                             showsScale="harmonic minor"
@@ -127,10 +146,10 @@ function Description({
                         />{" "}
                         scale. The 2nd varitation is technically identical to
                         the western{" "}
-                        <CompareButton showsScale="minor" {...restProps} />{" "}
+                        <CompareButton showsScale="minor" {...restProps} />{" "} Scale.
                     </p>
                     <br />
-                    {variationSwitchPossibilityNote}
+                    Like Maqam Hijaz above, {variationSwitchPossibilityNoteShort}
                 </Fragment>
             );
             break;
@@ -138,7 +157,7 @@ function Description({
             descriptionMarkup = (
                 <Fragment>
                     <p>
-                        Maqam {name} is identical to the western{" "}
+                        Maqam {nameUpper} is identical to the western{" "}
                         <CompareButton showsScale="phrygian" {...restProps} />{" "}
                         mode, which a{" "}
                         <CompareButton showsScale="minor" {...restProps} /> but
@@ -159,15 +178,15 @@ function Description({
             descriptionMarkup = (
                 <Fragment>
                     <p>
-                        Maqam {name} has 2 variations. The 1st and most common
+                        Maqam {nameUpper} has 2 variations. The 1st and most common
                         varation is identical to the western{" "}
                         <CompareButton showsScale="major" {...restProps} />{" "}
                         scale, and th 2nd variation is identical to the the western{" "}
                         <CompareButton showsScale="mixolydian" {...restProps} />{" "}
-                        scale.
+                        Scale.
                     </p>
                     <br />
-                    {variationSwitchPossibilityNote}
+                    Like Maqam's Rast, Bayati, Hijaz, and Nahawand above, {variationSwitchPossibilityNoteShort}
                 </Fragment>
             );
             break;

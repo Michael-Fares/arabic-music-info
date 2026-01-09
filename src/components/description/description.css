@@ -2,5 +2,10 @@
 .description {
   line-height: 1.5;
   text-align: left;
-  padding-inline: 0.5rem;
+  padding-inline: 0.75rem;
+
+  .text-italic-qt {
+    color: var(--quarter-tone-key-color);
+    font-weight: bold;
+  }
 }

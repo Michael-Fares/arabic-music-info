@@ -18,6 +18,10 @@
             right: 0;
         }
     }
+    select {
+        color: var(--base-color);
+        background-color: var(--base-background-color);
+    }
     .scale-panel-group-wrapper {
         display: flex;
         justify-content: center;
