@@ -22,7 +22,7 @@
         background-color: var(--base-background-color);
         color: var(--base-color)
     }
-     .top-row, .notes-info {
+     .notes-info {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -30,7 +30,19 @@
         flex-wrap: wrap;
     }
     .top-row {
-        gap: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        position: relative;
+        .play-button {
+            position: absolute;
+            left: 0;
+        }
+        .ok-button {
+            position: absolute;
+            right: 0;
+        }
     }
     .notes-list {
         list-style: none;
@@ -82,6 +94,6 @@
         background-color: var(--highlight-color);
         color: var(--base-background-color);
         padding: 0.5rem;
-        border-radius: 0.5rem;
+        border-radius: 0.25rem;
     }
 }

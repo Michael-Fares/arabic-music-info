@@ -7,16 +7,15 @@
     border-radius: 1rem;
     margin-top: 2rem;
     .header {
+        position: relative;
         padding-inline: 2rem;
         padding-bottom: 0.5rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        .maqam-title {
-            flex: 1;
-        }
         .key-picker {
-            align-self: start;
+            position: absolute;
+            right: 0;
         }
     }
     .scale-panel-group-wrapper {
