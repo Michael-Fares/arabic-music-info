@@ -1,13 +1,26 @@
+@import url("../../../variables.css");
 .comparison-button {
   background-color: var(--green-primary);
   color: var(--base-color);
-  padding: 0.75rem;
+  padding: 0.25rem 0.75rem;
   margin-block: 0.2rem;
   border-radius: 0.25rem;
   transition: ease-in-out 0.2s color;  
     &.active {
       background-color: var(--green-secondary);
       color: var(--base-background-color);
+      svg {
+        fill: var(--base-background-color);
+      }
     }
-  
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    svg {
+      fill: var(--base-color);
+      transition: ease-in-out 0.2s fill; 
+    }
 }
