@@ -2,7 +2,7 @@ import "./description.css";
 
 import { Fragment } from "react/jsx-runtime";
 
-import CompareButton from "../compareButton/CompareButton";
+import CompareButton from "./compareButton/CompareButton";
 
 interface DescriptionProps {
     scale: Scale;

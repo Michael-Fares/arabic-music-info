@@ -1,4 +1,5 @@
 import "./compareButton.css";
+import classNames from "classnames";
 
 interface CompareButtonProps {
 	showsScale: ComparisonWesternScale | ComparisonMaqam;
@@ -31,7 +32,10 @@ function CompareButton({
 	};
 	return (
 		<button
-			className="comparison-button"
+			className={classNames({
+				"comparison-button": true,
+				"active": !!comparingScaleName && comparingScaleName === showsScale
+			})}
 			data-comparing-scale-name={showsScale}
 			onClick={handleComparisonClick}
 		>
