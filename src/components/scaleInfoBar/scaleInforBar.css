@@ -43,7 +43,7 @@
         background-color: var(--in-current-run-color);
         color: var(--base-color);
         outline: 1px solid var(--base-color);
-        padding: 0.5rem;
+        padding: 0.25rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -55,7 +55,7 @@
             color: var(--base-color)
         }
         .accidental {
-            margin-left: -0.25em;
+            margin-left: -0.35em;
             width: 1.4em;
             height: 1.4em;
             user-select: text;

@@ -46,24 +46,28 @@ function MaqamBoard({ audioManager, scale, instrument }: MaqamBoardProps) {
                     </select>
                 </div>
             </div>
+            <div className="scale-panel-group-wrapper">
+                <div className="main-scale-panel">
 
-            <ScalePanel
-                audioManager={audioManager}
-                scale={scale}
-                rootNote={rootNote}
-                instrument={instrument}
-            />
-
-            {scaleToCompare ? (
-                <div className="comparing-scale-panel">
-                    <ScalePanel
-                        audioManager={audioManager}
-                        scale={scaleToCompare}
-                        rootNote={rootNote}
-                        instrument={instrument}
-                    />
+                <ScalePanel
+                    audioManager={audioManager}
+                    scale={scale}
+                    rootNote={rootNote}
+                    instrument={instrument}
+                />
                 </div>
-            ) : null}
+
+                {scaleToCompare ? (
+                    <div className="comparing-scale-panel">
+                        <ScalePanel
+                            audioManager={audioManager}
+                            scale={scaleToCompare}
+                            rootNote={rootNote}
+                            instrument={instrument}
+                        />
+                    </div>
+                ) : null}
+            </div>
 
             <Description
                 scale={scale}

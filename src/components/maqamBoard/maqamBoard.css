@@ -1,7 +1,7 @@
 .maqam-board {
     border: 1px solid var(--scale-panel-border-color);
     background-color: var(--scale-panel-bg-color);
-    max-width: 1200px;
+    max-width: 90rem;
     margin-inline: auto;
     padding: 1rem;
     border-radius: 1rem;
@@ -19,14 +19,20 @@
             align-self: start;
         }
     }
+    .scale-panel-group-wrapper {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
     .comparing-scale-panel {
-        transition: ease-in-out 0.2s;
+        transition: ease-in-out 0.2s, opacity, translate;
         opacity: 1;
-        interpolate-size: allow-keywords;
-        height: auto;
         @starting-style {
             opacity: 0;
-            height: 0;
+            transform: translate(-100%);
         }
+    }
+    .main-scale-panel, .comparing-scale-panel {
+        flex: 1;
     }
 }
