@@ -12,6 +12,22 @@ interface ScaleInfoBarProps {
     rootNote: string;
     instrument: string;
     parentScalePanelRef: React.RefObject<HTMLDivElement> | null;
+    isComparisonPanel?: boolean;
+    setComparingScaleName?: React.Dispatch<
+        React.SetStateAction<
+            | "major"
+            | "mixolydian"
+            | "minor"
+            | "dorian"
+            | "harmonic minor"
+            | "phrygian"
+            | "phrygian dominant"
+            | "rast"
+            | "bayati"
+            | "hijaz"
+            | null
+        >
+    >;
 }
 function ScaleInfoBar({
     audioManager,
@@ -19,6 +35,8 @@ function ScaleInfoBar({
     rootNote,
     instrument,
     parentScalePanelRef,
+    isComparisonPanel,
+    setComparingScaleName,
 }: ScaleInfoBarProps) {
     const notesInScale = scale.rootNotes[rootNote]?.notes || [];
 
@@ -105,23 +123,44 @@ function ScaleInfoBar({
             });
         }, notesToPlay.length * 500 + 1000);
     };
-
+    const handleComparingPanelClose = () => {
+        if (setComparingScaleName) {
+            setComparingScaleName(null);
+        } else {
+            return;
+        }
+    };
+    const scaleTitle = scale.isMaqam ? (
+        <b>Maqam {uppercase(scale.name)}</b>
+    ) : (
+        <span>
+            This is the <b>{uppercase(scale.name)} Scale</b>
+        </span>
+    );
     return (
         <div className="scale-info-bar">
-            <button className="play-button" onClick={() => handleClickPlay()}>
-                Hear It!
-            </button>
-            <p>
-                {scale.isMaqam ? (
-                    <b>Maqam {uppercase(scale.name)}</b>
-                ) : (
-                    <span>
-                        This is the <b>{uppercase(scale.name)} Scale</b>!
-                    </span>
-                )}
-            </p>
+            <div className="top-row">
+                <button
+                    className="play-button"
+                    onClick={() => handleClickPlay()}
+                >
+                    Hear It!
+                </button>
+                <p>{scaleTitle}</p>
+                {isComparisonPanel ? (
+                    <button
+                        className="ok-button"
+                        onClick={handleComparingPanelClose}
+                    >
+                        OK!
+                    </button>
+                ) : null}
+            </div>
             <div className="notes-info">
-                <NoteList uniqueNotesForForDisplay={uniqueNotesForForDisplay} scale={scale}/>
+                <NoteList
+                    uniqueNotesForForDisplay={uniqueNotesForForDisplay}
+                    scale={scale}
+                />
             </div>
         </div>
     );
