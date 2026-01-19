@@ -233,7 +233,7 @@ function Description({
 						we've seen, neither can be compared to a Western scale in any
 						meaningful way. However, one good way to think about Maqam{" "}
 						{nameUpper} is in terms of how it compares to Maqam{" "}
-						<CompareButton showsScale="bayati" {...restProps} />, because Maqam
+						<CompareButton showsScale="bayati" {...restProps} />, because Maqam {" "}
 						{nameUpper} is often a natural choice for modulation from Maqam Bayati in
 						both common Arabic melodies and improvisations. Specifically, the
 						1st variation of Maqam {nameUpper} is{" "}
