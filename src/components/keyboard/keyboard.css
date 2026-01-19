@@ -26,14 +26,14 @@
             }
 
         }
+        /**
         .key.in-current-scale {
-            /* change to something else if want to differentiate eg */
-            /* background-color: var(--base-grey); */
-            background-color: var(--in-current-run-color);
+            background-color: var(--base-grey);
             &:active {
                 background-color: var(--highlight-color);
             }
         }
+        **/
         .key.in-current-run {
             background-color: var(--in-current-run-color);
             &:active {

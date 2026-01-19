@@ -137,9 +137,7 @@ function Description({
 						with the 4th note, the{" "}
 						<i>
 							first 5 notes of Maqam{" "}
-							<a className="maqam-jump" href="#rast">
-								Rast
-							</a>
+						<CompareButton showsScale="rast" {...restProps} />
 						</i>
 						. In other words, if the starting note of maqam {nameUpper} is "D",
 						then starting from the perfect 4th of "G" it will end with the first
@@ -265,10 +263,10 @@ function Description({
 						However, one possible way to think about Maqam {nameUpper} is in
 						terms of the Western{" "}
                         {/* NOTE : need to hook this up to make the starting root note different */}
-						{/* <CompareButton showsScale="harmonic minor" {...restProps} />, */}
+						
                         Harmonic Minor
-                        scale. Specifically Maqam Sikah is like the Harmonic Minor scale but with the 3rd note raised by a quarter tone or "half sharp", and played starting from that note instead of it's root note.
-                        So for example, when the starting note of Sikah is "E half flat" then you can think of it as a C Harmonic Minor scale whose 3rd note, Eb is raised by a quarter tone, becoming E half flat only, and starting on E half flat.
+                        scale. Specifically Maqam Sikah is like the <CompareButton showsScale="harmonic minor" {...restProps} /> scale but with the 3rd note raised by a quarter tone or "half sharp", and played starting from that note instead of it's root note.
+                        Therefore, when the starting note of Sikah is "E half flat" then you can think of it as a C Harmonic Minor scale whose 3rd note, Eb is raised by a quarter tone, becoming E half flat only, and starting on E half flat.
                         Similarly when the starting note of Sikah is "B half flat" then you can think of it as a G Harmonic Minor scale whose 3rd note, Bb is raised by a quarter tone, becoming B half flat only, and starting on B half flat.
 					</p>
 				</Fragment>

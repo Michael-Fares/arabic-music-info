@@ -153,6 +153,12 @@ export const SCALE_DATA: Scale[] = [
 					generateScale("G mixolydian")
 				),
 			},
+			D: {
+				notes: Transformer.majorToRast(generateScale("D major")),
+				descendingNotes: Transformer.mixolydianToRast(
+					generateScale("D mixolydian")
+				),
+			},
 		},
 	},
 	{
