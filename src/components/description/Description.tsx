@@ -228,6 +228,17 @@ function Description({
 			);
 			break;
 		case "saba":
+			descriptionMarkup = (
+				<Fragment>
+					<p>
+						Maqam {nameUpper} has 2 variations, and unlike the previous Maqams we've seen, neither can be compared to a Western scale in any meaningful way.
+                        However, one good way to think about Maqam is in terms of how it compares to Maqam <CompareButton showsScale="bayati" {...restProps} />, because Maqam Saba is often a natural choice for modulation from Maqam Bayati in both common Arabic melodies and improvisations.
+                        Specifically, the 1st variation of Maqam {nameUpper} is <i>like the 2nd variation Maqam Bayati - the descending versions - but with the 4th note flat and 7th note sharp</i>. Similarly the 2nd variation of Maqam {nameUpper} is like the 2nd variation (descending version) Maqam Bayati but with only the 4th note flat instead.
+					</p>
+					<br />
+                    As we've seen is the convention with several other Maqams above, {variationSwitchPossibilityNoteShort}
+				</Fragment>
+			);
 			break;
 		case "sikah":
 			break;
