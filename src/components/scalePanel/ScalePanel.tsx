@@ -67,7 +67,7 @@ function ScalePanel({
                     parentScalePanelRef as React.RefObject<HTMLDivElement>
                 }
             />
-
+            <p>Click any staff note or piano key to hear it.</p>
             <Keyboard
                 audioManager={audioManager}
                 scale={scale}

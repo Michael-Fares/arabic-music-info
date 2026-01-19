@@ -4,24 +4,27 @@
     width: 100%;
     max-width: 56rem;
     margin: 1rem auto;
+    background-color: var(--keyboard-bg-color);
+    padding: 0.25rem;
+    border-radius: 0.25rem;
     .keyboard {
             display: flex;
+            gap: 0.1rem;
             width: 100%;
             height: calc(20vmax + 0.1rem); /* Height scales relative to viewport width */
             max-height: 12rem;
             min-height: 9rem;
         .key {
-            outline: 1px solid var(--key-outline-color);
+            outline: 2px solid var(--key-outline-color);
             cursor: pointer;
             position: relative;
 
-    
-
-            &:focus {
-                outline: 1px solid var(--highlight-color);
+            &:focus-visible {
+                outline: 2px solid var(--highlight-color);
             }
             &:active {
                 background-color: var(--highlight-color);
+                margin-top: 0.1rem;
             }
 
         }
@@ -49,15 +52,17 @@
             flex: 1;
             z-index: 1;
             background-color: var(--white-key-color);
+            border-radius: 0 0 0.25rem 0.25rem;
         }
 
         .blackKey {
-            width: 5.5%; /* Adjusts width relative to parent */
+            width: 6%; /* Adjusts width relative to parent */
             height: 55%;
             margin-left: -3%; 
             margin-right: -3%;
             z-index: 2;
             background-color: var(--black-key-color);
+            border-radius: 0 0 0.2rem 0.22rem;
         }
 
         .quarter {
@@ -65,9 +70,10 @@
         }
         .key.highlight {
             background-color: var(--highlight-color);
+            margin-top: 0.1rem;
         }
         .whiteKey + .whiteKey {
-            margin-left: 0;
+            margin-left: 0.1rem;
         }
     }
 }

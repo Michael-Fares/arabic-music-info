@@ -23,6 +23,7 @@
     --scale-info-bar-background-color: var(--base-grey);
     --score-color: black;
 
+    --keyboard-bg-color: #1e0101;
     --highlight-color: royalblue;
     --black-key-color: black;
     --white-key-color: white;
@@ -45,6 +46,7 @@
     --green-3: #27391C;
     --base-grey: #463f3f;
     --red-primary: #ff4444;
+    --red-scondary: #9d2020;
 
     --sun-moon-icon-fill: #6bdfff;
 
@@ -52,10 +54,12 @@
     --scale-panel-border-color: rgba(255,255,255,0.4);
     --scale-info-bar-background-color: var(--base-grey);
     --score-color: #3BC1A8;
+
+    --keyboard-bg-color:  var(--red-scondary);
     --highlight-color: gold;
     --black-key-color: black;
     --white-key-color: whitesmoke;
-    --key-outline-color: #9b8989;
+    /* --key-outline-color: #9b8989; */
     --quarter-tone-key-color: var(--red-primary);
     --in-current-run-color: var(--green-primary);
     --descending-variant-note-color: var(--green-3);
