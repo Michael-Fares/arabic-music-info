@@ -55,7 +55,7 @@
     --highlight-color: #a6b2d7;
     --black-key-color: black;
     --white-key-color: whitesmoke;
-    --key-outline-color: #d9bdbd;
+    /* --key-outline-color: #d9bdbd; */
     --quarter-tone-key-color: gold;
     --in-current-run-color: var(--green-primary);
     --descending-variant-note-color: var(--green-3);

@@ -1,11 +1,15 @@
 @import url('../../variables.css');
 .description {
-  line-height: 1.5;
+  line-height: 1.8;
   text-align: left;
   padding-inline: 0.75rem;
 
   .text-italic-qt {
     color: var(--quarter-tone-key-color);
+    font-weight: bold;
+  }
+  .maqam-jump {
+    color: var(--red-primary);
     font-weight: bold;
   }
 }
