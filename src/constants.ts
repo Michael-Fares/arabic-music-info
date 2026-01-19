@@ -275,11 +275,12 @@ export const SCALE_DATA: Scale[] = [
 	{
 		name: "saba",
 		isMaqam: true,
+		descendingScaleVariantDegree: 7,
 		rootNotes: {
 			D: {
 				notes: (Transformer.minorToBayati(generateScale("D minor")) || [])
 					.slice(0, 2)
-					.concat((generateScale("F phrygian dominant") || []).slice(0, 5)),
+					.concat((generateScale("F phrygian dominant") || []).slice(0, 4)).concat(["Db"]),
 				descendingNotes: (
 					Transformer.minorToBayati(generateScale("D minor")) || []
 				)
@@ -289,7 +290,7 @@ export const SCALE_DATA: Scale[] = [
 			G: {
 				notes: (Transformer.minorToBayati(generateScale("G minor")) || [])
 					.slice(0, 2)
-					.concat((generateScale("Bb phrygian dominant") || []).slice(0, 5))
+					.concat((generateScale("Bb phrygian dominant") || []).slice(0, 4)).concat(["Gb"])
 					.map((note) => (note === "Cb" ? "B" : note)),
 				descendingNotes: (
 					Transformer.minorToBayati(generateScale("G minor")) || []
@@ -301,7 +302,7 @@ export const SCALE_DATA: Scale[] = [
 			A: {
 				notes: (Transformer.minorToBayati(generateScale("A minor")) || [])
 					.slice(0, 2)
-					.concat((generateScale("C phrygian dominant") || []).slice(0, 5)),
+					.concat((generateScale("C phrygian dominant") || []).slice(0, 4)).concat(["Ab"]),
 				descendingNotes: (
 					Transformer.minorToBayati(generateScale("A minor")) || []
 				)
