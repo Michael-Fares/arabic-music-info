@@ -231,16 +231,48 @@ function Description({
 			descriptionMarkup = (
 				<Fragment>
 					<p>
-						Maqam {nameUpper} has 2 variations, and unlike the previous Maqams we've seen, neither can be compared to a Western scale in any meaningful way.
-                        However, one good way to think about Maqam is in terms of how it compares to Maqam <CompareButton showsScale="bayati" {...restProps} />, because Maqam Saba is often a natural choice for modulation from Maqam Bayati in both common Arabic melodies and improvisations.
-                        Specifically, the 1st variation of Maqam {nameUpper} is <i>like the 2nd variation Maqam Bayati - the descending versions - but with the 4th note flat and 7th note sharp</i>. Similarly the 2nd variation of Maqam {nameUpper} is like the 2nd variation (descending version) Maqam Bayati but with only the 4th note flat instead.
+						Maqam {nameUpper} has 2 variations, and unlike the previous Maqams
+						we've seen, neither can be compared to a Western scale in any
+						meaningful way. However, one good way to think about Maqam{" "}
+						{nameUpper} is in terms of how it compares to Maqam{" "}
+						<CompareButton showsScale="bayati" {...restProps} />, because Maqam
+						{nameUpper} is often a natural choice for modulation from Maqam Bayati in
+						both common Arabic melodies and improvisations. Specifically, the
+						1st variation of Maqam {nameUpper} is{" "}
+						<i>
+							like the 2nd variation Maqam Bayati - the descending versions -
+							but with the 4th note flat and 7th note sharp
+						</i>
+						. Similarly the 2nd variation of Maqam {nameUpper} is like the 2nd
+						variation (descending version) Maqam Bayati but with only the 4th
+						note flat instead.
 					</p>
 					<br />
-                    As we've seen is the convention with several other Maqams above, {variationSwitchPossibilityNoteShort}
+					As we've seen is the convention with several other Maqams above,{" "}
+					{variationSwitchPossibilityNoteShort}
 				</Fragment>
 			);
 			break;
 		case "sikah":
+			descriptionMarkup = (
+				<Fragment>
+					<p>
+						Similar to Maqam Saba above, is's difficult to make a clean
+						comparison between Maqam {nameUpper} and a specific Western scale,
+						perhaps because what makes Maqam {nameUpper} most unique is that is{" "}
+						<i className="text-italic-qt">begins on a quarter tone</i> and is
+						usually played starting from "E half flat" or "B half flat".
+						However, one possible way to think about Maqam {nameUpper} is in
+						terms of the Western{" "}
+                        {/* NOTE : need to hook this up to make the starting root note different */}
+						{/* <CompareButton showsScale="harmonic minor" {...restProps} />, */}
+                        Harmonic Minor
+                        scale. Specifically Maqam Sikah is like the Harmonic Minor scale but with the 3rd note raised by a quarter tone or "half sharp", and played starting from that note instead of it's root note.
+                        So for example, when the starting note of Sikah is "E half flat" then you can think of it as a C Harmonic Minor scale whose 3rd note, Eb is raised by a quarter tone, becoming E half flat only, and starting on E half flat.
+                        Similarly when the starting note of Sikah is "B half flat" then you can think of it as a G Harmonic Minor scale whose 3rd note, Bb is raised by a quarter tone, becoming B half flat only, and starting on B half flat.
+					</p>
+				</Fragment>
+			);
 			break;
 		default:
 			descriptionMarkup = null;
