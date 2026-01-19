@@ -3,9 +3,10 @@
     background-color: var(--scale-panel-bg-color);
     max-width: 90rem;
     margin-inline: auto;
+    margin-block: 1rem;
     padding: 1rem;
     border-radius: 1rem;
-    margin-top: 2rem;
+    padding-top: 2.5rem;
     .header {
         position: relative;
         padding-inline: 2rem;
@@ -26,6 +27,7 @@
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
+        gap: 0.75rem;
     }
     .comparing-scale-panel {
         transition: ease-in-out 0.2s, opacity, translate;

@@ -2,8 +2,8 @@
 .comparison-button {
   background-color: var(--green-primary);
   color: var(--base-color);
-  padding: 0.25rem 0.75rem;
-  margin-block: 0.2rem;
+  padding: 0.25rem;
+  margin-block: 0.1rem;
   border-radius: 0.25rem;
   transition: ease-in-out 0.2s color;  
     &.active {

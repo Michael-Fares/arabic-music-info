@@ -1,5 +1,6 @@
 @import url("../../variables.css");
 .scale-info-bar {
+    min-height: 6.5rem;
     margin: 0.25rem;
     background-color: var(--scale-info-bar-background-color);
     display: flex;
@@ -56,7 +57,7 @@
     .note-pill {
         background-color: var(--in-current-run-color);
         color: var(--base-color);
-        outline: 1px solid var(--base-color);
+        outline: 1px solid var(--key-outline-color);
         padding: 0.25rem;
         display: flex;
         justify-content: center;

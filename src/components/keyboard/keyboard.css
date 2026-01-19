@@ -10,7 +10,6 @@
             height: calc(20vmax + 0.1rem); /* Height scales relative to viewport width */
             max-height: 12rem;
             min-height: 9rem;
-            padding: 0.5rem;
         .key {
             outline: 1px solid var(--key-outline-color);
             cursor: pointer;
@@ -26,14 +25,14 @@
             }
 
         }
-        /**
+
         .key.in-current-scale {
             background-color: var(--base-grey);
             &:active {
                 background-color: var(--highlight-color);
             }
         }
-        **/
+
         .key.in-current-run {
             background-color: var(--in-current-run-color);
             &:active {
