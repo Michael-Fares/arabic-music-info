@@ -11,5 +11,7 @@
   .maqam-jump {
     color: var(--red-primary);
     font-weight: bold;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid;
   }
 }
