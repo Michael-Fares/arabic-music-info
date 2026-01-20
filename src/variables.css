@@ -32,7 +32,7 @@
     --in-current-run-color: var(--green-primary);
     --descending-variant-note-color: var(--green-3);
     --play-button-color: var(--green-secondary);
-    --scale-panel-bg-color: var(var(--base-background-color));
+    --scale-panel-bg-color: var(--base-background-color);
     color: var(--base-color); 
     background-color: var(--base-background-color);
 }

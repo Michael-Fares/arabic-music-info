@@ -1,1 +1,42 @@
 @import url("../../variables.css");
+
+.legend {
+    /* margin: 0 auto; */
+    padding: 1rem;
+    .legend-list {
+        display: flex;
+        gap: 2rem;
+        justify-content: start;
+        flex-wrap: wrap;
+        .legend-list-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            .color-square {
+                margin: 0 auto;
+                flex-basis: 2.5rem;
+                width: 2.5rem;
+                height: 2.5rem;
+                box-shadow: 0 0 0.2rem var(--base-color);
+            }
+            p {
+                text-align: left;
+                flex: 1;
+                max-width: 10rem;
+            }
+            .color-square.quarter-tone {
+                background-color: var(--quarter-tone-key-color);
+            }
+            .color-square.in-current-run {
+                background-color: var(--in-current-run-color);
+            }
+            .color-square.descending-variant {
+                background-color: var(--descending-variant-note-color);
+            }
+            .color-square.in-current-scale-color {
+                background-color: var(--base-grey);
+            }
+        }
+    }
+}

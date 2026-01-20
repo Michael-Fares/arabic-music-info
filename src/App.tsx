@@ -8,6 +8,7 @@ import DarkmodeSwitch from "./components/darkmodeSwitch/DarkmodeSwitch";
 import InstrumentSelector from "./components/instrumentSelector/InstrumentSelector";
 import { useState } from "react";
 import { AudioManager } from "./audio";
+import Legend from "./components/legend/Legend";
 
 
 function App() {
@@ -37,7 +38,7 @@ function App() {
 			)}
 
 			<Nav maqamList={maqamList} />
-
+			<Legend />
 			{maqams.map((scale: Scale) => {
 				return (
 					<MaqamBoard
