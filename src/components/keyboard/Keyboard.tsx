@@ -30,8 +30,8 @@ function Keyboard({
 
     // the 8 notes of the scale, in order, starting from the root note on the keyboard
     const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);
-
-    console.log("test >>>>", scale.name , getAutoMusicalTypingNoteSet(NOTE_VALUES, notesInScale, descendingNotesInScale))
+    const musicalTypingNoteSet = getAutoMusicalTypingNoteSet(NOTE_VALUES, notesInScale, descendingNotesInScale);
+    console.log("test >>>>", scale.name , musicalTypingNoteSet)
 
     const handleKeyClick = (
         event: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -101,8 +101,6 @@ function Keyboard({
                                 key: true,
                                 blackKey: name.includes("b"),
                                 whiteKey: !name.includes("b"),
-                                "no-offset":
-                                    name.includes("C") || name.includes("F"),
                                 "in-current-scale":
                                     notesInScale.includes(name) ||
                                     notesInScale.includes(name + "-hf"),
@@ -122,6 +120,7 @@ function Keyboard({
                             onClick={(event) => handleKeyClick(event)}
                             onMouseDown={(event) => handleKeyMouseDown(event)}
                             onMouseUp={(event) => handleKeyMouseUp(event)}
+
                         ></button>
                     );
                 })}
