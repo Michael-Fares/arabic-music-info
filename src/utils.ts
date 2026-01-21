@@ -31,7 +31,7 @@ export function quarterize(note: NoteObject): NoteObject {
  * noteValues  is an array of notes always same as NOTE_VALUES constant
  *
  * */
-export function getNotesToPlay(noteValues: NoteObject[], notesInScale: Array<string>): NoteObject[] {
+export function getNotesToPlay(noteValues: NoteObject[], notesInScale: string[]): NoteObject[] {
 	
 	const isSikah = notesInScale[0]?.includes("-hf");
 	const firstNote = isSikah ? notesInScale[0].split("-")[0] : notesInScale[0];
@@ -90,3 +90,23 @@ export function formatNotesForVexflowScore(notesToPlay: NoteObject[]) {
 	return vfnotes;
 }
 
+/**
+ * return an array of all "safe" keyboard notes in the current scale or maqam
+ * which will be an array of length 14 if no descending variant, and an array of length 16 otherwise.
+ */
+export function getAutoMusicalTypingNoteSet(noteValues: NoteObject[], notesInScale: string[] | any[], descendingNotesInScale: string[] | any[]) : NoteObject[] | undefined {
+	if (!notesInScale.length) return
+
+	if (!descendingNotesInScale.length) {
+		return noteValues.filter((note: NoteObject) => {
+			const { name } = note;
+			return notesInScale.includes(name) || notesInScale.includes(name + "-hf");
+		})
+	} else {
+		return noteValues.filter((note: NoteObject) => {
+			const { name } = note;
+			// const descendingVariantNoteName = descendingNotesInScale.find(noteName => !notesInScale.includes(noteName))
+			return notesInScale.includes(name) || notesInScale.includes(name + "-hf") || descendingNotesInScale.includes(name) || descendingNotesInScale.includes(name + "-hf");
+		})
+	}
+}

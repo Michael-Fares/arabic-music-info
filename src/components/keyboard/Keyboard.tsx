@@ -2,7 +2,7 @@ import "./keyboard.css";
 import classNames from "classnames";
 
 import { NOTE_VALUES } from "../../constants";
-import { isHalfFlat, getNotesToPlay } from "../../utils";
+import { isHalfFlat, getNotesToPlay, getAutoMusicalTypingNoteSet } from "../../utils";
 
 interface KeyboardProps {
     audioManager: {
@@ -27,8 +27,11 @@ function Keyboard({
     const descendingNotesInScale =
         scale.rootNotes[rootNote]?.descendingNotes || [];
 
+
     // the 8 notes of the scale, in order, starting from the root note on the keyboard
     const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);
+
+    console.log("test >>>>", scale.name , getAutoMusicalTypingNoteSet(NOTE_VALUES, notesInScale, descendingNotesInScale))
 
     const handleKeyClick = (
         event: React.MouseEvent<HTMLButtonElement, MouseEvent>

@@ -38,7 +38,9 @@ function App() {
 			)}
 
 			<Nav maqamList={maqamList} />
-			<Legend />
+
+			{/* <Legend /> */}
+
 			{maqams.map((scale: Scale) => {
 				return (
 					<MaqamBoard
