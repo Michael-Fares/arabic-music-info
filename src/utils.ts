@@ -96,17 +96,24 @@ export function formatNotesForVexflowScore(notesToPlay: NoteObject[]) {
  */
 export function getAutoMusicalTypingNoteSet(noteValues: NoteObject[], notesInScale: string[] | any[], descendingNotesInScale: string[] | any[]) : NoteObject[] | undefined {
 	if (!notesInScale.length) return
-
+	let result;
+	/**
+	 * filter the needed set of 14 or 16
+	 */
 	if (!descendingNotesInScale.length) {
-		return noteValues.filter((note: NoteObject) => {
+		result = noteValues.filter((note: NoteObject) => {
 			const { name } = note;
 			return notesInScale.includes(name) || notesInScale.includes(name + "-hf");
 		})
 	} else {
-		return noteValues.filter((note: NoteObject) => {
+		result = noteValues.filter((note: NoteObject) => {
 			const { name } = note;
 			// const descendingVariantNoteName = descendingNotesInScale.find(noteName => !notesInScale.includes(noteName))
 			return notesInScale.includes(name) || notesInScale.includes(name + "-hf") || descendingNotesInScale.includes(name) || descendingNotesInScale.includes(name + "-hf");
 		})
 	}
+	/**
+	 * use map to apply quarterize the note value if it is half-flat / a quater tone 
+	 */
+	return result.map((note: NoteObject) => (isHalfFlat(notesInScale, note) ? quarterize(note) : note));	
 }
