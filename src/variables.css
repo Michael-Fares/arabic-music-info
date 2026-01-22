@@ -33,6 +33,7 @@
     --descending-variant-note-color: var(--green-3);
     --play-button-color: var(--green-secondary);
     --scale-panel-bg-color: var(--base-background-color);
+    --musical-typing-label-box-shadow: 0 0 0.5rem rgba(0,0,0,0.4);
     color: var(--base-color); 
     background-color: var(--base-background-color);
 }
@@ -65,6 +66,7 @@
     --descending-variant-note-color: var(--green-3);
     --play-button-color: var(--green-secondary);
     --scale-panel-bg-color: black;
+    --musical-typing-label-box-shadow: 0 0 0.5rem rgba(255,255,255,0.2);
     color: var(--base-color); 
     background-color: var(--base-background-color);
 }
