@@ -65,8 +65,16 @@
             border-radius: 0 0 0.2rem 0.22rem;
         }
 
-        .quarter {
-            border-bottom: 1.5rem solid var(--quarter-tone-key-color);
+        .quarter::after {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+            content: "";
+            height: 1.5rem;
+            width: 100%;
+            background-color: var(--quarter-tone-key-color)
+            /* border-bottom: 1.5rem solid var(--quarter-tone-key-color); */
         }
         .key.highlight {
             background-color: var(--highlight-color);
@@ -74,6 +82,27 @@
         }
         .whiteKey + .whiteKey {
             margin-left: 0.1rem;
+        }
+
+        .musical-typing-key-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            height: 100%;
+            max-width: 50%;
+            margin: 0 auto;
+            pointer-events: none;
+            .musical-typing-key-label {
+                font-family: 'Courier New', Courier, monospace;
+                font-weight: bold;
+                padding: 0.2rem;
+                margin-bottom: 2rem;
+                border-radius: 0.3rem;
+                color: var(--base-color);
+                background-color: var(--base-background-color);
+                box-shadow: 0 0 0.5rem var(--base-color);
+                
+            }
         }
     }
 }

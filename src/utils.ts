@@ -115,5 +115,6 @@ export function getAutoMusicalTypingNoteSet(noteValues: NoteObject[], notesInSca
 	/**
 	 * use map to apply quarterize the note value if it is half-flat / a quater tone 
 	 */
-	return result.map((note: NoteObject) => (isHalfFlat(notesInScale, note) ? quarterize(note) : note));	
+	return result
+			// .map((note: NoteObject) => (isHalfFlat(notesInScale, note) ? quarterize(note) : note));	
 }

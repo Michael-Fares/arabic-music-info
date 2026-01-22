@@ -1,131 +1,141 @@
 import "./keyboard.css";
 import classNames from "classnames";
 
-import { NOTE_VALUES } from "../../constants";
-import { isHalfFlat, getNotesToPlay, getAutoMusicalTypingNoteSet } from "../../utils";
+import { NOTE_VALUES, musicalTypingKeyList } from "../../constants";
+import {
+	isHalfFlat,
+	getNotesToPlay,
+	getAutoMusicalTypingNoteSet,
+	quarterize,
+} from "../../utils";
 
 interface KeyboardProps {
-    audioManager: {
-        playSample: (noteValue: number, sample: any) => void;
-        samples: Record<string, any>;
-    };
-    scale: Scale;
-    rootNote: string;
-    instrument: string;
-    parentScalePanelRef: React.RefObject<HTMLDivElement> | null;
+	audioManager: {
+		playSample: (noteValue: number, sample: any) => void;
+		samples: Record<string, any>;
+	};
+	scale: Scale;
+	rootNote: string;
+	instrument: string;
+	parentScalePanelRef: React.RefObject<HTMLDivElement> | null;
 }
 
 function Keyboard({
-    audioManager,
-    scale,
-    rootNote,
-    instrument,
-    parentScalePanelRef,
+	audioManager,
+	scale,
+	rootNote,
+	instrument,
+	parentScalePanelRef,
 }: KeyboardProps) {
-    // all notes in the scale anywhere on the keyboard
-    const notesInScale = scale.rootNotes[rootNote]?.notes || [];
-    const descendingNotesInScale =
-        scale.rootNotes[rootNote]?.descendingNotes || [];
+	// all notes in the scale anywhere on the keyboard
+	const notesInScale = scale.rootNotes[rootNote]?.notes || [];
+	const descendingNotesInScale =
+		scale.rootNotes[rootNote]?.descendingNotes || [];
 
+	// the 8 notes of the scale, in order, starting from the root note on the keyboard
+	const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);
+	const musicalTypingNoteSet = getAutoMusicalTypingNoteSet(
+		NOTE_VALUES,
+		notesInScale,
+		descendingNotesInScale,
+	);
+	console.log("test >>>>", scale.name, musicalTypingNoteSet);
 
-    // the 8 notes of the scale, in order, starting from the root note on the keyboard
-    const notesToPlay = getNotesToPlay(NOTE_VALUES, notesInScale);
-    const musicalTypingNoteSet = getAutoMusicalTypingNoteSet(NOTE_VALUES, notesInScale, descendingNotesInScale);
-    console.log("test >>>>", scale.name , musicalTypingNoteSet)
+	const handleKeyClick = (
+		event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+	) => {
+        
+		const noteValue = Number(
+			(event.target as HTMLButtonElement).getAttribute("data-note-value"),
+		);
+		audioManager.playSample(noteValue, audioManager.samples[instrument]);
+	};
+	const handleKeyMouseDown = (
+		event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+	) => {
+		const parentScalePanel = parentScalePanelRef?.current;
+		const keyPressed = event.target as HTMLButtonElement;
+		const vexflowScoreNoteToHighlight = parentScalePanel?.querySelector(
+			`svg .vf-note[data-note-name="${keyPressed.getAttribute(
+				"data-note-name",
+			)}"][data-octave="${keyPressed.getAttribute("data-octave")}"]`,
+		);
+		const notePillToHighlight = parentScalePanel?.querySelector(
+			`.note-pill[data-note-name="${keyPressed.getAttribute(
+				"data-note-name",
+			)}"][data-octave="${keyPressed.getAttribute("data-octave")}"]`,
+		);
+		vexflowScoreNoteToHighlight?.classList.add("highlight");
+		notePillToHighlight?.classList.add("highlight");
+	};
+	const handleKeyMouseUp = (
+		event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+	) => {
+		const parentScalePanel = parentScalePanelRef?.current;
+		const keyPressed = event.target as HTMLButtonElement;
+		const vexflowScoreNoteToHighlight = parentScalePanel?.querySelector(
+			`svg .vf-note[data-note-name="${keyPressed.getAttribute(
+				"data-note-name",
+			)}"][data-octave="${keyPressed.getAttribute("data-octave")}"]`,
+		);
+		const notePillToHighlight = parentScalePanel?.querySelector(
+			`.note-pill[data-note-name="${keyPressed.getAttribute(
+				"data-note-name",
+			)}"][data-octave="${keyPressed.getAttribute("data-octave")}"]`,
+		);
+		notePillToHighlight?.classList.remove("highlight");
+		vexflowScoreNoteToHighlight?.classList.remove("highlight");
+	};
+	return (
+		<div className="keyboard-container">
+			<div className="keyboard">
+				{NOTE_VALUES.map((note) => {
+					const { name, value, octave } = note;
 
-    const handleKeyClick = (
-        event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-    ) => {
-        const noteValue = Number(
-            (event.target as HTMLButtonElement).getAttribute("data-note-value")
-        );
-        audioManager.playSample(noteValue, audioManager.samples[instrument]);
-    };
-    const handleKeyMouseDown = (
-        event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-    ) => {
-        const parentScalePanel = parentScalePanelRef?.current;
-        const keyPressed = event.target as HTMLButtonElement;
-        const vexflowScoreNoteToHighlight = parentScalePanel?.querySelector(
-            `svg .vf-note[data-note-name="${keyPressed.getAttribute(
-                "data-note-name"
-            )}"][data-octave="${keyPressed.getAttribute("data-octave")}"]`
-        );
-        const notePillToHighlight = parentScalePanel?.querySelector(
-            `.note-pill[data-note-name="${keyPressed.getAttribute(
-                "data-note-name"
-            )}"][data-octave="${keyPressed.getAttribute("data-octave")}"]`
-        );
-        vexflowScoreNoteToHighlight?.classList.add("highlight");
-        notePillToHighlight?.classList.add("highlight");
-    };
-    const handleKeyMouseUp = (
-        event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-    ) => {
-        const parentScalePanel = parentScalePanelRef?.current;
-        const keyPressed = event.target as HTMLButtonElement;
-        const vexflowScoreNoteToHighlight = parentScalePanel?.querySelector(
-            `svg .vf-note[data-note-name="${keyPressed.getAttribute(
-                "data-note-name"
-            )}"][data-octave="${keyPressed.getAttribute("data-octave")}"]`
-        );
-        const notePillToHighlight = parentScalePanel?.querySelector(
-            `.note-pill[data-note-name="${keyPressed.getAttribute(
-                "data-note-name"
-            )}"][data-octave="${keyPressed.getAttribute("data-octave")}"]`
-        );
-        notePillToHighlight?.classList.remove("highlight");
-        vexflowScoreNoteToHighlight?.classList.remove("highlight");
-    };
-    return (
-        <div className="keyboard-container">
-            <div className="keyboard">
-                {NOTE_VALUES.map((note) => {
-                    const { name, value, octave } = note;
-
-                    return (
-                        <button
-                            data-note-name={
-                                isHalfFlat(notesInScale, note)
-                                    ? name + "-hf"
-                                    : name
-                            }
-                            data-note-value={
-                                isHalfFlat(notesInScale, note)
-                                    ? value - 0.5
-                                    : value
-                            }
-                            data-octave={octave}
-                            key={value}
-                            className={classNames({
-                                key: true,
-                                blackKey: name.includes("b"),
-                                whiteKey: !name.includes("b"),
-                                "in-current-scale":
-                                    notesInScale.includes(name) ||
-                                    notesInScale.includes(name + "-hf"),
-                                quarter: notesInScale.includes(
-                                    name.split("_")[0] + "-hf"
-                                ),
-                                "in-current-run": notesToPlay.some(
-                                    (note) =>
-                                        (note.name === name ||
-                                            note.name === name + "-hf") &&
-                                        note.octave === octave
-                                ),
-                                "descending-variant":
-                                    descendingNotesInScale.includes(name) &&
-                                    !notesInScale.includes(name),
-                            })}
-                            onClick={(event) => handleKeyClick(event)}
-                            onMouseDown={(event) => handleKeyMouseDown(event)}
-                            onMouseUp={(event) => handleKeyMouseUp(event)}
-
-                        ></button>
-                    );
-                })}
-            </div>
-        </div>
-    );
+					return (
+						<button
+							data-note-name={
+								isHalfFlat(notesInScale, note) ? name + "-hf" : name
+							}
+							data-note-value={
+								isHalfFlat(notesInScale, note) ? value - 0.5 : value
+							}
+							data-octave={octave}
+							key={value}
+							className={classNames({
+								key: true,
+								blackKey: name.includes("b"),
+								whiteKey: !name.includes("b"),
+								"in-current-scale":
+									notesInScale.includes(name) ||
+									notesInScale.includes(name + "-hf"),
+								quarter: notesInScale.includes(name.split("_")[0] + "-hf"),
+								"in-current-run": notesToPlay.some(
+									(note) =>
+										(note.name === name || note.name === name + "-hf") &&
+										note.octave === octave,
+								),
+								"descending-variant":
+									descendingNotesInScale.includes(name) &&
+									!notesInScale.includes(name),
+							})}
+							onClick={(event) => handleKeyClick(event)}
+							onMouseDown={(event) => handleKeyMouseDown(event)}
+							onMouseUp={(event) => handleKeyMouseUp(event)}
+						>
+							{(musicalTypingNoteSet?.includes(note) ||
+								musicalTypingNoteSet?.includes(quarterize(note))) && (
+								<div className="musical-typing-key-container">
+									<span className="musical-typing-key-label">
+										{musicalTypingKeyList[musicalTypingNoteSet.indexOf(note)]}
+									</span>
+								</div>
+							)}
+						</button>
+					);
+				})}
+			</div>
+		</div>
+	);
 }
 export default Keyboard;

@@ -138,25 +138,25 @@ export const SCALE_DATA: Scale[] = [
 			C: {
 				notes: Transformer.majorToRast(generateScale("C major")),
 				descendingNotes: Transformer.mixolydianToRast(
-					generateScale("C mixolydian")
+					generateScale("C mixolydian"),
 				),
 			},
 			F: {
 				notes: Transformer.majorToRast(generateScale("F major")),
 				descendingNotes: Transformer.mixolydianToRast(
-					generateScale("F mixolydian")
+					generateScale("F mixolydian"),
 				),
 			},
 			G: {
 				notes: Transformer.majorToRast(generateScale("G major")),
 				descendingNotes: Transformer.mixolydianToRast(
-					generateScale("G mixolydian")
+					generateScale("G mixolydian"),
 				),
 			},
 			D: {
 				notes: Transformer.majorToRast(generateScale("D major")),
 				descendingNotes: Transformer.mixolydianToRast(
-					generateScale("D mixolydian")
+					generateScale("D mixolydian"),
 				),
 			},
 		},
@@ -192,8 +192,8 @@ export const SCALE_DATA: Scale[] = [
 					.concat(
 						(Transformer.majorToRast(generateScale("G major")) || []).slice(
 							0,
-							4
-						)
+							4,
+						),
 					),
 				descendingNotes: generateScale("D phrygian dominant"),
 			},
@@ -203,8 +203,8 @@ export const SCALE_DATA: Scale[] = [
 					.concat(
 						(Transformer.majorToRast(generateScale("C major")) || []).slice(
 							0,
-							4
-						)
+							4,
+						),
 					),
 				descendingNotes: generateScale("G phrygian dominant"),
 			},
@@ -214,8 +214,8 @@ export const SCALE_DATA: Scale[] = [
 					.concat(
 						(Transformer.majorToRast(generateScale("D major")) || []).slice(
 							0,
-							4
-						)
+							4,
+						),
 					),
 				descendingNotes: generateScale("A phrygian dominant") || [],
 			},
@@ -286,7 +286,8 @@ export const SCALE_DATA: Scale[] = [
 			D: {
 				notes: (Transformer.minorToBayati(generateScale("D minor")) || [])
 					.slice(0, 2)
-					.concat((generateScale("F phrygian dominant") || []).slice(0, 4)).concat(["Db"]),
+					.concat((generateScale("F phrygian dominant") || []).slice(0, 4))
+					.concat(["Db"]),
 				descendingNotes: (
 					Transformer.minorToBayati(generateScale("D minor")) || []
 				)
@@ -296,7 +297,8 @@ export const SCALE_DATA: Scale[] = [
 			G: {
 				notes: (Transformer.minorToBayati(generateScale("G minor")) || [])
 					.slice(0, 2)
-					.concat((generateScale("Bb phrygian dominant") || []).slice(0, 4)).concat(["Gb"])
+					.concat((generateScale("Bb phrygian dominant") || []).slice(0, 4))
+					.concat(["Gb"])
 					.map((note) => (note === "Cb" ? "B" : note)),
 				descendingNotes: (
 					Transformer.minorToBayati(generateScale("G minor")) || []
@@ -308,7 +310,8 @@ export const SCALE_DATA: Scale[] = [
 			A: {
 				notes: (Transformer.minorToBayati(generateScale("A minor")) || [])
 					.slice(0, 2)
-					.concat((generateScale("C phrygian dominant") || []).slice(0, 4)).concat(["Ab"]),
+					.concat((generateScale("C phrygian dominant") || []).slice(0, 4))
+					.concat(["Ab"]),
 				descendingNotes: (
 					Transformer.minorToBayati(generateScale("A minor")) || []
 				)
@@ -460,4 +463,25 @@ export const INSTUMENTS = {
 	oud: "oud",
 };
 
-export const flatPath = "M8.5 19 c4.86-2.74 7-5.09 7-7 c0-1.41-.71-3-3-3 c-.7 0-1.39.28-2 .67 V1h-2m2 11 c.62-.67 1.45-1.26 2-1.26c.59 0 1 .07 1 1 c0 .15-.1 1.3-3 3.38";
+export const flatPath =
+	"M8.5 19 c4.86-2.74 7-5.09 7-7 c0-1.41-.71-3-3-3 c-.7 0-1.39.28-2 .67 V1h-2m2 11 c.62-.67 1.45-1.26 2-1.26c.59 0 1 .07 1 1 c0 .15-.1 1.3-3 3.38";
+
+export const musicalTypingKeyList: string[] = [
+	"1",
+	"2",
+	"3",
+	"4",
+	"5",
+	"6",
+	"7",
+	"8",
+
+	"q",
+	"w",
+	"e",
+	"r",
+	"t",
+	"y",
+	"u",
+	"i",
+];
