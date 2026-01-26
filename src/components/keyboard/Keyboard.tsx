@@ -92,6 +92,22 @@ function Keyboard({
 				{NOTE_VALUES.map((note) => {
 					const { name, value, octave } = note;
 
+					const isAutoMusicalTypingKey = musicalTypingNoteSet && (musicalTypingNoteSet?.includes(note) ||
+					musicalTypingNoteSet?.includes(quarterize(note)));
+
+					const inCurrentScale = notesInScale.includes(name) ||
+					notesInScale.includes(name + "-hf");
+
+					const isDescendingVariantNote = descendingNotesInScale.includes(name) &&
+					!notesInScale.includes(name);
+
+					const inCurrent8NoteRun =  notesToPlay.some(
+						(note) =>
+							(note.name === name || note.name === name + "-hf") &&
+							note.octave === octave,
+					);
+					const musicalTypingKey = isAutoMusicalTypingKey ? musicalTypingKeyList[musicalTypingNoteSet.indexOf(note)] : null;
+
 					return (
 						<button
 							data-note-name={
@@ -106,28 +122,19 @@ function Keyboard({
 								key: true,
 								blackKey: name.includes("b"),
 								whiteKey: !name.includes("b"),
-								"in-current-scale":
-									notesInScale.includes(name) ||
-									notesInScale.includes(name + "-hf"),
+								"in-current-scale": inCurrentScale,
 								quarter: notesInScale.includes(name.split("_")[0] + "-hf"),
-								"in-current-run": notesToPlay.some(
-									(note) =>
-										(note.name === name || note.name === name + "-hf") &&
-										note.octave === octave,
-								),
-								"descending-variant":
-									descendingNotesInScale.includes(name) &&
-									!notesInScale.includes(name),
+								"in-current-run": inCurrent8NoteRun,
+								"descending-variant": isDescendingVariantNote,
 							})}
 							onClick={(event) => handleKeyClick(event)}
 							onMouseDown={(event) => handleKeyMouseDown(event)}
 							onMouseUp={(event) => handleKeyMouseUp(event)}
 						>
-							{(musicalTypingNoteSet?.includes(note) ||
-								musicalTypingNoteSet?.includes(quarterize(note))) && (
+							{isAutoMusicalTypingKey && (
 								<div className="musical-typing-key-container">
 									<span className="musical-typing-key-label">
-										{musicalTypingKeyList[musicalTypingNoteSet.indexOf(note)]}
+										{musicalTypingKey}
 									</span>
 								</div>
 							)}
