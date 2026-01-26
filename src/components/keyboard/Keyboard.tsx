@@ -106,6 +106,7 @@ function Keyboard({
 							(note.name === name || note.name === name + "-hf") &&
 							note.octave === octave,
 					);
+
 					const musicalTypingKey = isAutoMusicalTypingKey ? musicalTypingKeyList[musicalTypingNoteSet.indexOf(note)] : null;
 
 					return (
@@ -116,6 +117,7 @@ function Keyboard({
 							data-note-value={
 								isHalfFlat(notesInScale, note) ? value - 0.5 : value
 							}
+							data-musical-typing-key={musicalTypingKey}
 							data-octave={octave}
 							key={value}
 							className={classNames({
