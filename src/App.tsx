@@ -16,6 +16,8 @@ function App() {
 	const [instrument, setInstrument] = useState(INSTUMENTS.piano);
 	const [isDark, setIsDark] = useLocalStorage("isDark", false);
 
+	const [activePiano, setActivePiano] = useState<ScaleId>(null);
+
 	const maqams = SCALE_DATA.filter((scale) => scale.isMaqam);
 	const maqamList = maqams.map((maqam) => maqam.name.toLowerCase());
 
@@ -48,6 +50,8 @@ function App() {
 						audioManager={audioManager}
 						scale={scale}
 						instrument={instrument}
+						activePiano={activePiano}
+						setActivePiano={setActivePiano}
 					/>
 				);
 			})}

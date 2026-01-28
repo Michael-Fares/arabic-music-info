@@ -18,6 +18,8 @@ interface KeyboardProps {
 	rootNote: string;
 	instrument: string;
 	parentScalePanelRef: React.RefObject<HTMLDivElement> | null;
+	pianoId: ScaleId;
+	pianoIsTyping: boolean;
 }
 
 function Keyboard({
@@ -26,6 +28,8 @@ function Keyboard({
 	rootNote,
 	instrument,
 	parentScalePanelRef,
+	pianoId,
+	pianoIsTyping
 }: KeyboardProps) {
 	// all notes in the scale anywhere on the keyboard
 	const notesInScale = scale.rootNotes[rootNote]?.notes || [];
@@ -95,6 +99,10 @@ function Keyboard({
 					const isAutoMusicalTypingKey = musicalTypingNoteSet && (musicalTypingNoteSet?.includes(note) ||
 					musicalTypingNoteSet?.includes(quarterize(note)));
 
+					const musicalTypingKey = isAutoMusicalTypingKey ? musicalTypingKeyList[musicalTypingNoteSet.indexOf(note)] : null;
+
+					const showMusicalTypingLabels = isAutoMusicalTypingKey && pianoIsTyping;
+
 					const inCurrentScale = notesInScale.includes(name) ||
 					notesInScale.includes(name + "-hf");
 
@@ -107,7 +115,7 @@ function Keyboard({
 							note.octave === octave,
 					);
 
-					const musicalTypingKey = isAutoMusicalTypingKey ? musicalTypingKeyList[musicalTypingNoteSet.indexOf(note)] : null;
+					
 
 					return (
 						<button
@@ -133,7 +141,7 @@ function Keyboard({
 							onMouseDown={(event) => handleKeyMouseDown(event)}
 							onMouseUp={(event) => handleKeyMouseUp(event)}
 						>
-							{isAutoMusicalTypingKey && (
+							{showMusicalTypingLabels && (
 								<div className="musical-typing-key-container">
 									<span className="musical-typing-key-label">
 										{musicalTypingKey}

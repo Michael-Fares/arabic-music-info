@@ -1,0 +1,8 @@
+.scale-panel {
+    .musical-typing-toggle-button {
+        background-color: var(--green-secondary);
+        color: var(--base-background-color);
+        padding: 1rem;
+        border-radius: 1rem;
+    }
+}

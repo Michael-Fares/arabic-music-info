@@ -13,6 +13,10 @@ interface ScalePanelProps {
     scale: Scale;
     rootNote: string;
     instrument: string;
+    pianoId: ScaleId;
+    pianoIsTyping: boolean;
+    activePiano: ScaleId;
+    setActivePiano: React.Dispatch<React.SetStateAction<ScaleId>>;
     isComparisonPanel?: boolean;
     setComparingScaleName?: React.Dispatch<
         React.SetStateAction<
@@ -36,6 +40,9 @@ function ScalePanel({
     scale,
     rootNote,
     instrument,
+    pianoId,
+    activePiano,
+    setActivePiano,
     isComparisonPanel,
     setComparingScaleName,
 }: ScalePanelProps) {
@@ -67,8 +74,17 @@ function ScalePanel({
                     parentScalePanelRef as React.RefObject<HTMLDivElement>
                 }
             />
-            <p>Click any staff note or piano key to hear it.</p>
+            <p>
+                Click any staff note or piano key to hear it. Or{" "}
+                <button className="musical-typing-toggle-button"
+                    onClick={() => setActivePiano(pianoId)}
+                >
+                    Click here to toggle musical typing
+                </button>
+            </p>
             <Keyboard
+                pianoId={pianoId}
+                pianoIsTyping={activePiano === pianoId}
                 audioManager={audioManager}
                 scale={scale}
                 rootNote={rootNote}
