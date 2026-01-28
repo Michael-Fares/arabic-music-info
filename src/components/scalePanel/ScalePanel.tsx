@@ -2,6 +2,7 @@ import ScaleInfoBar from "../scaleInfoBar/ScaleInfoBar";
 import "../scalePanel/scalePanel.css";
 import Keyboard from "../keyboard/Keyboard";
 import ScoreGroup from "../scoreGroup/ScoreGroup";
+import classNames from "classnames";
 
 import { useRef } from "react";
 
@@ -48,6 +49,16 @@ function ScalePanel({
 }: ScalePanelProps) {
     const parentScalePanelRef = useRef<HTMLDivElement>(null);
 
+    const pianoIsTyping = activePiano === pianoId;
+
+    const handleClickMusicalTypingToggle = () => {
+        if (pianoId === activePiano) {
+            setActivePiano(null);
+        } else {
+            setActivePiano(pianoId);
+        }
+    };
+
     return (
         <div
             className="scale-panel"
@@ -76,15 +87,24 @@ function ScalePanel({
             />
             <p>
                 Click any staff note or piano key to hear it. Or{" "}
-                <button className="musical-typing-toggle-button"
-                    onClick={() => setActivePiano(pianoId)}
+                <button
+                    className={classNames({
+                        "musical-typing-toggle-button": true,
+                        pressed: pianoIsTyping,
+                    })}
+                    onClick={handleClickMusicalTypingToggle}
                 >
-                    Click here to toggle musical typing
+                    {pianoIsTyping
+                        ? "Click here to toggle musical typing!"
+                        : "Click here to toggle musical typing!"}
                 </button>
             </p>
+            {pianoIsTyping ? <p>
+                Musical typing on. Press these keys on your keyboard to automatically play the scale!
+            </p>: null}
             <Keyboard
                 pianoId={pianoId}
-                pianoIsTyping={activePiano === pianoId}
+                pianoIsTyping={pianoIsTyping}
                 audioManager={audioManager}
                 scale={scale}
                 rootNote={rootNote}
