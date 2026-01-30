@@ -6,7 +6,7 @@ import Nav from "./components/nav/Nav";
 import Header from "./components/header/Header";
 import DarkmodeSwitch from "./components/darkmodeSwitch/DarkmodeSwitch";
 import InstrumentSelector from "./components/instrumentSelector/InstrumentSelector";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AudioManager } from "./audio";
 import Legend from "./components/legend/Legend";
 
@@ -22,6 +22,23 @@ function App() {
 	const maqamList = maqams.map((maqam) => maqam.name.toLowerCase());
 
 	let showInstSelector = false;
+
+	useEffect(() => {
+		const handleGlobalKeyDown = (event: KeyboardEvent) => {
+		  // If no piano is selected, do nothing
+		  if (!activePiano) return;
+	
+		  // Logic to trigger sound based on activePiano ID
+		  console.log(`Global listener triggering ${activePiano} with key: ${event.key}`);
+		};
+	
+		window.addEventListener('keydown', handleGlobalKeyDown);
+	
+		// Cleanup: Remove listener if component unmounts or activePiano changes
+		return () => {
+		  window.removeEventListener('keydown', handleGlobalKeyDown);
+		};
+	  }, [activePiano]); // Re-run effect when activePiano changes
 
 	return (
 		<div className="App" data-theme={isDark ? "dark" : "light"}>
