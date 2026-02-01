@@ -36,7 +36,7 @@ function App() {
 			)
 				return;
 
-			const pianoEl = document.querySelector(`.keyboard[id=${activePiano}]`);
+			const pianoEl = document.querySelector(`.keyboard[id="${activePiano}"]`);
 
 			const key = pianoEl?.querySelector(
 				`[data-musical-typing-key="${event.key}"]`,
@@ -55,7 +55,7 @@ function App() {
 			}
 		};
 		const handleKeyUp = (event: KeyboardEvent) => {
-			const pianoEl = document.querySelector(`.keyboard[id=${activePiano}]`);
+			const pianoEl = document.querySelector(`.keyboard[id="${activePiano}"]`);
 
 			const key = pianoEl?.querySelector(
 				`[data-musical-typing-key="${event.key}"]`,

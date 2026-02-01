@@ -94,13 +94,11 @@ function ScalePanel({
 					})}
 					onClick={handleClickMusicalTypingToggle}
 				>
-					{pianoIsTyping
-						? "Click here to toggle musical typing!"
-						: "Click here to toggle musical typing!"}
+					toggle musical typing
 				</button>
 			</p>
 			{pianoIsTyping ? (
-				<p>
+				<p className="musical-typing-instructions">
 					Musical typing on. Press these keys on your keyboard to automatically
 					play the scale!
 				</p>
