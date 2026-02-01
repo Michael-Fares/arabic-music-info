@@ -17,7 +17,7 @@ interface ScoreProps {
 }
 
 function Score({ audioManager, scale, rootNote, instrument, direction, parentScalePanelRef }: ScoreProps) {
-	console.log("Score component > scale group of notes is", scale.rootNotes[rootNote]);
+	// console.log("Score component > scale group of notes is", scale.rootNotes[rootNote]);
 
 	const noteSet = scale.rootNotes[rootNote];
 	const hasDifferentDescendingVersion = !!noteSet?.descendingNotes;

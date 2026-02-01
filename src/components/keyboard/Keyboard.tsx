@@ -43,7 +43,7 @@ function Keyboard({
 		notesInScale,
 		descendingNotesInScale,
 	);
-	console.log("test >>>>", scale.name, musicalTypingNoteSet);
+	// console.log("test >>>>", scale.name, musicalTypingNoteSet);
 
 	const handleKeyClick = (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -92,7 +92,7 @@ function Keyboard({
 	};
 	return (
 		<div className="keyboard-container">
-			<div className="keyboard">
+			<div className="keyboard" id={pianoId}>
 				{NOTE_VALUES.map((note) => {
 					const { name, value, octave } = note;
 
