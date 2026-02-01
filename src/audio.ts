@@ -1,13 +1,9 @@
 export class AudioManager {
 	context: AudioContext;
-	samples: {
-		piano: AudioBuffer | null;
-		violin: AudioBuffer | null;
-		oud: AudioBuffer | null;
-	};
+	samples: AudioSampleSet;
 	constructor() {
 		this.context = new AudioContext();
-		this.samples = { piano: null, violin: null, oud: null }; // initialize with null, will be filled later
+		this.samples = {}; // initialize with null, will be filled later
 		const fileNames = ["piano", "violin", "oud"]; // add more sample file names as needed, eg. oud, guitar, etc.
 		// load all samples in parallel
 		Promise.all(

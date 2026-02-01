@@ -38,4 +38,10 @@ type ScaleId =
     | "harmonic minor"
     | "phrygian"
     | "phrygian dominant"
-    | null
+    | null 
+
+type AudioSampleSet = {
+    piano: AudioBuffer,
+    oud: AudioBuffer
+    violin: AudioBuffer
+} | {}

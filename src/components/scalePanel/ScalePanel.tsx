@@ -106,7 +106,7 @@ function ScalePanel({
 				</p>
 			) : null}
 			<Keyboard
-				pianoId={pianoId}
+			
 				pianoIsTyping={pianoIsTyping}
 				audioManager={audioManager}
 				scale={scale}

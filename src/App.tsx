@@ -46,7 +46,7 @@ function App() {
 		
 			const noteValueToPlay = key?.getAttribute("data-note-value");
 			if(noteValueToPlay) {
-				audioManager.playSample(Number(noteValueToPlay), audioManager.samples[instrument]);
+				audioManager.playSample(Number(noteValueToPlay), audioManager.samples[instrument as keyof AudioSampleSet]);
 				console.log(
 					`playing ${activePiano} with key: ${event.key}, note: ${key?.getAttribute('data-note-name')}`,
 				);

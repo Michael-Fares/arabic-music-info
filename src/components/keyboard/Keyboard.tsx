@@ -18,7 +18,7 @@ interface KeyboardProps {
 	rootNote: string;
 	instrument: string;
 	parentScalePanelRef: React.RefObject<HTMLDivElement> | null;
-	pianoId: ScaleId;
+
 	pianoIsTyping: boolean;
 }
 
@@ -28,7 +28,7 @@ function Keyboard({
 	rootNote,
 	instrument,
 	parentScalePanelRef,
-	pianoId,
+
 	pianoIsTyping
 }: KeyboardProps) {
 	// all notes in the scale anywhere on the keyboard
@@ -92,7 +92,7 @@ function Keyboard({
 	};
 	return (
 		<div className="keyboard-container">
-			<div className="keyboard" id={pianoId}>
+			<div className="keyboard" id={scale.name}>
 				{NOTE_VALUES.map((note) => {
 					const { name, value, octave } = note;
 
