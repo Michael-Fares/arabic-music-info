@@ -93,6 +93,7 @@
             margin: 0 auto;
             pointer-events: none;
             .musical-typing-key-label {
+                user-select: none;
                 font-family: 'Courier New', Courier, monospace;
                 font-weight: bold;
                 padding: 0.2rem;

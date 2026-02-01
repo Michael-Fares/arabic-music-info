@@ -92,7 +92,7 @@ function Keyboard({
 	};
 	return (
 		<div className="keyboard-container">
-			<div className="keyboard" id={scale.name}>
+			<div className="keyboard" data-scale={scale.name}>
 				{NOTE_VALUES.map((note) => {
 					const { name, value, octave } = note;
 

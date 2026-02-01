@@ -8,6 +8,7 @@ import DarkmodeSwitch from "./components/darkmodeSwitch/DarkmodeSwitch";
 import InstrumentSelector from "./components/instrumentSelector/InstrumentSelector";
 import { useState, useEffect } from "react";
 import { AudioManager } from "./audio";
+import { useRef } from "react";
 import Legend from "./components/legend/Legend";
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
 
 	const maqams = SCALE_DATA.filter((scale) => scale.isMaqam);
 	const maqamList = maqams.map((maqam) => maqam.name.toLowerCase());
+
+	const maqamBoardsRef = useRef(new Map());
 
 	let showInstSelector = false;
 
@@ -35,9 +38,12 @@ function App() {
 				["INPUT", "TEXTAREA"].includes(event.target.tagName)
 			)
 				return;
+			const parentMaqamBoard = maqamBoardsRef.current.get(activePiano);
 
-			const pianoEl = document.querySelector(`.keyboard[id="${activePiano}"]`);
-
+			const pianoEl = parentMaqamBoard?.querySelector(
+				`.keyboard[data-scale="${activePiano}"]`,
+			);
+			console.log("pianoEl", pianoEl);
 			const key = pianoEl?.querySelector(
 				`[data-musical-typing-key="${event.key}"]`,
 			);
@@ -55,7 +61,10 @@ function App() {
 			}
 		};
 		const handleKeyUp = (event: KeyboardEvent) => {
-			const pianoEl = document.querySelector(`.keyboard[id="${activePiano}"]`);
+			const parentMaqamBoard = maqamBoardsRef.current.get(activePiano);
+			const pianoEl = parentMaqamBoard?.querySelector(
+				`.keyboard[data-scale="${activePiano}"]`,
+			);
 
 			const key = pianoEl?.querySelector(
 				`[data-musical-typing-key="${event.key}"]`,
@@ -95,16 +104,28 @@ function App() {
 
 			{/* <Legend /> */}
 
-			{maqams.map((scale: Scale) => {
+			{maqams.map((scale: Scale, index) => {
 				return (
-					<MaqamBoard
-						key={scale.name}
-						audioManager={audioManager}
-						scale={scale}
-						instrument={instrument}
-						activePiano={activePiano}
-						setActivePiano={setActivePiano}
-					/>
+					<div
+						className={scale.name}
+						key={index}
+						ref={(node) => {
+							if (node) {
+								maqamBoardsRef.current.set(scale.name, node);
+							} else {
+								maqamBoardsRef.current.delete(scale.name);
+							}
+						}}
+					>
+						<MaqamBoard
+							key={scale.name}
+							audioManager={audioManager}
+							scale={scale}
+							instrument={instrument}
+							activePiano={activePiano}
+							setActivePiano={setActivePiano}
+						/>
+					</div>
 				);
 			})}
 		</div>
