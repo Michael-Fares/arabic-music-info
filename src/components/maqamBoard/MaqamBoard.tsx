@@ -28,6 +28,9 @@ function MaqamBoard({ audioManager, scale, instrument, activePiano, setActivePia
 	const scaleToCompare: Scale | undefined =
 		SCALE_DATA.find((s) => s.name === comparingScaleName) ?? undefined;
 
+	const test = scaleToCompare ? `${scale.name}-${scaleToCompare?.name}` : scale.name;
+	console.log("test", test)
+
 	function handleComparisonScaleRootNote(
 		mainMaqamName: string,
 		mainMaqamRootNote: string,
