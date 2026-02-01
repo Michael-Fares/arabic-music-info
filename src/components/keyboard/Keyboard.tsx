@@ -18,7 +18,7 @@ interface KeyboardProps {
 	rootNote: string;
 	instrument: string;
 	parentScalePanelRef: React.RefObject<HTMLDivElement> | null;
-
+	pianoId: string;
 	pianoIsTyping: boolean;
 }
 
@@ -28,7 +28,7 @@ function Keyboard({
 	rootNote,
 	instrument,
 	parentScalePanelRef,
-
+	pianoId,
 	pianoIsTyping
 }: KeyboardProps) {
 	// all notes in the scale anywhere on the keyboard
@@ -43,7 +43,7 @@ function Keyboard({
 		notesInScale,
 		descendingNotesInScale,
 	);
-	// console.log("test >>>>", scale.name, musicalTypingNoteSet);
+	console.log("keyboard > pianoId", pianoId, "isTying ?", pianoIsTyping);
 
 	const handleKeyClick = (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -92,7 +92,7 @@ function Keyboard({
 	};
 	return (
 		<div className="keyboard-container">
-			<div className="keyboard" data-scale={scale.name}>
+			<div className="keyboard" data-scale={scale.name} id={pianoId}>
 				{NOTE_VALUES.map((note) => {
 					const { name, value, octave } = note;
 

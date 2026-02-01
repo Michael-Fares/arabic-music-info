@@ -13,8 +13,8 @@ interface MaqamBoardProps {
 	};
 	scale: Scale;
 	instrument: string;
-	activePiano: ScaleId;
-	setActivePiano: React.Dispatch<React.SetStateAction<ScaleId>>;
+	activePiano: string | null;
+	setActivePiano: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
 function MaqamBoard({ audioManager, scale, instrument, activePiano, setActivePiano }: MaqamBoardProps) {
@@ -28,8 +28,7 @@ function MaqamBoard({ audioManager, scale, instrument, activePiano, setActivePia
 	const scaleToCompare: Scale | undefined =
 		SCALE_DATA.find((s) => s.name === comparingScaleName) ?? undefined;
 
-	const test = scaleToCompare ? `${scale.name}-${scaleToCompare?.name}` : scale.name;
-	console.log("test", test)
+	
 
 	function handleComparisonScaleRootNote(
 		mainMaqamName: string,
@@ -88,8 +87,8 @@ function MaqamBoard({ audioManager, scale, instrument, activePiano, setActivePia
 						scale={scale}
 						rootNote={rootNote}
 						instrument={instrument}
-						pianoId={scale.name as ScaleId}
-						pianoIsTyping={activePiano === scale.name as ScaleId}
+						pianoId={scale.name}
+						pianoIsTyping={activePiano === scale.name}
 						activePiano={activePiano}
 						setActivePiano={setActivePiano}
 					/>
@@ -102,8 +101,8 @@ function MaqamBoard({ audioManager, scale, instrument, activePiano, setActivePia
 							scale={scaleToCompare}
 							rootNote={comparisonScaleRootNote}
 							instrument={instrument}
-							pianoId={scaleToCompare?.name as ScaleId}
-							pianoIsTyping={activePiano === scaleToCompare.name as ScaleId}
+							pianoId={`${scale.name}-${scaleToCompare.name}`}
+							pianoIsTyping={activePiano === scaleToCompare.name}
 							activePiano={activePiano}
 							setActivePiano={setActivePiano}
 							isComparisonPanel={comparingScaleName === scaleToCompare?.name}

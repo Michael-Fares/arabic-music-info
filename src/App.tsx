@@ -15,7 +15,8 @@ function App() {
 	const [instrument, setInstrument] = useState(INSTUMENTS.piano);
 	const [isDark, setIsDark] = useLocalStorage("isDark", false);
 
-	const [activePiano, setActivePiano] = useState<ScaleId>(null);
+	const [activePiano, setActivePiano] = useState<string | null>(null);
+	console.log("activePiano", activePiano)
 
 	const maqams = SCALE_DATA.filter((scale) => scale.isMaqam);
 	const maqamList = maqams.map((maqam) => maqam.name.toLowerCase());
@@ -36,10 +37,10 @@ function App() {
 				event.target instanceof Element &&
 				["INPUT", "TEXTAREA"].includes(event.target.tagName)
 			)
-				return;
+				return;1
 	
 			const pianoEl = document.querySelector(
-				`.keyboard[data-scale="${activePiano}"]`,
+				`.keyboard[id="${activePiano}"]`,
 			);
 			console.log("pianoEl", pianoEl);
 			const key = pianoEl?.querySelector(
@@ -60,7 +61,7 @@ function App() {
 		};
 		const handleKeyUp = (event: KeyboardEvent) => {
 			const pianoEl = document.querySelector(
-				`.keyboard[data-scale="${activePiano}"]`,
+				`.keyboard[id="${activePiano}"]`,
 			);
 
 			const key = pianoEl?.querySelector(
@@ -101,7 +102,7 @@ function App() {
 
 			{/* <Legend /> */}
 
-			{maqams.map((scale: Scale, index) => {
+			{maqams.map((scale: Scale) => {
 				return (
 					<MaqamBoard
 							key={scale.name}

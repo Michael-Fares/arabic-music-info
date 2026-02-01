@@ -14,10 +14,10 @@ interface ScalePanelProps {
 	scale: Scale;
 	rootNote: string;
 	instrument: string;
-	pianoId: ScaleId;
+	pianoId: string;
 	pianoIsTyping: boolean;
-	activePiano: ScaleId;
-	setActivePiano: React.Dispatch<React.SetStateAction<ScaleId>>;
+	activePiano: string | null;
+	setActivePiano: React.Dispatch<React.SetStateAction<string | null>>;
 	isComparisonPanel?: boolean;
 	setComparingScaleName?: React.Dispatch<
 		React.SetStateAction<
@@ -104,7 +104,7 @@ function ScalePanel({
 				</p>
 			) : null}
 			<Keyboard
-			
+				pianoId={pianoId}
 				pianoIsTyping={pianoIsTyping}
 				audioManager={audioManager}
 				scale={scale}
