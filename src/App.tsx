@@ -112,6 +112,7 @@ function App() {
                 return (
                     <div
                         className="maqam-board"
+                        key={scale.name}
                         id={scale.name}
                         ref={(node) => {
                             if (node) {

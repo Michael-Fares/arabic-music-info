@@ -55,7 +55,7 @@ function Keyboard({
 		audioManager.playSample(noteValue, audioManager.samples[instrument]);
 	};
 	const handleKeyMouseDown = (
-		event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+		event: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.TouchEvent<HTMLButtonElement>
 	) => {
 		const parentScalePanel = parentScalePanelRef?.current;
 		const keyPressed = event.target as HTMLButtonElement;
@@ -73,7 +73,7 @@ function Keyboard({
 		notePillToHighlight?.classList.add("highlight");
 	};
 	const handleKeyMouseUp = (
-		event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+		event: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.TouchEvent<HTMLButtonElement>
 	) => {
 		const parentScalePanel = parentScalePanelRef?.current;
 		const keyPressed = event.target as HTMLButtonElement;
@@ -139,7 +139,9 @@ function Keyboard({
 							})}
 							onClick={(event) => handleKeyClick(event)}
 							onMouseDown={(event) => handleKeyMouseDown(event)}
+							onTouchStart={(event) => handleKeyMouseDown(event)}
 							onMouseUp={(event) => handleKeyMouseUp(event)}
+							onTouchEnd={(event) => handleKeyMouseDown(event)}
 						>
 							{showMusicalTypingLabels && (
 								<div className="musical-typing-key-container">

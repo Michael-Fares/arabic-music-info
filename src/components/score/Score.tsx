@@ -164,7 +164,9 @@ function Score({ audioManager, scale, rootNote, instrument, direction, parentSca
 						// listen to whatever event you want here
 						svg.addEventListener("click", () => handleNoteClick(svg), false);
 						svg.addEventListener("mousedown", () => handleNoteMouseDown(svg), false);
+						svg.addEventListener("touchstart", () => handleNoteMouseDown(svg), false);
 						svg.addEventListener("mouseup", () => handleNoteMouseUp(svg), false);
+						svg.addEventListener("touchend", () => handleNoteMouseDown(svg), false);
 					}
 				});
 
@@ -184,7 +186,13 @@ function Score({ audioManager, scale, rootNote, instrument, direction, parentSca
 						note.removeEventListener("mousedown", () =>
 							handleNoteMouseDown(note as NoteSVGElement)
 						);
+						note.removeEventListener("touchstart", () =>
+							handleNoteMouseDown(note as NoteSVGElement)
+						);
 						note.removeEventListener("mouseup", () =>
+							handleNoteMouseUp(note as NoteSVGElement)
+						);
+						note.removeEventListener("touchend", () =>
 							handleNoteMouseUp(note as NoteSVGElement)
 						);
 					});
