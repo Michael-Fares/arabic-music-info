@@ -49,12 +49,15 @@ function App() {
             );
 
             const noteValueToPlay = key?.getAttribute("data-note-value");
+			const note = key?.getAttribute("data-note-name");
+			const notePillToHighlight = parentMaqamBoard.querySelector(`.scale-panel:has(.keyboard[id="${activePiano}"]) .notes-list .note-pill[data-note-name=${note}]`);
             if (noteValueToPlay) {
                 audioManager.playSample(
                     Number(noteValueToPlay),
                     audioManager.samples[instrument as keyof AudioSampleSet]
                 );
                 key?.classList.toggle("highlight");
+				notePillToHighlight?.classList.toggle("highlight");1
             }
         };
         const handleKeyUp = (event: KeyboardEvent) => {
@@ -67,8 +70,11 @@ function App() {
             const key = pianoEl?.querySelector(
                 `[data-musical-typing-key="${event.key}"]`
             );
+			const note = key?.getAttribute("data-note-name");
+			const notePillToHighlight = parentMaqamBoard.querySelector(`.scale-panel:has(.keyboard[id="${activePiano}"]) .notes-list .note-pill[data-note-name=${note}]`);
             if (key) {
                 key?.classList.toggle("highlight");
+				notePillToHighlight?.classList.toggle("highlight");
             }
         };
 
