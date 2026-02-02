@@ -3,6 +3,7 @@ import { useState } from "react";
 import { SCALE_DATA } from "../../constants";
 import ScalePanel from "../scalePanel/ScalePanel";
 import Description from "../description/Description";
+import { Fragment } from "react";
 
 import { uppercase } from "../../utils";
 
@@ -58,7 +59,8 @@ function MaqamBoard({ audioManager, scale, instrument, activePiano, setActivePia
 		rootNote,
 	);
 	return (
-		<div className="maqam-board" id={scale.name}>
+		<Fragment>
+
 			<div className="header">
 				<h2 className="maqam-title">{uppercase(scale.name)}</h2>
 				<div className="key-picker">
@@ -116,7 +118,9 @@ function MaqamBoard({ audioManager, scale, instrument, activePiano, setActivePia
 				comparingScaleName={comparingScaleName}
 				setComparingScaleName={setComparingScaleName}
 			/>
-		</div>
+		</Fragment>
+
+	
 	);
 }
 export default MaqamBoard;
