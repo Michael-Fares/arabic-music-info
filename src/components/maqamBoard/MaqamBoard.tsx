@@ -34,8 +34,9 @@ function MaqamBoard({ audioManager, scale, instrument, activePiano, setActivePia
 	function handleComparisonScaleRootNote(
 		mainMaqamName: string,
 		mainMaqamRootNote: string,
+		comparingScaleName: string | null,
 	): string {
-		if (mainMaqamName === "hijaz") {
+		if (mainMaqamName === "hijaz" && comparingScaleName === "rast") {
 			if (mainMaqamRootNote === "D") {
 				return "G";
 			} else if (mainMaqamRootNote === "G") {
@@ -43,7 +44,7 @@ function MaqamBoard({ audioManager, scale, instrument, activePiano, setActivePia
 			} else if (mainMaqamRootNote === "A") {
 				return "D";
 			}
-		} else if (mainMaqamName === "sikah") {
+		} else if (mainMaqamName === "sikah" && comparingScaleName === "harmonic minor") {
 			if (mainMaqamRootNote === "E-hf") {
 				return "C";
 			} else if (mainMaqamRootNote === "B-hf") {
@@ -57,6 +58,7 @@ function MaqamBoard({ audioManager, scale, instrument, activePiano, setActivePia
 	const comparisonScaleRootNote = handleComparisonScaleRootNote(
 		scale.name,
 		rootNote,
+		comparingScaleName
 	);
 	return (
 		<Fragment>

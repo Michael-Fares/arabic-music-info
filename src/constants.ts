@@ -354,6 +354,9 @@ export const SCALE_DATA: Scale[] = [
 			G: {
 				notes: generateScale("G major"), // ["G", "A", "B", "C", "D", "E", "F#", "G"],
 			},
+			D: {
+				notes: generateScale("D major"), 
+			},
 		},
 	},
 	{
@@ -368,6 +371,9 @@ export const SCALE_DATA: Scale[] = [
 			},
 			G: {
 				notes: generateScale("G mixolydian"),
+			},
+			D: {
+				notes: generateScale("D mixolydian"), 
 			},
 		},
 	},
