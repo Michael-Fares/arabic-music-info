@@ -32,7 +32,7 @@ function Description({
 			the 2nd variation can be periodically used when ascensding and the 1st
 			variation used when descending. You will often hear this as a hallmark
 			feature of Arabic music improvistations or melodies composed in Maqam{" "}
-			{nameUpper}. This same pattern is common is several other Maqams, as
+			{nameUpper}. This same pattern is common in several other Maqams, as
 			you'll see in Maqams{" "}
 			<a className="maqam-jump" href="#bayati">
 				Bayati
