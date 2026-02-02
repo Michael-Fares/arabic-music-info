@@ -13,6 +13,7 @@
         justify-content: center;
         gap: 0.5rem;
         flex-wrap: wrap;
+        margin-block-start: 1rem;
     }
     .top-row {
         display: flex;
@@ -51,8 +52,8 @@
     .notes-list {
         list-style: none;
         display: flex;
+        align-items: center;
         gap: 0.5rem;
-        margin: 0;
         padding: 0;
     }
     .note-pill {
