@@ -86,7 +86,7 @@ function ScalePanel({
 				}
 			/>
 			<p>
-				Click any staff note or piano key to hear it. Or{" "}
+				Click any staff note or piano key to hear it. <span className="musical-typing-invite">Or{" "}
 				<button
 					className={classNames({
 						"musical-typing-toggle-button": true,
@@ -95,7 +95,7 @@ function ScalePanel({
 					onClick={handleClickMusicalTypingToggle}
 				>
 					toggle musical typing
-				</button>
+				</button></span>
 			</p>
 			{pianoIsTyping ? (
 				<p className="musical-typing-instructions">

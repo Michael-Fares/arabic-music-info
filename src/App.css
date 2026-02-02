@@ -3,5 +3,6 @@
   text-align: center;
   background-color: var(--base-background-color);
   color: var(--base-color);
+  padding-bottom: 5rem;
 }
 

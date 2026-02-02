@@ -21,4 +21,9 @@
     .musical-typing-instructions {
         margin-top: 0.5rem;
     }
+    @media(hover: none) {
+        .musical-typing-invite {
+            display: none;
+        }
+    }
 }
