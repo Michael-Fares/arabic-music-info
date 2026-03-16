@@ -70,14 +70,14 @@ function Description({
 				<Fragment>
 					<p>
 						Maqam {nameUpper} has 2 variations. The 1st and most common
-						variation is like the western{" "}
+						variation is like the Western{" "}
 						<CompareButton showsScale="major" {...restProps} /> scale but with
 						the{" "}
 						<i className="text-italic-qt">
 							3rd and 7th degrees lowered by a quater tone
 						</i>
 						. In other words, they are half flat. The 2nd variation is like the
-						western <CompareButton showsScale="mixolydian" {...restProps} />{" "}
+						Western <CompareButton showsScale="mixolydian" {...restProps} />{" "}
 						scale but with the{" "}
 						<i className="text-italic-qt">
 							3rd degree lowered by a quarter tone
@@ -94,14 +94,14 @@ function Description({
 				<Fragment>
 					<p>
 						Maqam {nameUpper} has 2 variations. The 1st and most common
-						variation is like the western{" "}
+						variation is like the Western{" "}
 						<CompareButton showsScale="dorian" {...restProps} /> mode but with
 						the{" "}
 						<i className="text-italic-qt">
 							3rd and 7th degrees lowered by a quater tone
 						</i>
 						. In other words, they are half flat. The 2nd variation is like the
-						western <CompareButton showsScale="minor" {...restProps} /> scale
+						Western <CompareButton showsScale="minor" {...restProps} /> scale
 						but with a the{" "}
 						<i className="text-italic-qt">
 							3rd degree lowered by a quarter tone
@@ -122,15 +122,15 @@ function Description({
 				<Fragment>
 					<p>
 						Maqam {nameUpper} has 2 variations. The 1st and most common
-						variation is like the western{" "}
+						variation is like the Western{" "}
 						<CompareButton showsScale="phrygian dominant" {...restProps} />{" "}
 						scale but with the{" "}
 						<i className="text-italic-qt">6th degree raised by a quater tone</i>
 						. In other words, it is{" "}
-						<i className="text-italic-qt">"half sharp"</i>, However you will
-						notice that this note is notated as half flat for notiational
+						<i className="text-italic-qt">"half sharp"</i>. However you will
+						notice that this note is notated as half flat for notational
 						consistency. The 2nd variation is technically identical to the
-						western Phrygian Dominant Scale.
+						Western Phrygian Dominant Scale.
 						<br />
 						Another way to think of the 1st variation of Maqam {nameUpper} is
 						the first 3 notes of the Phrygian Dominant scale, and then starting
@@ -161,9 +161,9 @@ function Description({
 				<Fragment>
 					<p>
 						Maqam {nameUpper} has 2 variations. The 1st and most common
-						variation is technically identical to the western{" "}
+						variation is technically identical to the Western{" "}
 						<CompareButton showsScale="harmonic minor" {...restProps} /> scale.
-						The 2nd varitation is technically identical to the western{" "}
+						The 2nd varitation is technically identical to the Western{" "}
 						<CompareButton showsScale="minor" {...restProps} /> Scale.
 					</p>
 					<br />
@@ -179,9 +179,9 @@ function Description({
 			descriptionMarkup = (
 				<Fragment>
 					<p>
-						Maqam {nameUpper} is identical to the western{" "}
+						Maqam {nameUpper} is identical to the Western{" "}
 						<CompareButton showsScale="phrygian" {...restProps} /> mode, which
-						is a <CompareButton showsScale="minor" {...restProps} /> but with a
+						is a <CompareButton showsScale="minor" {...restProps} /> scale but with a
 						flatted 2nd degree. You may recognize this scale from Spanish
 						Adalusian Flamenco music, particularly Flamenco guitar music. As the
 						Arabic speaking peoples ruled over this region during the Middle
@@ -199,9 +199,9 @@ function Description({
 				<Fragment>
 					<p>
 						Maqam {nameUpper} has 2 variations. The 1st and most common
-						variation is identical to the western{" "}
+						variation is identical to the Western{" "}
 						<CompareButton showsScale="major" {...restProps} /> scale, and th
-						2nd variation is identical to the the western{" "}
+						2nd variation is identical to the the Western{" "}
 						<CompareButton showsScale="mixolydian" {...restProps} /> Scale.
 					</p>
 					<br />
@@ -238,11 +238,11 @@ function Description({
 						both common Arabic melodies and improvisations. Specifically, the
 						1st variation of Maqam {nameUpper} is{" "}
 						<i>
-							like the 2nd variation Maqam Bayati - the descending versions -
+							like the 2nd variation of Maqam Bayati - the descending version -
 							but with the 4th note flat and 7th note sharp
 						</i>
 						. Similarly the 2nd variation of Maqam {nameUpper} is like the 2nd
-						variation (descending version) Maqam Bayati but with only the 4th
+						variation (descending version) of Maqam Bayati but with only the 4th
 						note flat instead.
 					</p>
 					<br />
@@ -255,14 +255,14 @@ function Description({
 			descriptionMarkup = (
 				<Fragment>
 					<p>
-						Similar to Maqam Saba above, is's difficult to make a clean
+						Similar to Maqam Saba above, it's difficult to make a clean
 						comparison between Maqam {nameUpper} and a specific Western scale,
-						perhaps because what makes Maqam {nameUpper} most unique is that is{" "}
-						<i className="text-italic-qt">begins on a quarter tone</i> and is
+						perhaps because what makes Maqam {nameUpper} most unique is that it{" "}
+						<i className="text-italic-qt">begins on a quarter tone</i>. Sikah is
 						usually played starting from "E half flat" or "B half flat".
 						However, one possible way to think about Maqam {nameUpper} is in
 						terms of the Western{" "}
-                        {/* NOTE : need to hook this up to make the starting root note different */}
+
 						
                         Harmonic Minor
                         scale. Specifically Maqam Sikah is like the <CompareButton showsScale="harmonic minor" {...restProps} /> scale but with the 3rd note raised by a quarter tone or "half sharp", and played starting from that note instead of it's root note.
