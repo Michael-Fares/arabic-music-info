@@ -16,7 +16,7 @@
     }
 
     .toggle {
-        visibility: hidden;
+        appearance: none;
         height: 0;
         width: 0;
     }
@@ -54,4 +54,15 @@
     &:not(:has(.toggle:checked)) .sun-icon {
         fill: var(--base-color);
     }
+    &:has(input:focus-visible) {
+        border: 1px solid var(--base-background-color);
+        box-shadow: 0 0 0 1px var(--base-color);
+    }
 }
+
+/* .darkmode-switch-container:has(input:focus-visible)::before,
+.darkmode-switch-container:has(input:focus-visible)::after,
+.darkmode-switch-container input:focus-visible {
+  border: 1px solid var(--base-background-color);
+  box-shadow: 0 0 0 1px var(--base-color);
+} */

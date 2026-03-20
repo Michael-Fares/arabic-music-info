@@ -43,7 +43,7 @@ function Keyboard({
 		notesInScale,
 		descendingNotesInScale,
 	);
-	console.log("keyboard > pianoId", pianoId, "isTying ?", pianoIsTyping);
+	// console.log("keyboard > pianoId", pianoId, "isTying ?", pianoIsTyping);
 
 	const handleKeyClick = (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>,

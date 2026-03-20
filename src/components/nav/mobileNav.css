@@ -4,10 +4,8 @@
 .nav-mobile {
     position: fixed;
     top: 0;
-    right: 0;
-
-
-    z-index: 101;
+    right: 0rem;
+    z-index: 5;
     ul {
         list-style: none;
         display: flex;
@@ -116,12 +114,10 @@
       .sidebar {
         transition: transform var(--animation-timing);
         transform: translateX(150%);
-        padding: 0.5rem 1rem;
-        padding-top: calc(var(--hamburger-height) + var(--hamburger-margin) + 1rem);
         background-color: var(--base-background-color);
         color: var(--base-color);
         max-width: 10rem;
-        min-height: max-content;
+        height: 0;
         nav {
             display: flex;
             flex-direction: column;
@@ -138,6 +134,9 @@
 
 .hamburger-menu-flex-wrapper:has(input:checked) + .sidebar {
     transform: translateX(0);
+    height: max-content;
+    padding: 0.5rem 1rem; 
+    padding-top: calc(var(--hamburger-height) + var(--hamburger-margin) + 1rem);
 }
 
 @media screen and (min-width: 768px) {

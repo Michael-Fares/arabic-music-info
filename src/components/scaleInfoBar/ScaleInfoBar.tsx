@@ -139,22 +139,27 @@ function ScaleInfoBar({
     );
     return (
         <div className="scale-info-bar">
+                        <p className="scale-title">{scaleTitle}</p>
             <div className="top-row">
+                <div className="play-button-wrapper">
+
                 <button
                     className="play-button"
                     onClick={() => handleClickPlay()}
                 >
                     Hear It!
                 </button>
-                <p>{scaleTitle}</p>
+                </div>
+          
                 {isComparisonPanel ? (
                     <button
-                        className="ok-button"
+                        className="close-button"
                         onClick={handleComparingPanelClose}
                     >
                     </button>
                 ) : null}
             </div>
+    
             <div className="notes-info">
                 <NoteList
                     uniqueNotesForForDisplay={uniqueNotesForForDisplay}

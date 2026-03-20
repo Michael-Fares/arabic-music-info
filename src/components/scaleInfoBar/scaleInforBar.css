@@ -5,6 +5,7 @@
     background-color: var(--scale-info-bar-background-color);
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     gap: 1rem;
     padding: 1rem;
     .notes-info {
@@ -20,28 +21,35 @@
         align-items: center;
         justify-content: center;
         flex-wrap: wrap;
-        position: relative;
-        .play-button {
-            position: absolute;
-            left: 0;
-            top: 0;
-            background-color: var(--play-button-color);
-            color: var(--base-background-color);
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 0.25rem;
-            cursor: pointer;
-            &::before {
-                content: "\25B6"; /* Unicode for play icon */
-                margin-right: 0.5rem;
+        gap: 0.5rem;
+        .play-button-wrapper {
+            flex: 1;
+            .play-button {
+          
+           
+                background-color: var(--play-button-color);
+                color: var(--base-background-color);
+                padding: 0.5rem 1rem;
+                border: none;
+                border-radius: 0.25rem;
+                cursor: pointer;
+                &::before {
+                    content: "\25B6"; /* Unicode for play icon */
+                    margin-right: 0.5rem;
+                }
             }
         }
-        .ok-button {
-            position: absolute;
-            right: 0;
 
+        .scale-title {
+
+            text-align: center;
+         
+        }
+        .close-button {
+    
+
+            top: 0;
             color: var(--base-color);
-            padding: 0.5rem;
             border-radius: 0.25rem;
             font-size: 2.5rem;
             &::before {
@@ -53,7 +61,9 @@
         list-style: none;
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 0.5rem;
+        flex-wrap: wrap;
         padding: 0;
     }
     .note-pill {
@@ -98,3 +108,4 @@
         }
     }
 }
+
