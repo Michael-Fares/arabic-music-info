@@ -22,6 +22,7 @@
         justify-content: center;
         flex-wrap: wrap;
         gap: 0.5rem;
+        position: relative;
         .play-button-wrapper {
             flex: 1;
             .play-button {
@@ -47,8 +48,9 @@
         }
         .close-button {
     
-
-            top: 0;
+            position: absolute;
+            top: -3rem;
+            right: 0;
             color: var(--base-color);
             border-radius: 0.25rem;
             font-size: 2.5rem;
