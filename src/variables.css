@@ -36,6 +36,17 @@
     --musical-typing-label-box-shadow: 0 0 0.5rem rgba(0,0,0,0.4);
     color: var(--base-color); 
     background-color: var(--base-background-color);
+
+    /* hamburger menu variables */
+    --bar-width: 2.5rem;
+    --bar-height: 0.25rem;
+    --hamburger-gap: 0.4rem;
+    --foreground: #333;
+    --background: white;
+    --hamburger-margin: 8px;
+    --animation-timing: 200ms ease-in-out;
+    --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
+
 }
 [data-theme="dark"] {
 

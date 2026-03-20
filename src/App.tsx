@@ -3,6 +3,7 @@ import useLocalStorage from "use-local-storage";
 import { SCALE_DATA, INSTUMENTS } from "./constants";
 import MaqamBoard from "./components/maqamBoard/MaqamBoard";
 import Nav from "./components/nav/Nav";
+import MobileNav from "./components/nav/MobileNav";
 import Header from "./components/header/Header";
 import DarkmodeSwitch from "./components/darkmodeSwitch/DarkmodeSwitch";
 import InstrumentSelector from "./components/instrumentSelector/InstrumentSelector";
@@ -90,6 +91,7 @@ function App() {
 
     return (
         <div className="App" data-theme={isDark ? "dark" : "light"}>
+
             <DarkmodeSwitch
                 isChecked={isDark}
                 handleChange={() => setIsDark(!isDark)}
@@ -103,7 +105,7 @@ function App() {
                     instruments={INSTUMENTS}
                 />
             )}
-
+            <MobileNav maqamList={maqamList} />
             <Nav maqamList={maqamList} />
 
             {/* <Legend /> */}

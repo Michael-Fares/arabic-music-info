@@ -66,7 +66,7 @@ function Nav({ maqamList }: { maqamList: string[] }) {
 	}, []);
 
 	return (
-		<nav>
+		<nav className="nav-desktop">
 			<p>Maqams:</p>
 			<ul>
 				{maqamList.map((maqam) => {

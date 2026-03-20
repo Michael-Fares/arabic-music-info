@@ -1,6 +1,6 @@
 @import url("../../variables.css");
 
-nav {
+.nav-desktop {
   background-color: var(--base-background-color);
   padding: 0.5rem;
   display: flex;
@@ -32,4 +32,10 @@ nav {
       }
     } 
   }   
+}
+@media screen and (max-width: 768px) {
+  /* Your CSS rules for screens larger than 786px go here */
+  .nav-desktop {
+      display: none;
+  }
 }

@@ -9,7 +9,7 @@ function Header() {
             <h1>Arabic Music Ear Trainer</h1>
 			<p>Learn about microtonal Arabic musical scales known as maqam.</p>
             
-            <button className="start-here-button-placholder">Start Here</button>
+            {/* <button className="start-here-button-placholder">Start Here</button> */}
 
         </header>
     );
