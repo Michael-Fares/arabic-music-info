@@ -98,13 +98,13 @@ function Description({
 						<CompareButton showsScale="dorian" {...restProps} /> mode but with
 						the{" "}
 						<i className="text-italic-qt">
-							3rd and 7th degrees lowered by a quater tone
+							2nd and 6th degrees lowered by a quater tone
 						</i>
 						. In other words, they are half flat. The 2nd variation is like the
 						Western <CompareButton showsScale="minor" {...restProps} /> scale
 						but with a the{" "}
 						<i className="text-italic-qt">
-							3rd degree lowered by a quarter tone
+							2nd degree lowered by a quarter tone
 						</i>
 						, or half flat.
 					</p>
