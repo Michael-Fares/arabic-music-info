@@ -42,7 +42,7 @@ function App() {
             1;
 			const parentMaqamBoardRef = activePiano?.split("-")[0];
 			const parentMaqamBoard = maqamBoardsRef.current.get(parentMaqamBoardRef);
-            const pianoEl = parentMaqamBoard.querySelector(
+            const pianoEl = parentMaqamBoard?.querySelector(
                 `.keyboard[id="${activePiano}"]`
             );
             const key = pianoEl?.querySelector(
@@ -51,7 +51,7 @@ function App() {
 
             const noteValueToPlay = key?.getAttribute("data-note-value");
 			const note = key?.getAttribute("data-note-name");
-			const notePillToHighlight = parentMaqamBoard.querySelector(`.scale-panel:has(.keyboard[id="${activePiano}"]) .notes-list .note-pill[data-note-name=${note}]`);
+			const notePillToHighlight = parentMaqamBoard?.querySelector(`.scale-panel:has(.keyboard[id="${activePiano}"]) .notes-list .note-pill[data-note-name=${note}]`);
             if (noteValueToPlay) {
                 audioManager.playSample(
                     Number(noteValueToPlay),
@@ -64,7 +64,7 @@ function App() {
         const handleKeyUp = (event: KeyboardEvent) => {
 			const parentMaqamBoardRef = activePiano?.split("-")[0];
 			const parentMaqamBoard = maqamBoardsRef.current.get(parentMaqamBoardRef);
-            const pianoEl = parentMaqamBoard.querySelector(
+            const pianoEl = parentMaqamBoard?.querySelector(
                 `.keyboard[id="${activePiano}"]`
             );
 
@@ -72,7 +72,7 @@ function App() {
                 `[data-musical-typing-key="${event.key}"]`
             );
 			const note = key?.getAttribute("data-note-name");
-			const notePillToHighlight = parentMaqamBoard.querySelector(`.scale-panel:has(.keyboard[id="${activePiano}"]) .notes-list .note-pill[data-note-name=${note}]`);
+			const notePillToHighlight = parentMaqamBoard?.querySelector(`.scale-panel:has(.keyboard[id="${activePiano}"]) .notes-list .note-pill[data-note-name=${note}]`);
             if (key) {
                 key?.classList.toggle("highlight");
 				notePillToHighlight?.classList.toggle("highlight");
