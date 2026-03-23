@@ -10,7 +10,7 @@ import InstrumentSelector from "./components/instrumentSelector/InstrumentSelect
 import { useState, useEffect } from "react";
 import { AudioManager } from "./audio";
 import { useRef } from "react";
-import Legend from "./components/legend/Legend";
+
 
 function App() {
     const audioManager = new AudioManager();

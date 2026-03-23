@@ -20,6 +20,13 @@
     }
     .musical-typing-instructions {
         margin-top: 0.5rem;
+        opacity: 1;
+        transition: opacity ease-in-out 0.2s, transform ease-in-out 0.2s;
+        transform: translateY(0);
+        @starting-style {
+            opacity: 0;
+            transform: translateY(3rem);
+        }
     }
     @media(hover: none) {
         .musical-typing-invite {

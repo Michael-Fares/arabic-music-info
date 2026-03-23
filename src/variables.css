@@ -16,8 +16,6 @@
     --base-grey: #eee;
     --red-primary: #9d2020;
 
-    --sun-moon-icon-fill: #973db8;
-
     /* specific color variables */
     --scale-panel-border-color: #ccc;
     --scale-info-bar-background-color: var(--base-grey);
@@ -41,8 +39,6 @@
     --bar-width: 2.5rem;
     --bar-height: 0.25rem;
     --hamburger-gap: 0.4rem;
-    --foreground: #333;
-    --background: white;
     --hamburger-margin: 8px;
     --animation-timing: 200ms ease-in-out;
     --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
