@@ -3,16 +3,24 @@
 .app-header {
     background-color: var(--in-current-run-color);
     padding-block: 1rem;
+    text-align: center;
+    .subtitle {
+      font-weight: 900;
+    }
     h1 {
       margin-bottom: 0.25rem;
+      font-size: 2.5rem;
     }
 
     .call-to-action {
       margin-top: 0.5rem;
       transform: scale(1);
       transition: transform ease-in-out 2s;
+      font-weight: 600;
+
       @starting-style {
         transform: scale(1.2);
+
       }
       .see {
         opacity: 1;
@@ -20,7 +28,6 @@
         transition: opacity ease-in-out 0.5s;
         @starting-style {
           opacity: 0;
-
         }
       }
       .hear {
@@ -80,6 +87,9 @@
     .app-header {
       h1 {
         font-size: 1.5rem;
+      }
+      .subtitle {
+        font-size: 0.8rem;
       }
     }
 }
