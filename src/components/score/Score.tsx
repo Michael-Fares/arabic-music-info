@@ -82,7 +82,27 @@ function Score({ audioManager, scale, rootNote, instrument, direction, parentSca
 		keyboardKeyToHilight?.classList.remove("highlight");
 		notePillToHighlight?.classList.remove("highlight");
 	};
-
+	useEffect(() => {
+		const parentScalePanel = parentScalePanelRef?.current;
+		function resetHighlightsOnMouseOutside() {
+			parentScalePanel?.querySelectorAll('.key').forEach(keyboardKey => {
+				if(keyboardKey.classList.contains("highlight")) {
+					keyboardKey.classList.remove("highlight")
+				}
+			})
+			parentScalePanel?.querySelectorAll('.note-pill').forEach(note => {
+				if(note.classList.contains("highlight")) {
+					note.classList.remove("highlight")
+				}
+			})
+		}
+		document.addEventListener('mouseup', resetHighlightsOnMouseOutside);
+		document.addEventListener('touchend', resetHighlightsOnMouseOutside);
+		return () => {
+			document.removeEventListener('mouseup', resetHighlightsOnMouseOutside);
+			document.removeEventListener('touchend', resetHighlightsOnMouseOutside);
+		}
+	}, [])
 	useEffect(() => {
 		if (vexFlowContainerRef.current !== null && !rendered) {
 		

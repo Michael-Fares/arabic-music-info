@@ -1,6 +1,6 @@
 import "./keyboard.css";
 import classNames from "classnames";
-
+import { useEffect } from "react";
 import { NOTE_VALUES, musicalTypingKeyList } from "../../constants";
 import {
 	isHalfFlat,
@@ -90,6 +90,27 @@ function Keyboard({
 		notePillToHighlight?.classList.remove("highlight");
 		vexflowScoreNoteToHighlight?.classList.remove("highlight");
 	};
+	useEffect(() => {
+		const parentScalePanel = parentScalePanelRef?.current;
+		function resetHighlightsOnMouseOutside() {
+			parentScalePanel?.querySelectorAll('svg .vf-note').forEach(note => {
+				if(note.classList.contains("highlight")) {
+					note.classList.remove("highlight")
+				}
+			})
+			parentScalePanel?.querySelectorAll('.note-pill').forEach(note => {
+				if(note.classList.contains("highlight")) {
+					note.classList.remove("highlight")
+				}
+			})
+		}
+		document.addEventListener('mouseup', resetHighlightsOnMouseOutside);
+		document.addEventListener('touchend', resetHighlightsOnMouseOutside);
+		return () => {
+			document.removeEventListener('mouseup', resetHighlightsOnMouseOutside);
+			document.removeEventListener('touchend', resetHighlightsOnMouseOutside);
+		}
+	}, [])
 	return (
 		<div className="keyboard-container">
 			<div className="keyboard" data-scale={scale.name} id={pianoId}>
